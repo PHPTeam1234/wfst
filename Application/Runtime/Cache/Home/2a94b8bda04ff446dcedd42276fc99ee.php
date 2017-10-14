@@ -44,7 +44,7 @@
 
 </style>
 <body>
-	<div class="header">
+	<div class='header bg-success'>
 		<div class='container'>
 			<div class='row'>
 				<div class="col-md-4 col-md-offset-8">
@@ -129,8 +129,8 @@
 		</div>
 	</div>
 
-<main class='main'>
-	<div class='container'>
+<main class='main bg-success'>
+	<div class='container' >
 		<!-- 幻灯片 -->
 		<div class='row'>
 			<div style="margin:0 auto; width:97%">
@@ -179,9 +179,9 @@
 		</div>
 
 		<!-- 欢迎来到文峰视听  -->
-		<div class="row">
+		<div class="row" style='margin-top:20px;'>
 			<div class="col-md-8">
-				<div class="panel panel-success">
+				<div class="panel panel-info">
 					<div class='panel-heading'>
 						<b>欢迎来到文峰视听</b>
 					</div>
@@ -191,7 +191,7 @@
 				</div>
 			</div>
 			<div class="col-md-4">
-				<div class='panel panel-success'>
+				<div class='panel panel-info'>
 					<div class='panel-heading'><b>请关注我们</b>
 					</div>
 
@@ -224,7 +224,7 @@
          <!-- 最新消息 -->
         <div class='row'>
         	<div class='col-md-12'>
-        		<h3><center><span class='label label-default'>最新消息</span></center></h3>
+        		<h3><center><span class='label label-primary'>最新消息</span></center></h3>
         	</div>
         </div>
         <div class='row'>
@@ -268,12 +268,12 @@
         <!--时尚生活推荐  -->
         <div class='row'>
         	<div class='col-md-12'>
-        		<h3><center><span class='label label-default'>时尚生活推荐</span></center></h3>
+        		<h3><center><span class='label label-primary'>时尚生活推荐</span></center></h3>
         	</div>
         </div>
         <div class='row'>	
         	<div class='col-md-3'>
-        		<div class='panel panel-success'>
+        		<div class='panel panel-info'>
         			<div class='panel-heading'>东南亚最值得去的八大美丽海滩</div>
         			<div class='panel-body'>
         				<p>马尔代夫双鱼岛（olhuveli）<br>
@@ -290,30 +290,36 @@
         		</div>
         	</div>
 
-        	<div class='col-md-3 panel panel-success'>
-        		<div class='panel-heading'>名媛衣橱 五种潮流色彩的演绎</div>
-        		<div class='panel-body'>
-        			<p>沉静雅致的深蓝色在2013秋冬绝对是热门的潮流色彩，明星超模们早已经开始纷纷选择深蓝色的各种服装来彰显她们秋日的时髦主张。Miranda Kerr 的露肩长裙、Angelababy 的Masha Ma 礼服、Amanda Seyfried 的雪纺透视装……全部以深蓝色为首选，学习她们是怎样将深蓝色演绎出不同风貌的吧。
-        			</p>
+        	<div class='col-md-3'>
+        		<div class='panel panel-info'>
+        			<div class='panel-heading'>名媛衣橱 五种潮流色彩的演绎</div>
+        			<div class='panel-body'>
+        				<p>沉静雅致的深蓝色在2013秋冬绝对是热门的潮流色彩，明星超模们早已经开始纷纷选择深蓝色的各种服装来彰显她们秋日的时髦主张。Miranda Kerr 的露肩长裙、Angelababy 的Masha Ma 礼服、Amanda Seyfried 的雪纺透视装……全部以深蓝色为首选，学习她们是怎样将深蓝色演绎出不同风貌的吧。
+        				</p>
+        			</div>
         		</div>
         	</div>
 
-        	<div class='col-md-3 panel panel-success'>
-        		<div class='panel-heading'>盘点最受男人宠爱的10类女人</div>
-        		<div class='panel-body'>
-        			<p>世上的女人千千万万种，男人的口味也是各不相同。但是总有那么几种女性，无论在什么地方，都是男人们趋之若鹜的对象。她可能是可爱青春的，也可能是性感魅惑的，可能是温柔体贴的，也可能是放荡不羁的。总之，她让男人不自禁地想要去宠爱，深深地为她痴狂。</p>
+        	<div class='col-md-3'>
+        		<div class='panel panel-info'>
+        			<div class='panel-heading'>盘点最受男人宠爱的10类女人</div>
+        			<div class='panel-body'>
+        				<p>世上的女人千千万万种，男人的口味也是各不相同。但是总有那么几种女性，无论在什么地方，都是男人们趋之若鹜的对象。她可能是可爱青春的，也可能是性感魅惑的，可能是温柔体贴的，也可能是放荡不羁的。总之，她让男人不自禁地想要去宠爱，深深地为她痴狂。</p>
+        			</div>
         		</div>
         	</div>
 
-        	<div class='col-md-3 panel panel-success'>
-        		<div class='panel-heading'>四款浪漫设计 卧室床头柔情蜜意</div>
-        		<div class='panel-body'>
-        			<p>.淡绿花卉点缀床头长物志家居欧式绿色细颈敞口刻棱玻璃花瓶 营造自然舒适卧室<br>
-        				浅紫饰品搭配床头 体验浪漫柔情卧室<br>
-        				品信西班牙卫士小号金色卧室台灯<br>
-        				朱朱家园绿色系卡通韩国明星窗帘ST768<br>
-        				典荘（DanBon)8515紫色带锁首饰盒<br>
-        			</p>
+        	<div class='col-md-3'>
+        		<div class='panel panel-info'>
+        			<div class='panel-heading'>四款浪漫设计 卧室床头柔情蜜意</div>
+        			<div class='panel-body'>
+        				<p>.淡绿花卉点缀床头长物志家居欧式绿色细颈敞口刻棱玻璃花瓶 营造自然舒适卧室<br>
+        					浅紫饰品搭配床头 体验浪漫柔情卧室<br>
+        					品信西班牙卫士小号金色卧室台灯<br>
+        					朱朱家园绿色系卡通韩国明星窗帘ST768<br>
+        					典荘（DanBon)8515紫色带锁首饰盒<br>
+        				</p>
+        			</div>
         		</div>
         	</div>
         </div>
@@ -324,25 +330,40 @@
         <!-- 公告栏和最新微博信息 -->
         <div class='row'>
         	<div class='col-md-6'>
-        		<h3><center><span class='label label-default'>公告栏</span></center></h3>
-        		<div class='panel panel-warning'>
+        		<h3><center><span class='label label-primary'>公告栏</span></center></h3>
+        		<div class='alert alert-warning alert-dismissible'>
+        			<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        				<span aril-hidden='true'>&times;</span>
+        			</button>
         			<p>欢迎大家来到文峰视听，网站正在建设中，后续会有更多好的资源分享给大家，想与我们平台合作的可以与我们联系，敬候您的佳音~</p>
         		</div>
 
         	</div>
 
         	<div class='col-md-6'>
-        		<h3><center><span class='label label-default'>最近微博信息</span></center></h3>
-        		<div class='row'>
+        		<h3><center><span class='label label-primary'>最近微博信息</span></center></h3>
+        		<!-- <div class='row'>
         			<div class='col-xs-1'>
         				<a href="#">
         					<img src="/wfst/Public/images/xlwbicon.png" class='thumbnail'>
         				</a>
         			</div>
+        		</div> -->
+        		<div class='panel panel-warning'>
+        			<div class='media'>
+        				<div class='media-left'>
+        					<a href="">
+        						<img src="/wfst/Public/images/xlwbicon.png">
+        					</a>
+        				</div>
+        				<div class='media-body'>
+        					<p>载入微博，了解更多微博动态</p>
+        				</div>
+        			</div>
         		</div>
-        		<div class='panel panel-primary'>
+        		<!-- <div class='panel panel-primary'>
         			<p>载入微博，了解更多微博动态</p>
-        		</div>
+        		</div> -->
         	</div>
         </div>
 
@@ -356,7 +377,7 @@
 	</div>
 </main>
 
-<footer class='main-footer'>
+<footer class='main-footer bg-info'>
 	<div class='container'>
 		<!-- 分类，加入，与我们联系 -->
 		<div clas='row'>
