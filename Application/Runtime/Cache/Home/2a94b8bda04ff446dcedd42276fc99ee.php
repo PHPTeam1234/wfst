@@ -41,6 +41,10 @@
         	padding-top:50px;
         	position:relative;
         }
+       footer{
+       	    color:#99979c;
+            background-color:#080808;
+       }
 
 </style>
 <body>
@@ -63,7 +67,7 @@
 									<span class="icon-bar"></span>
 								</button>
 								<a class="navbar-brand" href="#">
-									<img src="/wfst/Public/images/logo.png">
+									<img src="/wfst/Public/images/logo.png" width='60px'>
 								</a>
 							</div>
 
@@ -377,16 +381,16 @@
 	</div>
 </main>
 
-<footer class='main-footer bg-info'>
+<footer class='main-footer' style='padding-top:20px'>
 	<div class='container'>
 		<!-- 分类，加入，与我们联系 -->
 		<div clas='row'>
 			<div class='col-md-3'>
-				<img class='thumbnail' src="/wfst/Public/images/logo.png">
+				<img class='thumbnail' src="/wfst/Public/images/logo2.png" style='margin:0 auto; padding: 0; border-color: #080808; border-radius: 0px'>
 			</div>
 
 			<div class='col-md-3'>
-				<h3>分类</h3>
+				<!-- <h4>分类</h4> -->
 				<ul class="categories">
 					<li><a href="#"> 教学区</a>（分类构建中）</li>
 					<li><a href="#">视频区 </a>（分类构建中）</li>
@@ -399,9 +403,9 @@
 			</div>
 
 			<div class='col-md-3'>
-				<h3>加入我们的业务通讯</h3>
-				<p>为你提供相关的业务咨询服务</p>
-				<p>欢迎您的来访</p>
+				<!-- <h3>加入我们的业务通讯</h3> -->
+				<p>加入我们的业务通讯,为你提供相关的业务咨询服务,欢迎您的来访</p>
+				<!-- <p>欢迎您的来访</p> -->
 				<div class='form-group'>
 					<input type='text' class='form-control'>
 				</div>
@@ -409,15 +413,10 @@
 			</div>
 
 			<div class='col-md-3'>
-				<h3>与我们联系</h3>
-				<p>我们会第一时间为你服务</p>
+				<!-- <h3>与我们联系</h3> -->
+				<p>与我们联系,我们会第一时间为你服务</p>
 				<div>
 					<ul>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
 						<li>手机<span> :</span>18277393936</li>
 						<li><span>QQ :</span>370134974|1532575484</li>
 						<li><span>邮箱 :</span>370134974@qq.com</li>
