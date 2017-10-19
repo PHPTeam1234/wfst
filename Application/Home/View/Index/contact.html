@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>文峰视听在线互动</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Bootstrap/css/bootstrap-submenu.min.css">
+	<script type="text/javascript" src="__PUBLIC__/BootStrap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/BootStrap/js/bootStrap.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Bootstrap/js/bootstrap-submenu.min.js"></script>
+</head>
+<style>
+			.top{
+			cursor:pointer;
+			width:30px;
+			height:30px;
+			background:#000;
+			border-radius:5px;
+			color:#fff;
+			line-height:30px;
+			text-align:center;
+			font-size:20px;
+			position:fixed;
+			right:30px;
+			bottom:20px;
+		}
+
+		.top:hover{
+			opacity:0.7;
+		}
+
+        .copyright{
+        	font-size:13px;
+        	text-align:center;
+        	color:#555;
+        	margin-top:15px;
+        	margin-bottom:15px;
+        }
+
+        body{
+        	padding-top:50px;
+        	position:relative;
+        }
+       footer{
+       	    color:#99979c;
+            background-color:#080808;
+       }
+
+       .inner-img{
+			width: 100%;
+		}
+
+		.panel-header-text{
+			color: orange;
+		}
+
+		.panel-bgcolor{
+			background-color: #666666;
+		}
+
+        .mediaLeft{
+        	width:64px!important!;
+        	height:64px!important;
+        }
+
+        .commentBody{
+        	border-color: orange;
+        	border-radius: 5px;
+        	border-style: solid;
+        }
+
+        .addComment{
+        	position:relative;
+        	padding-top: 10px;
+        }
+
+</style>
+<body style='background-color:#666666'>
+	<div class='header'>
+		<div class='container'>
+			<div class='row'>
+				<div class="col-md-4 col-md-offset-8">
+					邮箱: 
+					<a class="panel-header-text" href="#">370134974.com</a> |&nbsp; ■■■
+					<a class="panel-header-text" href="javascript:window.external.addFavorite('http://www.wfstin.net','文峰视听')" >收藏本站</a>■■■
+					<a class="panel-header-text" href="#" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.wfstin.com/')">设为主页</a>
+				</div>
+			</div>
+
+			
+			<div class='row'>
+				<div class='col-md-12'>
+					<nav class="navbar navbar-inverse navbar-fixed-top">
+						<div class='container'>
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar">
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<a class="navbar-brand" href="#">
+									<img src="__PUBLIC__/images/logo2.png" width="50px">
+								</a>
+							</div>
+
+							<div class="collapse navbar-collapse" id="mynavbar" >
+								<ul class="nav navbar-nav navbar-right">
+									<li><a href="{:U('index')}">主页</a></li>
+									<li><a href="{:U('about')}">关于我们</a></li>
+									<li class="dropdown">
+										<a href="" calss="dropdown-toggle" data-toggle="dropdown">
+											<span>视频<span class="caret"></span></span>
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="">视频教学</a></li>
+											<li><a href="">视频聚焦</a></li>
+											<li><a href="">视频对对碰</a></li>
+											<li><a href="">视频原创</a></li>
+											<li><a href="">视频门户网站</a></li>
+										</ul>
+									</li>
+									<li class='dropdown'>
+										<a href="" class='dropdown-toogle' data-toggle='dropdown'>
+											<span>时尚生活馆<span class="caret"></span></span>
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="">博文推荐</a></li>
+											<li><a href="">时尚生活网址大全</a></li>
+										</ul>
+									</li>
+
+									<li class="dropdown">
+										<a href="" class="dropdown-toggle" data-toggle="dropdown" data-submenu="">
+											<span>购物<span class="caret"></span></span>
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="">购物门户网站</a></li>
+											<li><a href="">购物贴士</a></li>
+											<li><a href="">品牌入驻中</a></li>
+											<li><a href="">海外购物</a></li>
+											<li><a href="">购物推荐</a></li>
+											<li><a href="">购物经验分享</a></li>
+											<li class="dropdown-submenu" >
+												<a href="">
+													<span>构建中</span>
+												</a>
+												<ul class="dropdown-menu">
+													<li><a href="">构建中</a></li>
+													<li><a href="">构建中</a></li>
+													<li><a href="">构建中</a></li>
+													<li><a href="">构建中</a></li>
+													<li><a href="">构建中</a></li>
+												</ul>
+
+											</li>
+										</ul>
+									</li>
+									<li><a href="">在线互动</a></li>
+								</ul>
+							</div>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<main class='main'>
+		<div class='container'>
+			<div clas='row'>
+				<div class='col-md-12 panel-header-text'>
+					<h3>在线互动</h3>
+				</div>
+			</div>
+
+			<div class='row'>
+				<div class='col-md-8'>
+					<!-- 文峰视听门户网站经营理念 -->
+					<div class='panel panel-bgcolor'>
+						
+						<div class='panel-body'>
+							<iframe width="100%" scrolling="no" height="310" frameborder="0" class="map" marginheight="0" marginwidth="0" src="http://map.baidu.com/"></iframe>
+						</div>
+					</div>
+
+					
+
+					<div class='addComment'>
+						<h4><center>互动交流</center></h4>
+						<form action='' class='form-horizontal'>
+							<div class='form-group'>
+								<label class='control-label col-md-3' for='name'>你的姓名</label>
+								<div class='col-md-5'>
+									<input type="text" class='form-control' id='name' name="name">
+								</div>
+							</div>
+
+							<div class='form-group'>
+								<label class='control-label col-md-3' for='email'>你的邮箱</label>
+								<div class='col-md-5'>
+									<input type="text" class='form-control' id='email' name="email">
+								</div>
+							</div>
+
+							<div class='form-group'>
+								<label class='control-label col-md-3' for='phone'>你的手机</label>
+								<div class='col-md-5'>
+									<input type="text" class='form-control' id='phone' name="phone">
+								</div>
+							</div>
+
+							<div class='form-group'>
+								<label class='control-label col-md-3' for='comment'>你的评价</label>
+								<div class='col-md-8'>
+									<textarea class='form-control' id='comment' rows='5' name='comment'></textarea>
+								</div>
+							</div>
+							<div class='form-group'>
+								<div class='col-md-offset-4'>
+									<button type='submit' class='btn btn-primary'>提交</button>&nbsp;
+									<button type='reset' class='btn btn-danger'>取消</button>
+								</div>
+							</div>
+							
+						</form>
+					</div>
+
+				</div>
+
+				<div class='col-md-4'>
+					<div class='panel panel-bgcolor'>
+						<div class='panel-heading panel-header-text'><b>请关注我们</b>
+						</div>
+
+						<p>请点击下方的图标</p>
+						<div class='row' >
+							<div class='col-xs-1' >
+								<a href="#"><img src="__PUBLIC__/images/qqicon.png"></a>
+							</div>
+							<div class='col-xs-1'>
+								<a href="#"><img src="__PUBLIC__/images/txwbicon.png"></a>
+							</div>
+							<div class='col-xs-1'>
+								<a href="#"><img src="__PUBLIC__/images/xlwbicon.png"></a>
+							</div>
+							<div class='col-xs-1'>
+								<a href="#"><img src="__PUBLIC__/images/f_icon.png"></a>
+							</div>
+							<div class='col-xs-1'>
+								<a href="#"><img src="__PUBLIC__/images/ykicon.png"></a>
+							</div>
+							<div class='col-xs-1'>
+								<a href="#"><img src="__PUBLIC__/images/tdicon.png"></a>
+							</div>
+						</div>
+					</div>
+
+					<div class='panel panel-bgcolor'>
+						<div class='panel-heading panel-header-text'>
+							办公联系方式
+						</div>
+						<ul class='panel-header-text'>
+							<li>手机：18277393936</li>
+							<li>QQ：370134974</li>
+							<li><a class='panel-header-text' href="">370134974@qq.com</a></li>
+							<li><a class='panel-header-text' href="">http://wfstin.com</a></li>
+						</ul>
+					</div>
+
+					
+
+					<div class='panel panel-bgcolor'>
+						<div class='panel-heading panel-header-text'>
+							办公时间
+						</div>
+						<div class='panel-body panel-header-text'>
+							<p>上午：10：00—晚上：21:00</p>
+                            <p>周六、周日、节假日休假</p>
+						</div>
+					</div>
+				</div>
+				
+				<!-- <div class="clearfix visible-xs-block"></div> -->
+				<div class='col-md-1'>
+					<div class='top'>
+						<span class='glyphicon glyphicon-menu-up'></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+<footer class='main-footer' style='padding-top:20px'>
+	<div class='container'>
+		<!-- 分类，加入，与我们联系 -->
+		<div clas='row'>
+			<div class='col-md-3'>
+				<img src="__PUBLIC__/images/logo.png">
+			</div>
+
+			<div class='col-md-3'>
+				<!-- <h4>分类</h4> -->
+				<ul class="categories">
+					<li><a href="#"> 教学区</a>（分类构建中）</li>
+					<li><a href="#">视频区 </a>（分类构建中）</li>
+					<li><a href="#">品牌馆</a>（分类构建中）</li>
+					<li><a href="#"> 购物区</a>（分类构建中）</li>
+					<li><a href="#"> DIY</a>（分类构建中）</li>
+					<li><a href="#">媒体资源下载 </a>（分类构建中）</li>
+					<li><a href="#">广告业务 </a>（分类构建中）</li>
+				</ul>
+			</div>
+
+			<div class='col-md-3'>
+				<!-- <h3>加入我们的业务通讯</h3> -->
+				<p>加入我们的业务通讯,为你提供相关的业务咨询服务,欢迎您的来访</p>
+				<!-- <p>欢迎您的来访</p> -->
+				<div class='form-group'>
+					<input type='text' class='form-control'>
+				</div>
+				<button type='submit' class='btn btn-primary'>现在加入</button>
+			</div>
+
+			<div class='col-md-3'>
+				<!-- <h3>与我们联系</h3> -->
+				<p>与我们联系,我们会第一时间为你服务</p>
+				<div>
+					<ul>
+						<li>手机<span> :</span>18277393936</li>
+						<li><span>QQ :</span>370134974|1532575484</li>
+						<li><span>邮箱 :</span>370134974@qq.com</li>
+						<li><span>地址 :</span>广西桂林</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <!-- copyright -->
+	<div class='copyright'>
+		<div class='container'>
+			<div class='row'>
+				<div class='col-md-12'>
+					<span>Copyright © 2013—文峰视听. All rights reserved.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+</body>
+<script>
+$(window).scroll(function(){
+		$('.top').show();
+		if($(window).scrollTop()<100){
+			$('.top').hide();
+		}
+});
+
+$('.top').click(function(){
+	$(window).scrollTop(0);
+
+});
+
+$(function () {
+   $('[data-submenu]').submenupicker();
+});
+</script>
+</html>
