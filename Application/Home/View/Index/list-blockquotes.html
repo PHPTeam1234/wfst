@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>海外购物</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Bootstrap/css/bootstrap-submenu.min.css">
+	<script type="text/javascript" src="__PUBLIC__/BootStrap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/BootStrap/js/bootStrap.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Bootstrap/js/bootstrap-submenu.min.js"></script>
+</head>
+<style>
+			.top{
+			cursor:pointer;
+			width:30px;
+			height:30px;
+			background:#000;
+			border-radius:5px;
+			color:#fff;
+			line-height:30px;
+			text-align:center;
+			font-size:20px;
+			position:fixed;
+			right:30px;
+			bottom:20px;
+		}
+
+		.top:hover{
+			opacity:0.7;
+		}
+
+        .copyright{
+        	font-size:13px;
+        	text-align:center;
+        	color:#555;
+        	margin-top:15px;
+        	margin-bottom:15px;
+        }
+
+        body{
+        	padding-top:50px;
+        	position:relative;
+        }
+       footer{
+       	    color:#99979c;
+            background-color:#080808;
+       }
+
+       .inner-img{
+			width: 100%;
+		}
+
+		.panel-header-text{
+			color: orange;
+		}
+
+		.panel-bgcolor{
+			background-color: #666666;
+		}
+
+        .mediaLeft{
+        	width:64px!important!;
+        	height:64px!important;
+        }
+        
+        
+        
+
+       
+
+</style>
+<body style='background-color:#666666'>
+	<div class='header'>
+		<div class='container'>
+			<div class='row'>
+				<div class="col-md-4 col-md-offset-8">
+					邮箱: 
+					<a class="panel-header-text" href="#">370134974.com</a> |&nbsp; ■■■
+					<a class="panel-header-text" href="javascript:window.external.addFavorite('http://www.wfstin.net','文峰视听')" >收藏本站</a>■■■
+					<a class="panel-header-text" href="#" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.wfstin.com/')">设为主页</a>
+				</div>
+			</div>
+
+			
+			<div class='row'>
+				<div class='col-md-12'>
+					<nav class="navbar navbar-inverse navbar-fixed-top">
+						<div class='container'>
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar">
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<a class="navbar-brand" href="#">
+									<img src="__PUBLIC__/images/logo2.png" width="50px">
+								</a>
+							</div>
+
+							<div class="collapse navbar-collapse" id="mynavbar" >
+								<ul class="nav navbar-nav navbar-right">
+									<li><a href="{:U('index')}">主页</a></li>
+									<li><a href="{:U('about')}">关于我们</a></li>
+									<li class="dropdown">
+										<a href="" calss="dropdown-toggle" data-toggle="dropdown">
+											<span>视频<span class="caret"></span></span>
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="">视频教学</a></li>
+											<li><a href="">视频聚焦</a></li>
+											<li><a href="">视频对对碰</a></li>
+											<li><a href="">视频原创</a></li>
+											<li><a href="">视频门户网站</a></li>
+										</ul>
+									</li>
+									<li class='dropdown'>
+										<a href="" class='dropdown-toogle' data-toggle='dropdown'>
+											<span>时尚生活馆<span class="caret"></span></span>
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="">博文推荐</a></li>
+											<li><a href="">时尚生活网址大全</a></li>
+										</ul>
+									</li>
+
+									<li class="dropdown">
+										<a href="" class="dropdown-toggle" data-toggle="dropdown" data-submenu="">
+											<span>购物<span class="caret"></span></span>
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="">购物门户网站</a></li>
+											<li><a href="">购物贴士</a></li>
+											<li><a href="">品牌入驻中</a></li>
+											<li><a href="">海外购物</a></li>
+											<li><a href="">购物推荐</a></li>
+											<li><a href="">购物经验分享</a></li>
+											<li class="dropdown-submenu" >
+												<a href="">
+													<span>构建中</span>
+												</a>
+												<ul class="dropdown-menu">
+													<li><a href="">构建中</a></li>
+													<li><a href="">构建中</a></li>
+													<li><a href="">构建中</a></li>
+													<li><a href="">构建中</a></li>
+													<li><a href="">构建中</a></li>
+												</ul>
+
+											</li>
+										</ul>
+									</li>
+									<li><a href="">在线互动</a></li>
+								</ul>
+							</div>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<main class='main'>
+		<div class='container'>
+			<div clas='row'>
+				<div class='col-md-12'>
+					<h3>海外购物</h3>
+				</div>
+			</div>
+
+			<div class='row'>
+				<div class='col-md-2'>
+					<!-- 文峰视听门户网站经营理念 -->
+					<h4 class='panel-header-text'>购物网站</h4>
+					<div class='btn-group-vertical'>
+						<a class='btn btn-default' href="#">亚马逊Amazon</a>
+						<a class='btn btn-default' href="#">ebay</a>
+						<a class='btn btn-default' href="#"> 11号街</a>
+						<a class='btn btn-default' href="#">bestbuy </a>
+						<a class='btn btn-default' href="#">澳洲团购网</a>
+						<a class='btn btn-default' href="#">拉斐尔在线</a>
+					</div>
+				</div>
+
+				<div class='col-md-10'>
+					<div class='panel panel-bgcolor'>
+						<div class='panel-heading panel-header-text'>
+							<h3><b>海外购物注意事项</b></h3>
+						</div>
+						<div class='panel-body'>
+
+								<ul>
+									<li>英语一定要好，如果看不太懂的话，最好在国内购买或找人代购，英语不是很熟练的话现在可以借助翻译软件</li>
+									<li>办理中国或国外银行的&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; VISA、MASTER&nbsp;&nbsp; 国际信用卡。 </li>
+									<li>国外购物网站都不接受西联汇款，就算在EBAY上少数卖家接WESTERN UNION 或银行转帐，其手续费很高，国内银行转出外汇规定不少，而且汇款对你风险较大</li>
+									<li>虽然国外EBAY上专业卖家大部分信用比较好，但不排除骗子存在，去EBAY投诉处理时间长，不建议使用。</li>			
+								</ul>
+
+								<ul>
+									<li>
+										<h3 class='panel-header-text'>国外邮寄费用</h3>
+									</li>
+									<li>B2C 在国外网上购物非常普及，先谈B2C类的，象那些品牌的官方网站和专业网上销售网站，nike, adidas, gucci 等等都有online store这块可以网上选购。在选购之前，先到网站上关于SHIPPING部分，看是否提供国际邮寄业务，一般完善的购物网站都有国际邮寄业务，有供选择国家、地区的页面，你还要去那上面看看中国大陆是否在其国际邮寄国家范围内，因为中国大陆人士在国外网上购物的毕竟目前比例还小，不是每个网站都提供的。</li>
+									<li>完善的大型网站都在你选择了国家/地区后，自动算出邮购费用的。有的会提供各种邮寄方式选择，UPS，USPS(美国邮政），FEDEX，费用不同。有些网站会登出说买入多少克免费邮寄的优惠，请不要被迷惑，这些只包括收货地址在其本国或部分地区的，国际的肯定不会免费邮寄的 </li>
+									<li>不少网站都在邮寄费用之外收取一定的手续费,即handling fee (也有把其直接加入邮费中，统称S&H-shipping handling)，一般都在很不起眼的位置上小字登出，事先务必察看清楚，在最后网上支付前看清时候在INVOICE上有此1条，专业购物网站handling 都不低，USD9.99~15.99都属正常，特别是统收S&H的那种。折成人民币也是不小的数字</li>											
+								</ul>
+
+								<ul>
+									<li>
+										<h3 class='panel-header-text'>付款方式</h3>
+									</li>
+									<li>Ｂ２Ｃ　Ｃ２Ｃ 推荐国际信用卡支付，ＥＢＡＹ有ＰＡＹＰＡＬ</li>
+									<li>能用中国ＰＡＹＰＡＬ的，卖家也支持ＰＡＹＰＡＬ的，建议都用 </li>
+									<li>PAYPAL不问买家收费，而且即时到帐，比汇款也安全得多。有问题了，ＥＢＡＹ上申诉有据可查。</li>											
+								</ul>
+
+								<ol>
+									
+										<h3 class='panel-header-text'>禁邮物品</h3>
+									
+									<li>一般常识知道的禁运的，大家都知道，食品（部分密封包装的可以的），奶制品，肉类，军火，毒品，植物，动物等，其他我知道的，象液体类，喷雾类，电器（包括灯），手机，尺寸超过邮寄物品最大规定的，都没戏。买了寄过来，也不会到你手上。有部分小电器或手机可以邮寄，但也是肯定要交关税的。 </li>
+									<li>推荐大家几个美国的专卖名牌打折的著名网站鞋子，衣服，体育用品，家用品有很多类产品和牌子可选，打折幅度也大，款也比较新，在美国国内很多人从上面买的。bluefly　有国际邮寄业务，但没看过到不到中国，应该是可以的。婴儿用品的也不错，推荐妈妈们看看。</li>
+									<li>买LV,GUCCI, ＣＯＡＣＨ 等等大牌子，到这些品牌的合作online shopping site，从ＬＶ，ＧＵＣＣＩ等官方网上点他们的Ｅ－ＳＨＯＰＰＩＮＧ选项，连到的就是这个网站，所以可以放心购买。就算不直接买，也可以上去看看价格，算算那些在网上卖国外代购物品的实际差价是多少</li>		
+
+								</ol>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+
+			<!-- <div class="clearfix visible-xs-block"></div> -->
+			<div class='col-md-1'>
+				<div class='top'>
+					<span class='glyphicon glyphicon-menu-up'></span>
+				</div>
+			</div>
+		</div>
+	</main>
+
+<footer class='main-footer' style='padding-top:20px'>
+	<div class='container'>
+		<!-- 分类，加入，与我们联系 -->
+		<div clas='row'>
+			<div class='col-md-3'>
+				<img src="__PUBLIC__/images/logo.png">
+			</div>
+
+			<div class='col-md-3'>
+				<!-- <h4>分类</h4> -->
+				<ul class="categories">
+					<li><a href="#"> 教学区</a>（分类构建中）</li>
+					<li><a href="#">视频区 </a>（分类构建中）</li>
+					<li><a href="#">品牌馆</a>（分类构建中）</li>
+					<li><a href="#"> 购物区</a>（分类构建中）</li>
+					<li><a href="#"> DIY</a>（分类构建中）</li>
+					<li><a href="#">媒体资源下载 </a>（分类构建中）</li>
+					<li><a href="#">广告业务 </a>（分类构建中）</li>
+				</ul>
+			</div>
+
+			<div class='col-md-3'>
+				<!-- <h3>加入我们的业务通讯</h3> -->
+				<p>加入我们的业务通讯,为你提供相关的业务咨询服务,欢迎您的来访</p>
+				<!-- <p>欢迎您的来访</p> -->
+				<div class='form-group'>
+					<input type='text' class='form-control'>
+				</div>
+				<button type='submit' class='btn btn-primary'>现在加入</button>
+			</div>
+
+			<div class='col-md-3'>
+				<!-- <h3>与我们联系</h3> -->
+				<p>与我们联系,我们会第一时间为你服务</p>
+				<div>
+					<ul>
+						<li>手机<span> :</span>18277393936</li>
+						<li><span>QQ :</span>370134974|1532575484</li>
+						<li><span>邮箱 :</span>370134974@qq.com</li>
+						<li><span>地址 :</span>广西桂林</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <!-- copyright -->
+	<div class='copyright'>
+		<div class='container'>
+			<div class='row'>
+				<div class='col-md-12'>
+					<span>Copyright © 2013—文峰视听. All rights reserved.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+</body>
+<script>
+$(window).scroll(function(){
+		$('.top').show();
+		if($(window).scrollTop()<100){
+			$('.top').hide();
+		}
+});
+
+$('.top').click(function(){
+	$(window).scrollTop(0);
+
+});
+
+$(function () {
+   $('[data-submenu]').submenupicker();
+});
+</script>
+</html>
