@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>时尚生活网址大全</title>
 	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Bootstrap/css/bootstrap-submenu.min.css">
 	<script type="text/javascript" src="__PUBLIC__/BootStrap/js/jquery.min.js"></script>
@@ -10,7 +11,7 @@
 	<script type="text/javascript" src="__PUBLIC__/Bootstrap/js/bootstrap-submenu.min.js"></script>
 </head>
 <style>
-			.top{
+		.top{
 			cursor:pointer;
 			width:30px;
 			height:30px;
@@ -33,9 +34,30 @@
         	font-size:13px;
         	text-align:center;
         	color:#555;
-        	margin-top: 15px;
+        	margin-top:15px;
         	margin-bottom:15px;
         }
+
+        body{
+        	padding-top:50px;
+        	position:relative;
+        }
+       footer{
+       	    color:#99979c;
+            background-color:#080808;
+       }
+
+       .inner-img{
+			width: 100%;
+		}
+
+		.panel-header-text{
+			color: orange;
+		}
+
+		.panel-bgcolor{
+			background-color: #666666;
+		}
 
         .mediaLeft{
         	width:64px!important!;
@@ -43,83 +65,89 @@
         }
 
 </style>
-<body>
-	<div class="header">
+<body style='background-color:#666666'>
+	<div class='header'>
 		<div class='container'>
 			<div class='row'>
 				<div class="col-md-4 col-md-offset-8">
-					邮箱: <a href="#">370134974.com</a> |&nbsp; ■■■<a href="javascript:window.external.addFavorite('http://www.wfstin.net','文峰视听')">收藏本站</a>■■■<a href="#" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.wfstin.com/')">设为主页</a>
+					邮箱: 
+					<a class="panel-header-text" href="#">370134974.com</a> |&nbsp; ■■■
+					<a class="panel-header-text" href="javascript:window.external.addFavorite('http://www.wfstin.net','文峰视听')" >收藏本站</a>■■■
+					<a class="panel-header-text" href="#" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.wfstin.com/')">设为主页</a>
 				</div>
 			</div>
 
+			
 			<div class='row'>
 				<div class='col-md-12'>
-					<nav class="navbar navbar-inverse">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar">
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<a class="navbar-brand" href="#">
-								<img src="__PUBLIC__/images/logo.png">
-							</a>
-						</div>
+					<nav class="navbar navbar-inverse navbar-fixed-top">
+						<div class='container'>
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar">
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<a class="navbar-brand" href="#">
+									<img src="__PUBLIC__/images/logo2.png" width="50px">
+								</a>
+							</div>
 
-						<div class="collapse navbar-collapse" id="mynavbar" >
-							<ul class="nav navbar-nav navbar-right">
-								<li><a href="">主页</a></li>
-								<li><a href="">关于我们</a></li>
-								<li class="dropdown">
-									<a href="" calss="dropdown-toggle" data-toggle="dropdown">
-										<span>视频<span class="caret"></span></span>
-									</a>
-									<ul class="dropdown-menu">
-										<li><a href="">视频教学</a></li>
-										<li><a href="">视频聚焦</a></li>
-										<li><a href="">视频对对碰</a></li>
-										<li><a href="">视频原创</a></li>
-										<li><a href="">视频门户网站</a></li>
-									</ul>
-								</li>
-								<li class='dropdown'>
-									<a href="" class='dropdown-toogle' data-toggle='dropdown'>
-										<span>时尚生活馆<span class="caret"></span></span>
-									</a>
-									<ul class="dropdown-menu">
-										<li><a href="">博文推荐</a></li>
-										<li><a href="">时尚生活网址大全</a></li>
-									</ul>
-								</li>
+							<div class="collapse navbar-collapse" id="mynavbar" >
+								<ul class="nav navbar-nav navbar-right">
+									<li><a href="{:U('index')}">主页</a></li>
+									<li><a href="{:U('about')}">关于我们</a></li>
+									<li class="dropdown">
+										<a href="" calss="dropdown-toggle" data-toggle="dropdown">
+											<span>视频<span class="caret"></span></span>
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="">视频教学</a></li>
+											<li><a href="">视频聚焦</a></li>
+											<li><a href="">视频对对碰</a></li>
+											<li><a href="">视频原创</a></li>
+											<li><a href="">视频门户网站</a></li>
+										</ul>
+									</li>
+									<li class='dropdown'>
+										<a href="" class='dropdown-toogle' data-toggle='dropdown'>
+											<span>时尚生活馆<span class="caret"></span></span>
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="">博文推荐</a></li>
+											<li><a href="">时尚生活网址大全</a></li>
+										</ul>
+									</li>
 
-								<li class="dropdown">
-									<a href="" class="dropdown-toggle" data-toggle="dropdown" data-submenu="">
-										<span>购物<span class="caret"></span></span>
-									</a>
-									<ul class="dropdown-menu">
-										<li><a href="">购物门户网站</a></li>
-										<li><a href="">购物贴士</a></li>
-										<li><a href="">品牌入驻中</a></li>
-										<li><a href="">海外购物</a></li>
-										<li><a href="">购物推荐</a></li>
-										<li><a href="">购物经验分享</a></li>
-										<li class="dropdown-submenu" >
-											<a href="">
-												<span>构建中</span>
-											</a>
-											<ul class="dropdown-menu">
-												<li><a href="">构建中</a></li>
-												<li><a href="">构建中</a></li>
-												<li><a href="">构建中</a></li>
-												<li><a href="">构建中</a></li>
-												<li><a href="">构建中</a></li>
-											</ul>
+									<li class="dropdown">
+										<a href="" class="dropdown-toggle" data-toggle="dropdown" data-submenu="">
+											<span>购物<span class="caret"></span></span>
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="">购物门户网站</a></li>
+											<li><a href="">购物贴士</a></li>
+											<li><a href="">品牌入驻中</a></li>
+											<li><a href="">海外购物</a></li>
+											<li><a href="">购物推荐</a></li>
+											<li><a href="">购物经验分享</a></li>
+											<li class="dropdown-submenu" >
+												<a href="">
+													<span>构建中</span>
+												</a>
+												<ul class="dropdown-menu">
+													<li><a href="">构建中</a></li>
+													<li><a href="">构建中</a></li>
+													<li><a href="">构建中</a></li>
+													<li><a href="">构建中</a></li>
+													<li><a href="">构建中</a></li>
+												</ul>
 
-										</li>
-									</ul>
-								</li>
-								<li><a href="">在线互动</a></li>
-							</ul>
+											</li>
+										</ul>
+									</li>
+									<li><a href="">在线互动</a></li>
+								</ul>
+							</div>
 						</div>
 					</nav>
 				</div>
@@ -127,31 +155,31 @@
 		</div>
 	</div>
 
-<main class='main'>
-	<div class='container'>
-		<div clas='row'>
-			<div class='col-md-12'>
-				<h3>时尚生活网址大全</h3>
+	<main class='main'>
+		<div class='container'>
+			<div clas='row'>
+				<div class='col-md-12'>
+					<h3>时尚生活网址大全</h3>
+				</div>
 			</div>
-		</div>
 
-		<div class='row'>
-			<div class='col-md-8'>
-				<!-- 文峰视听门户网站经营理念 -->
-				<div class='row'>
+			<div class='row'>
+				<div class='col-md-8'>
+					<!-- 文峰视听门户网站经营理念 -->
 					<div class='col-md-6'>
-						<div class='panel panel-info'>
-							<div class='panel panel-heading'>
-								<a href="">肌肤秋季“解渴”补水7步骤</a> 
+						<div class='panel panel-bgcolor'>
+							<div class='panel-heading'>
+								<a class="panel-header-text" href="">肌肤秋季“解渴”补水7步骤</a> 
 							</div>
-							<div class='panel panel-body'>
-								<img src="__PUBLIC__/images/mivj.jpg" width='322px' height='287'>
+							<div class='panel-body'>
+								<img src="__PUBLIC__/images/mivj.jpg" class='img-thumbnail'>
 								<div class='row'>
-									<div class='col-xs-2'>
-										<a href="">sjldjflj</a>
+									<div class='col-md-2'>
+										<a class="panel-header-text" href="">sjldjflj</a>
 										<span>sdjflj</span>
 									</div>
-									<div class='col-xs-10'>
+									<div class='col-md-10'>
+										<p class="auth-cat"> <strong><a href="#"></a></strong>  <a class="clr-link" href="#"></a><img alt="" src="images/comment_icon.png" class="ml-10"></p>
 										<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 秋天的干燥着实让人无奈，再加上很多办公室一族要每天面对电脑的辐射，让干燥加倍，我们的皮肤每天这样下去不堪重负，于是皮肤越来越差，皮肤干快补水，下面时尚生活网小编教你正确补水7个步骤，让补水变简单轻松。</p>
 										<p><strong> &nbsp;&nbsp;&nbsp;&nbsp; 一、早晚两杯白开水</strong></p>
 										　&nbsp;&nbsp;&nbsp;&nbsp; 由于女人的代谢比男人要慢，消耗也比男人要低，女人往往比男人喝水要少，这就会使身体和皮肤的问题同时出现。<br>
@@ -172,19 +200,21 @@
 							</div>
 						</div>
 					</div>
+                     
 					<div class='col-md-6'>
-						<div class='panel panel-info'>
-							<div class='panel panel-heading'>
-								<a href="">旅途中的自拍术 美景美颜全都要</a> 
+						<div class='panel panel-bgcolor'>
+							<div class='panel-heading'>
+								<a class="panel-header-text" href="">旅途中的自拍术 美景美颜全都要</a> 
 							</div>
-							<div class='panel panel-body'>
-								<img src="__PUBLIC__/images/meinv1.jpg" width='322px' height='287'>
+							<div class='panel-body'>
+								<img src="__PUBLIC__/images/meinv1.jpg" class='img-thumbnail'>
 								<div class='row'>
-									<div class='col-xs-2'>
-										<a href="">sjldjflj</a>
+									<div class='col-md-2'>
+										<a class="panel-header-text" href="">sjldjflj</a>
 										<span>sdjflj</span>
 									</div>
-									<div class='col-xs-10'>
+									<div class='col-md-10'>
+										<p class="auth-cat"> <strong><a href="#"></a></strong> <a class="clr-link" href="#"></a><img alt="" src="images/comment_icon.png" class="ml-10"></p>
 										<p>&nbsp;&nbsp;   &nbsp;&nbsp;  &nbsp; 什么，自拍神器不能拍风景？你太小看这些神器了吧。现代的高科技。令到这些貌似只擅长美白磨皮、去黑眼圈痘痘、瘦身又瘦脸的自拍相机们，不仅在哄女孩子上法力强大，更搭载了某些不输给单反的性能：25mm大广角、夜间拍摄ISO25600、可以流星的延时摄影...下面就针对最受MM欢迎的3个旅游目的地，看看都有哪些自拍相机能够应对时尚之都巴黎 裙抉飘飘靠CASIO</p>
 										<p>　　花都巴黎，连Queen B都把它当作是唯一的Dream City...可是，飞了10来个钟头后的你，不仅容易皮肤干燥满脸长痘，更有可能面庞肿泡泡哦，连出席时装周的幂幂冰冰们都被曝出高清镜头下盖也盖不住、必须PS的痘痘黑眼圈，你又怎能不备款CASIO家自拍神器来随时武装自己？<br>
 										</p>
@@ -197,148 +227,198 @@
 							</div>
 						</div>
 					</div>
-				</div>
 
- 				
-
- 				
-
- 				<nav aria-label='Page navigation'>
- 					<ul class='pagination'>
- 							<li>
- 								<a href="#" aria-label='Previous'>
- 									<span aria-hidden='true'>&laquo;</span>
- 								</a>
- 							</li>
- 							<li><a href="#">1</a></li>
- 							<li><a href="#">2</a></li>
- 							<li><a href="#">3</a></li>
- 							<li><a href="#">4</a></li>
- 							<li><a href="#">5</a></li>
- 							<li>
- 								<a href="#" aria-label='Next'>
- 									<span aria-hidden='true'>&raquo;</span>
- 								</a>
- 							</li>
- 					</ul>
- 				</nav>
- 				</div>
-
-			<div class='col-md-4'>
-				<div class='panel panel-success'>
-					<div class='panel-heading'><b>请关注我们</b>
-					</div>
-
-					<p>请点击下方的图标</p>
-					<div class='row' >
-						<div class='col-xs-1' >
-							<a href="#"><img src="__PUBLIC__/images/qqicon.png"></a>
-						</div>
-						<div class='col-xs-1'>
-							<a href="#"><img src="__PUBLIC__/images/txwbicon.png"></a>
-						</div>
-						<div class='col-xs-1'>
-							<a href="#"><img src="__PUBLIC__/images/xlwbicon.png"></a>
-						</div>
-						<div class='col-xs-1'>
-							<a href="#"><img src="__PUBLIC__/images/f_icon.png"></a>
-						</div>
-						<div class='col-xs-1'>
-							<a href="#"><img src="__PUBLIC__/images/ykicon.png"></a>
-						</div>
-						<div class='col-xs-1'>
-							<a href="#"><img src="__PUBLIC__/images/tdicon.png"></a>
-						</div>
-					</div>
-				</div>
-
-				<div class='panel panel-default'>
-					<div class='panel-heading'>
-						近期博文
-					</div>
-					<div class='media'>
-						<div class='media-left'>
-							<a href="#">
-							<img src="__PUBLIC__/images/boke.jpg" class='mediaLeft'>
-							</a>
-						</div>
-						<div class='media-body'>
-							高二女孩一周戴5块表是贵养还是溺爱？
+					<div class='col-md-6'>
+						<div class='panel panel-bgcolor'>
+							<div class='panel-heading'>
+								<a class="panel-header-text" href="">你所不知的避孕技巧</a> 
+							</div>
+							<div class='panel-body'>
+								<img src="__PUBLIC__/images/mvjq.jpg" class='img-thumbnail'>
+								<div class='row'>
+									<div class='col-md-2'>
+										<a class="panel-header-text" href="">sjldjflj</a>
+										<span>sdjflj</span>
+									</div>
+									<div class='col-md-10'>
+										<p class="auth-cat"> <strong><a href="#"></a></strong> <a class="clr-link" href="#"></a><img alt="" src="images/comment_icon.png" class="ml-10"></p>
+                            <p>随着社会的进步，人们的性观念也开始增强，对性知识也有很多的了解。性生活中，如何安全避孕是夫妻常常讨论的话题。现代避孕方式有很多，常见的有自然避孕法、避孕套、激素避孕、紧急避孕，这些避孕技巧你不可不知。</p>
+                            <p><strong>　　1、自然避孕法</strong></p>
+                            <p>　　包括中断性交和计算安全期法。中断性交必须在性高潮来临前，将阴茎抽出阴道外，实施起来非常困难，而且，在射精之前有一些精子已经漏入阴道。此方法极其不可靠，长期使用可严重影响男性的身心健康，引起前列腺炎等疾病。计算安全期法：推算方法是从下次月经来潮的第1天算起，倒数14天或减去14天就是排卵日，排卵日及其前5天和后4天加在一起称为排卵期。避开排卵期达到避孕的目的。</p>
+                            <p>　　特别提示：外用杀精剂是一种很常见的避孕方式，有栓剂、片剂、药膜、凝胶及阴道海绵塞等多种形式。它能通过化学作用，在女性生殖道内杀死精子，或使精子不能游动。</p>
+                            <p><strong>　　2、屏障措施</strong></p>
+                            <p>　　包括避孕套和阴道隔膜(女用避孕套)。在用避孕套之前，必须避免阴茎和阴道的接触。性交时避孕套须戴好，射精后，在阴茎疲软之前必须将阴茎(连同避孕套)拔出。否则避孕套可能会滑进阴道。建议在使用前检验一下避孕套是否有漏洞。</p>
+                            <p>　<strong>　3、激素避孕方法</strong></p>
+                            <p>　　口服避孕药是世界上最流行的避孕措施，尤其在青少年和二十岁出头的妇女中间使用最为广泛。复合型口服避孕药含有两种激素：雌激素和孕激素。这两种激素可以阻止卵巢中卵细胞的生长和成熟，也就阻止了排卵的发生。这意味着，如果正确服用口服避孕药，其避孕可靠性几乎达100%，远远高于避孕套的避孕可靠性，在可供新婚夫妇选择的避孕方法当中列举首位。</p>
+                            <p><strong>　　4、紧急避孕方法</strong></p>
+                            <p>　　如果忘记采取避孕措施或者避孕失败，可服用紧急避孕药。但紧急避孕药仅作为常规避孕措施失败的一种补救措施，有可能引起恶心、呕吐、月经紊乱等不适，所以尽量采取常规的避孕措施，避免使用这种不得已而为之的避孕方法。</p>
+                            <p>　　以上四种技巧就是性生活中不能不知的避孕小技巧，经过了以上我们的介绍，希望对你以后的避孕有所帮助，同时也希望增加夫妻性生活之间的情趣。如果您是初次使用长期避孕药的女性则需要加强一些钙质的补充，比如一些豆制品，杏仁什么的，对身体都有好处。</p>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 
-					<div class='media'>
-						<div class='media-left'>
-							<a href="#">
-							<img src="__PUBLIC__/images/boke.jpg" class='mediaLeft'>
-							</a>
-						</div>
-						<div class='media-body'>
-							骗婚是上海男屌丝的唯一出路
+					<div class='col-md-6'>
+						<div class='panel panel-bgcolor'>
+							<div class='panel-heading'>
+								<a class="panel-header-text" href="">保养实木地板 固体蜡别随便用</a> 
+							</div>
+							<div class='panel-body'>
+								<img src="__PUBLIC__/images/mdb1.jpg" class='img-thumbnail'>
+								<div class='row'>
+									<div class='col-md-2'>
+										<a class="panel-header-text" href="">sjldjflj</a>
+										<span>sdjflj</span>
+									</div>
+									<div class='col-md-10'>
+										<p class="auth-cat"> <strong><a href="#"></a></strong>  <a class="clr-link" href="#"></a><img alt="" src="images/comment_icon.png" class="ml-10"></p>
+										<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 摘要：目前的家居装修，木地板常见的有实木地板、实木复合地板以及强化地板，当然还有软木地板以及竹木地板。相对于来说，实木地板保养起来比较麻烦一点，需要定期给地板上蜡，这个时候需要注意，固体蜡避免随意的使用。<br>
+											<a href="http://www.91spj.com/mingci/jiexi/54">&nbsp;&nbsp;&nbsp;&nbsp; 实木地板</a>上蜡，可以起到清洁、保护、上光、养护、修复等多方面的效果，当然起到的就是保护<a href="http://www.91spj.com/mall/0-446-00-0-0-00-0-0" target="_blank">实木地板</a>的作用。可是采用不正确的保养方式，那么就会对地板造成伤害了。</p>
+											<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 一般来说，地板铺装完毕后，最好在一周内进行打蜡的养护工作，蜡的成本能够渗透进行地板材质内，可以防止其腐坏或变形。新装的实木地板最好每月打一次蜡，以后只要保持一季或半年一次的频率就可以来，如果遇到地板磨损严重以及使用五年以上的实木地板，可以使用固体蜡，平时建议还是使用液体蜡来对实木地板进行保养。</p>
+											<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 所以，保养实木地板的时候，还是需要注意一些问题的。如果采用的是错的方法进行保养，那么就会对地板造成伤害，得到的却是反效果。</p>
+											<p><br>
+											</p>
+										</div>
+								</div>
+							</div>
 						</div>
 					</div>
 
-					<div class='media'>
-						<div class='media-left'>
-							<a href="#">
-							<img src="__PUBLIC__/images/boke.jpg" class='mediaLeft'>
-							</a>
-						</div>
-						<div class='media-body'>
-							让女人羞愤的性爱菜单：爱人这些要求变态吗
-						</div>
+					
+					<div class='col-md-12'>
+						<nav aria-label='Page navigation'>
+							<ul class='pagination'>
+								<li>
+									<a href="#" aria-label='Previous'>
+										<span aria-hidden='true'>&laquo;</span>
+									</a>
+								</li>
+								<li><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li>
+									<a href="#" aria-label='Next'>
+										<span aria-hidden='true'>&raquo;</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
 					</div>
 				</div>
 
-                <div class='panel panel-info'>
-                	<div class='panel-heading'>
-                		中国知名博客网站
-                	</div>
-                	<ul>
-                		<li><a href="">新浪博客</a></li>
-                		<li><a href="">blogcn</a></li>
-                		<li><a href="">中国博客网</a></li>
-                		<li><a href="">腾讯博客</a></li>
-                		<li><a href="">凤凰博客</a></li>
-                		<li><a href="">天涯博客</a></li>
-                	</ul>
-                </div>
+				<div class='col-md-4'>
+					<div class='panel panel-bgcolor'>
+						<div class='panel-heading panel-header-text'><b>请关注我们</b>
+						</div>
 
-                <div class='panel panel-info'>
-                	<div class='panel-heading'>
-                		博客公示栏
-                	</div>
-                	<div class='panel-body'>
-                		欢迎走进博客专栏
-                	</div>
-                </div>
-		</div>
-        
-        <!-- <div class="clearfix visible-xs-block"></div> -->
+						<p>请点击下方的图标</p>
+						<div class='row' >
+							<div class='col-xs-1' >
+								<a href="#"><img src="__PUBLIC__/images/qqicon.png"></a>
+							</div>
+							<div class='col-xs-1'>
+								<a href="#"><img src="__PUBLIC__/images/txwbicon.png"></a>
+							</div>
+							<div class='col-xs-1'>
+								<a href="#"><img src="__PUBLIC__/images/xlwbicon.png"></a>
+							</div>
+							<div class='col-xs-1'>
+								<a href="#"><img src="__PUBLIC__/images/f_icon.png"></a>
+							</div>
+							<div class='col-xs-1'>
+								<a href="#"><img src="__PUBLIC__/images/ykicon.png"></a>
+							</div>
+							<div class='col-xs-1'>
+								<a href="#"><img src="__PUBLIC__/images/tdicon.png"></a>
+							</div>
+						</div>
+					</div>
 
+					<div class='panel panel-bgcolor'>
+						<div class='panel-heading panel-header-text'>
+							时尚生活网址
+						</div>
+						<div class='media'>
+							<div class='media-left'>
+								<a href="#">
+									<img src="__PUBLIC__/images/sss196.jpg" class='mediaLeft img-rounded'>
+								</a>
+							</div>
+							<div class='media-body'>
+								时尚生活网
+							</div>
+						</div>
 
-        
+						<div class='media'>
+							<div class='media-left'>
+								<a href="#">
+									<img src="__PUBLIC__/images/yoka.jpg" class='mediaLeft img-rounded'>
+								</a>
+							</div>
+							<div class='media-body'>
+								YOKA时尚网
+							</div>
+						</div>
 
+						<div class='media'>
+							<div class='media-left'>
+								<a href="#">
+									<img src="__PUBLIC__/images/txss.jpg" class='mediaLeft img-rounded'>
+								</a>
+							</div>
+							<div class='media-body'>
+								腾讯时尚
+							</div>
+						</div>
+					</div>
 
-		<div class='col-md-1'>
-			<div class='top'>
-                <span class='glyphicon glyphicon-menu-up'></span>
+					<div class='panel panel-bgcolor'>
+						<div class='panel-heading panel-header-text'>
+							时尚生活网址
+						</div>
+						<ul class='panel-header-text'>
+							<li><a class='panel-header-text' href="">食谱网</a></li>
+							<li><a class='panel-header-text' href="">品牌世家</a></li>
+							<li><a class='panel-header-text' href="">21CN生活</a></li>
+							<li><a class='panel-header-text' href="">尚品居</a></li>
+							<li><a class='panel-header-text' href="">中国家居热线</a></li>
+							<li><a class='panel-header-text' href="">携程旅行网</a></li>
+						</ul>
+					</div>
+
+					<div class='panel panel-bgcolor'>
+						<div class='panel-heading panel-header-text'>
+							时尚生活专栏
+						</div>
+						<div class='panel-body panel-header-text'>
+							欢迎大家来到时尚生活专栏
+						</div>
+					</div>
+				</div>
+				
+				<!-- <div class="clearfix visible-xs-block"></div> -->
+				<div class='col-md-1'>
+					<div class='top'>
+						<span class='glyphicon glyphicon-menu-up'></span>
+					</div>
+				</div>
 			</div>
 		</div>
-		
-	</div>
-</main>
+	</main>
 
-<footer class='main-footer'>
+<footer class='main-footer' style='padding-top:20px'>
 	<div class='container'>
 		<!-- 分类，加入，与我们联系 -->
 		<div clas='row'>
 			<div class='col-md-3'>
-				<img class='thumbnail' src="__PUBLIC__/images/logo.png">
+				<img src="__PUBLIC__/images/logo.png">
 			</div>
 
 			<div class='col-md-3'>
-				<h3>分类</h3>
+				<!-- <h4>分类</h4> -->
 				<ul class="categories">
 					<li><a href="#"> 教学区</a>（分类构建中）</li>
 					<li><a href="#">视频区 </a>（分类构建中）</li>
@@ -351,9 +431,9 @@
 			</div>
 
 			<div class='col-md-3'>
-				<h3>加入我们的业务通讯</h3>
-				<p>为你提供相关的业务咨询服务</p>
-				<p>欢迎您的来访</p>
+				<!-- <h3>加入我们的业务通讯</h3> -->
+				<p>加入我们的业务通讯,为你提供相关的业务咨询服务,欢迎您的来访</p>
+				<!-- <p>欢迎您的来访</p> -->
 				<div class='form-group'>
 					<input type='text' class='form-control'>
 				</div>
@@ -361,15 +441,10 @@
 			</div>
 
 			<div class='col-md-3'>
-				<h3>与我们联系</h3>
-				<p>我们会第一时间为你服务</p>
+				<!-- <h3>与我们联系</h3> -->
+				<p>与我们联系,我们会第一时间为你服务</p>
 				<div>
 					<ul>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
 						<li>手机<span> :</span>18277393936</li>
 						<li><span>QQ :</span>370134974|1532575484</li>
 						<li><span>邮箱 :</span>370134974@qq.com</li>
