@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>购物经验分享</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Bootstrap/css/bootstrap-submenu.min.css">
+	<script type="text/javascript" src="__PUBLIC__/BootStrap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/BootStrap/js/bootStrap.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Bootstrap/js/bootstrap-submenu.min.js"></script>
+</head>
+<style>
+			.top{
+			cursor:pointer;
+			width:30px;
+			height:30px;
+			background:#000;
+			border-radius:5px;
+			color:#fff;
+			line-height:30px;
+			text-align:center;
+			font-size:20px;
+			position:fixed;
+			right:30px;
+			bottom:20px;
+		}
+
+		.top:hover{
+			opacity:0.7;
+		}
+
+        .copyright{
+        	font-size:13px;
+        	text-align:center;
+        	color:#555;
+        	margin-top:15px;
+        	margin-bottom:15px;
+        }
+
+        body{
+        	padding-top:50px;
+        	position:relative;
+        }
+       footer{
+       	    color:#99979c;
+            background-color:#080808;
+       }
+
+       .inner-img{
+			width: 100%;
+		}
+
+		.panel-header-text{
+			color: orange;
+		}
+
+		.panel-bgcolor{
+			background-color: #666666;
+		}
+
+        .mediaLeft{
+        	width:64px!important!;
+        	height:64px!important;
+        }
+        
+        
+        
+
+       
+
+</style>
+<body style='background-color:#666666'>
+	<div class='header'>
+		<div class='container'>
+			<div class='row'>
+				<div class="col-md-4 col-md-offset-8">
+					邮箱: 
+					<a class="panel-header-text" href="#">370134974.com</a> |&nbsp; ■■■
+					<a class="panel-header-text" href="javascript:window.external.addFavorite('http://www.wfstin.net','文峰视听')" >收藏本站</a>■■■
+					<a class="panel-header-text" href="#" onClick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.wfstin.com/')">设为主页</a>
+				</div>
+			</div>
+
+			
+			<div class='row'>
+				<div class='col-md-12'>
+					<nav class="navbar navbar-inverse navbar-fixed-top">
+						<div class='container'>
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar">
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<a class="navbar-brand" href="#">
+									<img src="__PUBLIC__/images/logo2.png" width="50px">
+								</a>
+							</div>
+
+							<div class="collapse navbar-collapse" id="mynavbar" >
+								<ul class="nav navbar-nav navbar-right">
+									<li><a href="{:U('index')}">主页</a></li>
+									<li><a href="{:U('about')}">关于我们</a></li>
+									<li class="dropdown">
+										<a href="" calss="dropdown-toggle" data-toggle="dropdown">
+											<span>视频<span class="caret"></span></span>
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="">视频教学</a></li>
+											<li><a href="">视频聚焦</a></li>
+											<li><a href="">视频对对碰</a></li>
+											<li><a href="">视频原创</a></li>
+											<li><a href="">视频门户网站</a></li>
+										</ul>
+									</li>
+									<li class='dropdown'>
+										<a href="" class='dropdown-toogle' data-toggle='dropdown'>
+											<span>时尚生活馆<span class="caret"></span></span>
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="">博文推荐</a></li>
+											<li><a href="">时尚生活网址大全</a></li>
+										</ul>
+									</li>
+
+									<li class="dropdown">
+										<a href="" class="dropdown-toggle" data-toggle="dropdown" data-submenu="">
+											<span>购物<span class="caret"></span></span>
+										</a>
+										<ul class="dropdown-menu">
+											<li><a href="">购物门户网站</a></li>
+											<li><a href="">购物贴士</a></li>
+											<li><a href="">品牌入驻中</a></li>
+											<li><a href="">海外购物</a></li>
+											<li><a href="">购物推荐</a></li>
+											<li><a href="">购物经验分享</a></li>
+											<li class="dropdown-submenu" >
+												<a href="">
+													<span>构建中</span>
+												</a>
+												<ul class="dropdown-menu">
+													<li><a href="">构建中</a></li>
+													<li><a href="">构建中</a></li>
+													<li><a href="">构建中</a></li>
+													<li><a href="">构建中</a></li>
+													<li><a href="">构建中</a></li>
+												</ul>
+
+											</li>
+										</ul>
+									</li>
+									<li><a href="">在线互动</a></li>
+								</ul>
+							</div>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<main class='main'>
+		<div class='container'>
+			<div clas='row'>
+				<div class='col-md-12'>
+					<h3>购物经验分享</h3>
+				</div>
+			</div>
+
+			<div class='row'>
+				<div class='col-md-2'>
+					<!-- 文峰视听门户网站经营理念 -->
+					<h4 class='panel-header-text'>购物经验分享社区</h4>
+					<div class='btn-group-vertical'>
+						<a class='btn btn-default' href="#">网购分享吧</a>
+						<a class='btn btn-default' href="#">一淘陶吧</a>
+						<a class='btn btn-default' href="#">经验盒子</a>
+						<a class='btn btn-default' href="#">海外E购 </a>
+						<a class='btn btn-default' href="#">本友会</a>
+					</div>
+				</div>
+
+				<div class='col-md-10'>
+					
+					<h3 class='panel-header-text'>精选推荐</h3>
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="headingOne">
+								<h4 class="panel-title">
+									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+										防辐射眼镜有效果吗？怎样辨别真伪和品质？
+									</a>
+								</h4>
+							</div>
+							<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+								<div class="panel-body">
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正经的防辐射镜片都是可以防辐射的。防辐射眼镜是在眼镜的镜片加工过程中，加入了一些化合物物质，在镜片上贴上相关的防辐射膜层。因为电脑等的辐射是由电磁波引起的，一般来说，电磁波有一定的振幅和波长。防辐射眼镜的化合物介质和防辐射膜利用这个原理，让镜片前后表面产生的不同波长的电磁波互相干扰来消除一些辐射。 
+									<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;辨别其真伪其实很简单，就是买一些知名品牌的防辐射眼镜比如我店销售的圣马可眼镜。或者借助我们日常生活中的验钞器、紫光灯就可以准确检测。紫光灯照在人民币的防伪水印上，会显现防伪印记，用防紫外线的镜片挡住光后，防伪水印如果消失，那可以确认镜片是防紫外线的，原理很简单，因为人民币上的防伪水印是用的隐形紫外油墨印刷的，只有在紫外线的照射下才可以显现
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="headingTwo">
+								<h4 class="panel-title">
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+										香水分几类，女士各个年龄段应该用哪种？
+									</a>
+								</h4>
+							</div>
+							<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+								<div class="panel-body">
+									香水依香味分类大致可分为花香、东方、自然三种。 香水依据香精含量的不同被划分为五种等级，在标识上有不同：<br>
+									<br>1、Parfum，即浓香水。香精含量为20%以上，最为高级，香气十分持久，价格也较贵 。
+									<br>2、Eau de Parfum或Parfum de Toilitte(简称E.D.P.)，香精含量为15%，价格中等 偏上。
+									<br>3、Eau de Toilette(简称E.D.T)即香露，香精含量为8%-15%，是目前消费量最大的香水种类，而且容量大，香型多种多样，价格中档，很受消费者欢迎。
+									<br>4、Eau de Cologn 即古龙水，香精含量为4%-8%。男性香水多半属于此等级。
+									<br>5、Eau Fraiche 即淡香水，香精含量为1%-3%，市面上的剃须水、香水剂等都属于这一等级，可给人带来神清气爽的感觉，但留香时间较短。
+									各年龄段对于香水的选择：
+									<br>1、十几岁的小青年适合清淡的花果香
+									<br>2、二十多岁适合较浓郁的玫瑰香
+									<br>3、三十岁左右的适合稳重的香精的香
+									<br>4、四十岁以上女人适合淡淡的茉莉花
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="headingThree">
+								<h4 class="panel-title">
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+										怎样辨别阿胶真伪？哪些人不适合食用？
+									</a>
+								</h4>
+							</div>
+							<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+								<div class="panel-body">
+									此方法简单来说：一查，二看，三闻，四拍
+									<br>
+									一
+									查：通过查询防伪标识判断阿胶真伪
+									目前，大的品牌阿胶如福牌、东阿牌等阿胶产品均在包装上有防伪标识，通过拨打电话查询防伪标识是否属实，这是最简单也是最直接的判断您所购买的福胶是否正品的判断方法。<br>
+									二看：通过观察阿胶外形及入水变化判断阿胶真伪
+									福牌牌阿胶胶片大小、厚薄均一，块形方正、平整，表面光亮，有粗布擦过的纵向条纹。而假货胶块表面会有大量气泡（劣质阿胶熬制时原料不纯导致的）；同时正品福牌阿胶遇水易溶化，溶化后遇冷成胶冻状，假福牌阿胶阿胶则不容易溶化，遇冷也不易凝结。<br>
+									三
+									闻：通过闻可以识别大部分假冒福牌阿胶。
+									正品福牌阿胶闻起来有股淡淡的胶香气，而假冒福牌阿胶闻起来有股腥臭味，有的类似于臭墨汁的气味；在熬制阿胶糕或蒸煮固元膏的过程中，假冒阿胶的腥臭味更加明显，而正品福胶无异味。<br>
+									四拍：通过是否易碎判断阿胶真伪。 
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<h3 class="panel-header-text">博文分享</h3>
+					<div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="heading2One">
+								<h4 class="panel-title">
+									<a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapse2One" >
+										如何区分玉的质地、好坏？
+									</a>
+								</h4>
+							</div>
+							<div id="collapse2One" class="panel-collapse collapse in" role="tabpanel" >
+								<div class="panel-body">
+									有几种方法供你参考：<br>
+                            一、颜色要漂亮是第一，目前最讨好的颜色是鲜绿色（娇绿），虽然最上品的颜色是深绿色，但是绿色过深，又让人觉得太暗沉，因此最上品的深绿色反而在价格上不及鲜绿色来的高。<br>
+                            二、透明度的高底，对于玉的价值有很大的影响。透明的玉给人有清凉的感觉，但是不透明的玉，色彩再怎样娇绿，却给人色调过于呆板的感觉，缺乏生动的美感。<br>
+                            三、颜色的均匀与否与价值成正比。整块都是绿色的玉与只有部分绿的玉，价格就差了好几位数字；颜色的分布位置也有很大的关系，显眼处的一点绿自然比分布在边缘的绿更加讨好。<br>
+                            四、玉的计价不像其他宝石一样以重量计价，玉主要是以它的外形大小与厚薄来估价，越大越厚的越值钱，相反小而薄的玉价格会较差。另外它的造型也很重要，因为中国人买玉大都抱着趋吉避凶的心理，玉的外型若是有好彩头象徽的形状，像鱼、桃子、钱币….等，会比普通的花草造型更吸引买卖者。 
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="heading2Two">
+								<h4 class="panel-title">
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapse2Two" >
+										剪标是什么意思？可以信赖么？是专柜产品么？
+									</a>
+								</h4>
+							</div>
+							<div id="collapse2Two" class="panel-collapse collapse" role="tabpanel" >
+								<div class="panel-body">
+									<p>1.剪标直白点说就是退货。厂家验收不合格的产品，并对标志进行标记处理不得以品牌销售。</p>
+                                <p> 2.
+                                  一般这类都会返厂，由厂家进行处理。（按理说应该是销毁，但是大部分都当残品处理销售）。原因多种了，最常见是瑕疵。面料，外形，尺寸，颜色等等不合格。要看你能不能接受这些瑕疵品了。</p>
+                                <p> 3至于是不是专柜产品：个人认为只有把不知名的产品贴上知名品牌的，没有哪个老板会把知名品牌贴上一般品牌的。这货肯定是有问题，把洗水票剪掉不是多此一举吗？ </p>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="heading2Three">
+								<h4 class="panel-title">
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapse2Three" >
+										关于手机的内幕，太可怕了
+									</a>
+								</h4>
+							</div>
+							<div id="collapse2Three" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+								<div class="panel-body">
+									&nbsp; &nbsp;&nbsp;&nbsp;    &nbsp;&nbsp; 很多时候，各位友友在淘宝上选择买行货手机的时候，都喜欢找些价钱很有吸引力的商家，手机的价钱比专卖店低了好几百，不但价钱低，还送这送那的，其实这是卖家利用消费者的一种心理，谁都喜欢能淘到物美价廉的东西。但是，这个社会上，真的有那么多物美价廉的东西吗？我想，没有任何人在网上做生意是想亏钱的，就像我刚刚在某家卖手机的店家咨询，我问她：“你们的手机怎么那么便宜呢？”，她的回答让我想笑，“亲，我们的手机都是原价出售。”每款都原价出售，我很好奇，这位客服的工资谁给她发。又逛了一大圈手机商铺，情况没什么两样，价钱都是那么吸引人。<br>                                &nbsp; &nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;好了，废话少说，解密的时候来了。
+									一台手机，有网标，有机身标，有3C认证，有机打发票，就是正行？答案是否定的。本人自己在深圳干了些年的手机，3码，5码，翻新都搞过，对于串号，写码，翻新的流程实在是太熟悉了。几角钱的成本，买些人家套出来的码，贴在手机上，搞个3C认证，进网许可，写码进手机。好了，翻新货，水货，一下变成行货，全国联保，可以上网查询。好了，成本大大降低，价钱可以上网卖，做活动，打着行货，全国联保的名头，可以柜台验证，亏本甩卖，低价让利来吸引买家。。说的多么好听，结果，一个活动下来，赚了不少。而这些机子，基本上在保修期内不会有问题。这个道理其实就像做假烟一样，有些假烟做到的本质，是连有几十年烟龄的人都察觉不了，这个就是以假充真。<br>
+									&nbsp;
+									&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; 过了保修期，好了，维修时要费用的了，你会发现手机的问题多了，电池发热，卡机等等问题。对于原装配件这块，机子都可以充行货了，别说这些配件，各种电池标，LOGO，等等东西，市场上一大把。一个原装电池要100多，搞个高度仿真的，也就20多，这样，换下个原装电池，又省了成本，价钱又更吸引了。然而，广告，描叙还是，全部配件原装。保证正品，不满意退还。。这个承诺，友友们想想，要是能那么容易给你看出，还能叫高仿?所以，你们谁会选择退货。机子一来，上网一查，对得上号，就过去了，正行？告诉你们，这种情况，有时候10几个手机用同张码，克隆的，你上官网当然查有，道理跟汽车套牌一样。。。所以在淘宝上，发现手机价钱很吸引，不要冲动，先上深圳的华强北看看行货每天报价，或者中关村，太平洋。对比下，比批发报价还便宜的，友友就要注意了，水分喽。最便宜的也就是比报价多20-30，当然不包邮，不送礼品。要想便宜，就直接买水的，要不然就找翻新，二手的。免得被有些卖家得了便宜还卖乖 
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<h3 class="panel-header-text">社区动态</h3>
+					<div>
+						内容待续
+					</div>
+					
+
+					
+						
+					</div>
+				</div>
+			</div>
+			
+
+			<!-- <div class="clearfix visible-xs-block"></div> -->
+			<div class='col-md-1'>
+				<div class='top'>
+					<span class='glyphicon glyphicon-menu-up'></span>
+				</div>
+			</div>
+		</div>
+	</main>
+
+<footer class='main-footer' style='padding-top:20px'>
+	<div class='container'>
+		<!-- 分类，加入，与我们联系 -->
+		<div clas='row'>
+			<div class='col-md-3'>
+				<img src="__PUBLIC__/images/logo.png">
+			</div>
+
+			<div class='col-md-3'>
+				<!-- <h4>分类</h4> -->
+				<ul class="categories">
+					<li><a href="#"> 教学区</a>（分类构建中）</li>
+					<li><a href="#">视频区 </a>（分类构建中）</li>
+					<li><a href="#">品牌馆</a>（分类构建中）</li>
+					<li><a href="#"> 购物区</a>（分类构建中）</li>
+					<li><a href="#"> DIY</a>（分类构建中）</li>
+					<li><a href="#">媒体资源下载 </a>（分类构建中）</li>
+					<li><a href="#">广告业务 </a>（分类构建中）</li>
+				</ul>
+			</div>
+
+			<div class='col-md-3'>
+				<!-- <h3>加入我们的业务通讯</h3> -->
+				<p>加入我们的业务通讯,为你提供相关的业务咨询服务,欢迎您的来访</p>
+				<!-- <p>欢迎您的来访</p> -->
+				<div class='form-group'>
+					<input type='text' class='form-control'>
+				</div>
+				<button type='submit' class='btn btn-primary'>现在加入</button>
+			</div>
+
+			<div class='col-md-3'>
+				<!-- <h3>与我们联系</h3> -->
+				<p>与我们联系,我们会第一时间为你服务</p>
+				<div>
+					<ul>
+						<li>手机<span> :</span>18277393936</li>
+						<li><span>QQ :</span>370134974|1532575484</li>
+						<li><span>邮箱 :</span>370134974@qq.com</li>
+						<li><span>地址 :</span>广西桂林</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <!-- copyright -->
+	<div class='copyright'>
+		<div class='container'>
+			<div class='row'>
+				<div class='col-md-12'>
+					<span>Copyright © 2013—文峰视听. All rights reserved.</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+</body>
+<script>
+$(window).scroll(function(){
+		$('.top').show();
+		if($(window).scrollTop()<100){
+			$('.top').hide();
+		}
+});
+
+$('.top').click(function(){
+	$(window).scrollTop(0);
+
+});
+
+$(function () {
+   $('[data-submenu]').submenupicker();
+});
+</script>
+</html>
