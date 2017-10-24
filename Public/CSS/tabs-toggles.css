@@ -1,0 +1,61 @@
+       /*去除默认设置*/
+       a:focus, a:hover{
+		   	text-decoration: none;
+		   }
+
+           .collapse-panel-group{
+           	box-shadow: 0px 0px 5px black;
+           }
+
+		   .collapse-panel-group .collapse-panel + .collapse-panel{
+		   	 margin-top: 0px;
+		   }
+
+           .collapse-panel-group .collapse-panel {
+          	background-color: #0b0b0d;
+          	color: #fff;
+          	border: none;
+          }
+
+           .collapse-panel > .collapse-panel-heading {
+          	color: orange;
+          	width: 100%;
+          	padding: 0px;
+          	margin: 0px;
+
+          	
+          	height :;
+
+          	/*border: 1px solid #000000;*/
+          }
+           
+          .collapse-panel-a {
+          	text-decoration: none;
+          	display: block;
+          	width: 100%;
+          	background-color: #0b0b0d;
+          	padding: 10px;
+          }
+
+          
+
+          .collapse-panel-span {
+          	display: inline-block;
+          	width: 15px;
+          	height: 15px;
+          	vertical-align : middle;
+          	border-radius: 50%;
+          	background-color: rgba(167, 137, 88, 1);
+          	background-image: url(../images/toggle.png);
+          	background-position: 0px 0px;
+          }
+
+          .collapse-panel-a:hover{
+          	background-color: #CF302D;
+          	color: #fff;
+          	text-decoration: none;
+          }
+
+          .collapse-panel-a:hover > .collapse-panel-span {
+          	background-color: #0b0b0d;
+          }

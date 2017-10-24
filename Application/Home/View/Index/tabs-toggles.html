@@ -8,6 +8,8 @@
 	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Bootstrap/css/bootstrap-submenu.min.css">
 	<!-- 公共css文件 -->
 	<link rel="stylesheet" type="text/css" href="__PUBLIC__/CSS/base.css">
+	<!-- 自身css文件 -->
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/CSS/tabs-toggles.css">
 	<script type="text/javascript" src="__PUBLIC__/BootStrap/js/jquery.min.js"></script>
 	<script type="text/javascript" src="__PUBLIC__/BootStrap/js/bootStrap.min.js"></script>
 	<script type="text/javascript" src="__PUBLIC__/Bootstrap/js/bootstrap-submenu.min.js"></script>
@@ -15,7 +17,7 @@
 	<script type="text/javascript" src="__PUBLIC__/JS/base.js"></script>
 </head>
 <style>
-		
+
 </style>
 <body>
 	<nav>
@@ -46,11 +48,13 @@
 				<div class='col-md-10'>
 					
 					<h3 class='panel-header-text'>精选推荐</h3>
-					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-						<div class="panel panel-default">
-							<div class="panel-heading" role="tab" id="headingOne">
-								<h4 class="panel-title">
-									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+					<div class="panel-group collapse-panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+						<div class="panel panel-default collapse-panel">
+							<div class="panel-heading collapse-panel-heading" role="tab" id="headingOne">
+								<h4 class="panel-title collapse-panel-title">
+									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class='collapse-panel-a'>
+										<!-- span 用于显示加，减号 -->
+										<span class='collapse-panel-span'></span>
 										防辐射眼镜有效果吗？怎样辨别真伪和品质？
 									</a>
 								</h4>
@@ -62,10 +66,12 @@
 								</div>
 							</div>
 						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading" role="tab" id="headingTwo">
-								<h4 class="panel-title">
-									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+						<div class="panel panel-default collapse-panel">
+							<div class="panel-heading collapse-panel-heading" role="tab" id="headingTwo">
+								<h4 class="panel-title collapse-panel-title">
+									<a class="collapsed collapse-panel-a" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" >
+										<!-- span 用于显示加，减号 -->
+										<span class='collapse-panel-span'></span>
 										香水分几类，女士各个年龄段应该用哪种？
 									</a>
 								</h4>
@@ -86,10 +92,12 @@
 								</div>
 							</div>
 						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading" role="tab" id="headingThree">
-								<h4 class="panel-title">
-									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+						<div class="panel panel-default collapse-panel">
+							<div class="panel-heading collapse-panel-heading" role="tab" id="headingThree">
+								<h4 class="panel-title collapse-panel-title">
+									<a class="collapsed collapse-panel-a" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+										<!-- span 用于显示加，减号 -->
+										<span class='collapse-panel-span'></span>
 										怎样辨别阿胶真伪？哪些人不适合食用？
 									</a>
 								</h4>
@@ -113,11 +121,13 @@
 					</div>
 
 					<h3 class="panel-header-text">博文分享</h3>
-					<div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
-						<div class="panel panel-default">
-							<div class="panel-heading" role="tab" id="heading2One">
-								<h4 class="panel-title">
-									<a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapse2One" >
+					<div class="panel-group collapse-panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+						<div class="panel panel-default collapse-panel">
+							<div class="panel-heading collapse-panel-heading" role="tab" id="heading2One">
+								<h4 class="panel-title collapse-panel-title">
+									<a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapse2One" class='collapse-panel-a'>
+										<!-- span 用于显示加，减号 -->
+										<span class='collapse-panel-span'></span>
 										如何区分玉的质地、好坏？
 									</a>
 								</h4>
@@ -132,10 +142,12 @@
 								</div>
 							</div>
 						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading" role="tab" id="heading2Two">
-								<h4 class="panel-title">
-									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapse2Two" >
+						<div class="panel panel-default collapse-panel">
+							<div class="panel-heading collapse-panel-heading" role="tab" id="heading2Two">
+								<h4 class="panel-title collapse-panel-title">
+									<a class="collapsed collapse-panel-a" role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapse2Two">
+										<!-- span 用于显示加，减号 -->
+										<span class='collapse-panel-span'></span>
 										剪标是什么意思？可以信赖么？是专柜产品么？
 									</a>
 								</h4>
@@ -149,10 +161,12 @@
 								</div>
 							</div>
 						</div>
-						<div class="panel panel-default">
-							<div class="panel-heading" role="tab" id="heading2Three">
-								<h4 class="panel-title">
-									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapse2Three" >
+						<div class="panel panel-default collapse-panel">
+							<div class="panel-heading collapse-panel-heading" role="tab" id="heading2Three">
+								<h4 class="panel-title collapse-panel-title">
+									<a class="collapsed collapse-panel-a" role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapse2Three" >
+										<!-- span 用于显示加，减号 -->
+										<span class='collapse-panel-span'></span>
 										关于手机的内幕，太可怕了
 									</a>
 								</h4>
@@ -189,6 +203,37 @@
 
 </body>
 <script>
+	$(document).ready(function(){
 
+
+       $(".collapse-panel-a").each(function(index,element){
+            var collapseId = $(this).attr('href');
+            // alert(collapseId);
+            var collapseStatus = $(collapseId).attr('class');
+            // alert(collapseStatus);
+            if (collapseStatus == 'panel-collapse collapse in'){
+                //如果 collapse 已经打开，则将图片改为 - 号 ,若未打开，则不用操作
+               $(this).find('span').css({"background-position":"0px -15px"});
+            }
+
+       });
+ 
+
+         
+		$(".collapse-panel-a").click(function(){
+			var position = $(this).find('span').css('background-position');
+			if (position == "0px 0px"){
+			    $(this).find('span').css({"background-position":"0px -15px"});
+			    //打开 collapse 会对其他 + - 号有影响。
+			    var parentID = $(this).attr('data-parent');
+			    $(parentID).find('a').not($(this)).find('span').css({"background-position":"0px 0px"});
+			}else{
+				$(this).find('span').css({"background-position":"0px 0px"});
+			}
+
+		});
+
+		
+});
 </script>
 </html>
