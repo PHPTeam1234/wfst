@@ -97,3 +97,16 @@
         ul.nav-left-list li a:hover{
             background-color: #CF302D;
         }
+
+        /*修改dropdwon-menu样式*/
+        .dropdown-menu {
+            background-color: rgba(34, 34, 34, 1);
+
+        }
+
+        .dropdown-menu > li > a{
+            color: #9d9d9d;
+        }
+
+
+       
