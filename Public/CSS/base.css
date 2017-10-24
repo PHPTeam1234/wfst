@@ -58,3 +58,13 @@
 		.panel-bgcolor{
 			background-color: #666666;
 		}
+
+       /*修改缩略图样式*/
+		.thumbnail{
+        	padding: 0px;
+        	border:  none;
+        }
+
+        .thumbnail img{
+        	padding: 4px;
+        }
