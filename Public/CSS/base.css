@@ -1,0 +1,60 @@
+        
+
+       /*body*/
+        body{
+        	/*由于导航置顶，故设置padding*/
+        	padding-top:50px;  
+        	position:relative;
+        	background-color: #666666;
+        }
+        
+        footer{
+       	    color:#99979c;
+            background-color:#080808;
+       }
+
+
+        /*右下角回到顶部按钮*/
+        .scroll-top{
+			cursor:pointer;
+			width:30px;
+			height:30px;
+			background:#000;
+			border-radius:5px;
+			color:#fff;
+			line-height:30px;
+			text-align:center;
+			font-size:20px;
+			position:fixed;
+			right:30px;
+			bottom:20px;
+		}
+
+		.scroll-top:hover{
+			opacity:0.7;
+		}
+
+
+        /*copyright*/
+		 .copyright{
+        	font-size:13px;
+        	text-align:center;
+        	color:#555;
+        	margin-top:15px;
+        	margin-bottom:15px;
+        }
+
+
+        .inner-img{
+			width: 100%;
+		}
+
+
+
+		.panel-header-text{
+			color: orange;
+		}
+
+		.panel-bgcolor{
+			background-color: #666666;
+		}
