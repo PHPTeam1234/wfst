@@ -1,0 +1,61 @@
+ 
+ /*单品推荐*/
+  
+    a:hover{
+    	text-decoration: none;
+    }
+
+    .goods-recommend {
+        margin-top: 30px;
+    	margin-bottom: 50px;
+    	color: #abb6ba;
+    	font-size: 13px;
+    	/*border-bottom: 1px solid black;*/
+    }
+  
+    .recommen-subTitle {
+    	color: #fff;
+    	font-size: 18px;
+    }
+   
+
+   .goods-recommend a.recommend-title {
+   	       font-size: 15px;
+   	       color: orange;
+   	       text-shadow: 1px 1px 1px rgba(0,0,0,0.54);
+
+   	       /*过渡效果*/
+   	       -ms-transition: all 0.5s;
+   	       -moz-transition: all 0.5s;;
+   	       -o-transition: all 0.5s;
+   	       -webkit-transition: all 0.5s;
+   	       transition: all 0.5s;
+
+
+   }
+
+
+
+    .goods-recommend ul {
+         padding: 0;
+         margin-top: 10px;
+    	list-style: none;
+    }
+
+    .goods-img {
+    	/*阴影效果*/
+    	box-shadow: 0px 0px 30px black;
+    }
+
+    .goods-recommend a.recommend-title:hover {
+   	       color: #fff;
+   }
+
+   .goods-recommend .recommend-img {
+   	        margin-bottom: 20px;
+   }
+
+    
+
+
+   
