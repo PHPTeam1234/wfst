@@ -1,0 +1,24 @@
+       .vedio-portal-title{
+        	font-size: 18px;
+        	color: #fff;
+        }
+
+        .new-media ul {
+        	list-style: none;
+        	margin: 0px;
+        	padding: 10px;
+        }
+        
+        .new-media li:nth-child(1){
+            background-image: url(../images/contact_icons.png);
+            background-repeat: no-repeat;
+            background-position: 0 -53px;
+            padding:5px 0px 5px 25px;
+        }
+
+        .new-media li:nth-child(2){
+            background-image: url(../images/contact_icons.png);
+            background-repeat: no-repeat;
+            background-position: 0 -83px;
+            padding:5px 0px 5px 30px;
+        }

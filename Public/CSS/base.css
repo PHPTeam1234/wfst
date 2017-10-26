@@ -11,6 +11,7 @@
         footer{
        	    color:#99979c;
             background-color:#080808;
+            margin-top: 30px;
        }
 
 
@@ -47,6 +48,9 @@
 
         .inner-img{
 			width: 100%;
+            /*阴影效果*/
+            box-shadow: 0px 0px 30px black;
+            
 		}
 
 
@@ -59,7 +63,7 @@
 			background-color: #666666;
 		}
 
-       /*修改缩略图样式*/
+       /*修改缩略图样式开始*/
 		.thumbnail{
         	padding: 0px;
         	border:  none;
@@ -69,8 +73,9 @@
         	padding: 4px;
         }
 
+         /*修改缩略图样式结束*/
 
-        /*左边导航列表样式*/
+        /*左边导航列表样式开始*/
         ul.nav-left-list {
             padding: 0;
             margin: 0;
@@ -97,6 +102,10 @@
         ul.nav-left-list li a:hover{
             background-color: #CF302D;
         }
+ 
+        /*左边导航列表样式结束*/
+
+
 
         /*修改dropdwon-menu样式*/
         .dropdown-menu {
@@ -107,6 +116,60 @@
         .dropdown-menu > li > a{
             color: #9d9d9d;
         }
+        /*修改dropdwon-menu样式结束*/
+
+        /*修改超链接样式*/
+
+        a:hover{
+            text-decoration: none;
+        }
+
+        a.base-a {
+           color: orange;
+           text-shadow: 1px 1px 1px rgba(0,0,0,0.54);
+
+           /*过渡效果*/
+           -ms-transition: all 0.5s;
+           -moz-transition: all 0.5s;;
+           -o-transition: all 0.5s;
+           -webkit-transition: all 0.5s;
+           transition: all 0.5s;
+        }
+
+        a.base-a:hover{
+            color: #fff;
+        }
 
 
+        /*修改超链接样式*/
+
+
+        /*new-media 样式*/
+
+
+         .new-media {
+          margin-top: 25px;
+         }
+
+
+        .new-media-row {
+            /*已通过 .new-media 实现*/
+            /*增加每行间距*/
+            /*margin-top: 30px;*/
+            /*margin-bottom: 30px;*/
+        }
+
+        .new-media-img {
+            width: 100%;
+
+            /*屏幕变小后与下一行文字有间距*/
+            margin-bottom: 10px;
+            box-shadow: 0px 0px 30px black;
+        }
+
+        /*new-media 样式*/
+
+
+
+        
        

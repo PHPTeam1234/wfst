@@ -6,28 +6,28 @@
         }
 
         /*办公联系方式 精灵图*/
-        div ul.panel-header-text li:nth-child(1){
+         ul.contact-ul li:nth-child(1){
             background-image: url(../images/contact_icons.png);
             background-repeat: no-repeat;
             background-position: 0 8px;
             padding:5px 0px 5px 25px;
         }
 
-        div ul.panel-header-text li:nth-child(2){
+         ul.contact-ul li:nth-child(2){
             background-image: url(../images/contact_icons.png);
             background-repeat: no-repeat;
             background-position: 0 -24px;
             padding:5px 0px 5px 25px;
         }
 
-        div ul.panel-header-text li:nth-child(3){
+         ul.contact-ul li:nth-child(3){
             background-image: url(../images/contact_icons.png);
             background-repeat: no-repeat;
             background-position: 0 -53px;
             padding:5px 0px 5px 25px;
         }
 
-        div ul.panel-header-text li:nth-child(4){
+         ul.contact-ul li:nth-child(4){
             background-image: url(../images/contact_icons.png);
             background-repeat: no-repeat;
             background-position: 0 -83px;
