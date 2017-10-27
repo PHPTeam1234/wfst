@@ -97,10 +97,14 @@
 
             box-shadow: 1px 3px 1px black;
             border-radius: 2px;
+
+            background-image: url(../images/menu_arrow.png);
+            background-position: 10px center;
+            background-repeat: no-repeat;
         }
 
         ul.nav-left-list li a:hover{
-            background-color: #CF302D;
+            background: url(../images/nav_submenu_li_hover.png) #CF302D no-repeat 10px center;
         }
  
         /*左边导航列表样式结束*/
@@ -141,6 +145,24 @@
         }
 
 
+        a.a-wh-og {
+            color: #333;
+            /*text-shadow: 1px 1px 1px rgba(0,0,0,0.54);*/
+            -ms-transition: all 0.5s;
+           -moz-transition: all 0.5s;;
+           -o-transition: all 0.5s;
+           -webkit-transition: all 0.5s;
+           transition: all 0.5s;
+
+           background: url(../images/dot_bg.png) no-repeat left 2px;
+            padding: 0 0 0 20px;
+        }
+
+        a.a-wh-og:hover {
+            color: orange;
+        }
+
+
         /*修改超链接样式*/
 
 
@@ -168,6 +190,18 @@
         }
 
         /*new-media 样式*/
+
+
+
+    /*博客相关超链接*/
+      .a-blog-enter{
+        display: block;
+        width: 50px;
+        /*width: 100%;*/
+        background: url(../images/bubble.png) no-repeat scroll center bottom #A88A58;
+
+      }
+    /**/
 
 
 
