@@ -22,16 +22,41 @@
         	height:64px!important;
         }
 
-        .commentBody{
-        	border-color: orange;
-        	border-radius: 5px;
-        	border-style: solid;
-        }
+        
 
         .addComment{
         	position:relative;
         	margin-top:100px!important;
         	padding-top: 10px;
+        }
+
+        .media-comment {
+        	border: 1px solid black;
+
+        }
+
+        .media-comment-l{
+        	border: 1px solid black;
+        	padding: 10px;
+        }
+
+        .media-comment-r {
+        	border: 1px solid black;
+        	padding: 20px 20px 10px 20px;
+        }
+
+        .comment-content {
+        	min-height: 80px;
+        }
+
+        .p-reply {
+        	float: right;
+        	padding: 0px 5px 0px;
+        }
+
+        .reply-time {
+        	float: right;
+        	padding: 0px 5px 0px;
         }
 
 </style>
@@ -43,7 +68,7 @@
 	<main class='main'>
 		<div class='container'>
 			<div clas='row'>
-				<div class='col-md-12'>
+				<div class='col-md-12 page-title'>
 					<h3>文峰视听博客</h3>
 				</div>
 			</div>
@@ -52,51 +77,125 @@
 				<div class='col-md-8'>
 					<!-- 文峰视听门户网站经营理念 -->
 					<div class='panel panel-bgcolor'>
-						<div class='panel-heading'>
-							<a class="panel-header-text" href="">文峰视听门户网站正式上线</a> 
+						<div class='panel-heading sub-title'>
+							文峰视听门户网站正式上线
 						</div>
 						<div class='panel-body'>
-							<img src="__PUBLIC__/images/w-si.jpg" class='img-thumbnail'>
+							<img src="__PUBLIC__/images/w-si.jpg" class='img-thumbnail new-media-img'>
 							<div class='row'>
-								<div class='col-md-1'>
-									<a class="panel-header-text" href="">sjldjflj</a>
-									<span>sdjflj</span>
+								<div class='col-xs-2 col-sm-1 col-md-1'>
+									<a class="a-blog-enter col-xs-2 col-sm-1 col-md-1" href="#">
+										<span>20</span>
+										<span class="blog-span-date">13</span>
+										<span class="blog-span-common-nums">10</span>
+									</a>
 								</div>
-								<div class='col-md-11'>
-									<p><a class='panel-header-text' href="">文峰视听门户网站经营理念</a>
-									<a class="clr-link" href="#"></a><img alt="" src="images/comment_icon.png" class="ml-10"></p>
+								<div class='col-xs-10 col-sm-11 col-md-11'>
+									<p><a class='base-a' href="">文峰视听门户网站经营理念&nbsp;&nbsp;</a>
+									<a href="#"><img src="__PUBLIC__/images/comment_icon.png"></a></p>
                     		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 文峰视听主要提供远程教育，时尚生活，网上购物，文化创意的一体化平台，励志打造国内一流的信息化服务平台，提供便民的信息化渠道。网站整合了丰富的远程教育资源，在视频聚焦中，感受当下时事热点，在视频碰撞中，感受视频给我们带来的视觉感受，在视频原创中体验原创的魅力。在时尚生活中发现生活，分享生活，快乐生活。网站还提供了大型的购物门户网站及平台信息，包括购物贴士，品牌购物馆，海外购物平台及一体化流程，并为你推荐优质的购物信息，网站联合了国内大型的购物经验分享社区，为你的购物之旅提供一份很好的指南。本站同时也承接平面、视频、创意DIY、网页设计、广告等业务，期待更多平台的入驻</p>
 								</div>
 							</div>
 						</div>
 					</div>
 
-					<div class='col-md-12 commont'>
+					<div class='col-md-12'>
 						<h4>2个评论</h4>
-						<div class='media'>
-							<div class='media-left'>
-								<img class='img-rounded' src="__PUBLIC__/images/user_img.png">
-								<label>username</label>
-							</div>
-							<div class='media-body commentBody'>
-								喜欢 
-								<a class='panel-header-text' href="">回复</a>
-								<p><div class='label label-default'>2013-1-1</div></p>
-							</div>
-						</div>
+						
+                      <ul class='media-list'>
+                      	 <li class="media media-comment">
+                      	 	<div class="media-left media-comment-l">
+                      	 		<a href="#">
+                      	 			<img class="media-object" src="__PUBLIC__/images/user_img.png">
+                      	 		</a>
+                      	 		<div>username</div>
+                      	 		
+                      	 	</div>
+                      	 	<div class="media-body media-comment-r">
+                      	 		<div class="comment-content">
+                      	 			<h4 class="media-heading">Media heading</h4>
+                      	 			<p>喜欢</p>
+                      	 		</div>
+                      	 		<div class="col-md-12 media-comment-wrapper ">
+                      	 			<div class='comment-reply-tail clearfix'>
+                      	 				<div class='p-reply'>
+                      	 					<a href="#reply" data-toggle="collapse">回复</a>
+                      	 				</div>
+                      	 				<div class="reply-time">2016-01-02</div>
+                      	 			</div>
 
-						<div class='media'>
-							<div class='media-left'>
-								<img class='img-rounded' src="__PUBLIC__/images/user_img.png">
-								<label>username</label>
-							</div>
-							<div class='media-body commentBody'>
-								喜欢
-								<a class='panel-header-text' href="">回复</a>
-								<p><div class='label label-default'>2013-1-1</div></p>
-							</div>
-						</div>
-					</div>
+                      	 			<div class="collapse" id="reply">
+                      	 				<div class="media">
+                      	 					<div class="media-left">
+                      	 						<a href="">
+                      	 							<img class="media-object" src="__PUBLIC__/images/user_img.png">
+                      	 						</a>
+                      	 					</div>
+                      	 					<div class="media-body">
+                      	 						打得好。
+                      	 					</div>
+                      	 				</div>
+                      	 				<div class="form-group">
+                      	 					<label for=""></label>
+                      	 					<input type="text" class="form-control" name="">
+                      	 				</div>
+                      	 				
+                      	 					<button type="submit" class='btn btn-default'>Submit</button>
+                      	 				
+                      	 			</div>
+                      	 		</div>
+
+                      	 	</div>
+                      	 	
+                      	 </li>
+
+                      	 <li class="media media-comment">
+                      	 	<div class="media-left media-comment-l">
+                      	 		<a href="#">
+                      	 			<img class="media-object" src="__PUBLIC__/images/user_img.png">
+                      	 		</a>
+                      	 		<div>username</div>
+                      	 		
+                      	 	</div>
+                      	 	<div class="media-body media-comment-r">
+                      	 		<div class="comment-content">
+                      	 			<h4 class="media-heading">Media heading</h4>
+                      	 			<p>喜欢</p>
+                      	 		</div>
+                      	 		<div class="col-md-12 media-comment-wrapper ">
+                      	 			<div class='comment-reply-tail clearfix'>
+                      	 				<div class='p-reply'>
+                      	 					<a href="#reply2" data-toggle="collapse">回复</a>
+                      	 				</div>
+                      	 				<div class="reply-time">2016-01-02</div>
+                      	 			</div>
+
+                      	 			<div class="collapse" id="reply2">
+                      	 				<div class="media">
+                      	 					<div class="media-left">
+                      	 						<a href="">
+                      	 							<img class="media-object" src="__PUBLIC__/images/user_img.png">
+                      	 						</a>
+                      	 					</div>
+                      	 					<div class="media-body">
+                      	 						打得好。
+                      	 					</div>
+                      	 				</div>
+                      	 				<div class="form-group">
+                      	 					<label for=""></label>
+                      	 					<input type="text" class="form-control" name="">
+                      	 				</div>
+                      	 				
+                      	 					<button type="submit" class='btn btn-default'>Submit</button>
+                      	 				
+                      	 			</div>
+                      	 		</div>
+
+                      	 	</div>
+                      	 	
+                      	 </li>
+                      </ul>
+						
 
 					<div class='addComment'>
 						<h4><center>参与评价</center></h4>
@@ -144,92 +243,99 @@
 
 					
 				</div>
+			</div>
 
 				<div class='col-md-4'>
 					<div class='panel panel-bgcolor'>
-						<div class='panel-heading panel-header-text'><b>请关注我们</b>
+						<div class='panel-heading sub-title'>
+							请关注我们
 						</div>
-
-						<p>请点击下方的图标</p>
-						<div class='row' >
-							<div class='col-xs-1' >
-								<a href="#"><img src="__PUBLIC__/images/qqicon.png"></a>
-							</div>
-							<div class='col-xs-1'>
-								<a href="#"><img src="__PUBLIC__/images/txwbicon.png"></a>
-							</div>
-							<div class='col-xs-1'>
-								<a href="#"><img src="__PUBLIC__/images/xlwbicon.png"></a>
-							</div>
-							<div class='col-xs-1'>
-								<a href="#"><img src="__PUBLIC__/images/f_icon.png"></a>
-							</div>
-							<div class='col-xs-1'>
-								<a href="#"><img src="__PUBLIC__/images/ykicon.png"></a>
-							</div>
-							<div class='col-xs-1'>
-								<a href="#"><img src="__PUBLIC__/images/tdicon.png"></a>
+						<div class="panel-body">
+							<p>请点击下方的图标</p>
+							<div class='row' >
+								<div class='col-xs-1' >
+									<a href="#"><img src="__PUBLIC__/images/qqicon.png"></a>
+								</div>
+								<div class='col-xs-1'>
+									<a href="#"><img src="__PUBLIC__/images/txwbicon.png"></a>
+								</div>
+								<div class='col-xs-1'>
+									<a href="#"><img src="__PUBLIC__/images/xlwbicon.png"></a>
+								</div>
+								<div class='col-xs-1'>
+									<a href="#"><img src="__PUBLIC__/images/f_icon.png"></a>
+								</div>
+								<div class='col-xs-1'>
+									<a href="#"><img src="__PUBLIC__/images/ykicon.png"></a>
+								</div>
+								<div class='col-xs-1'>
+									<a href="#"><img src="__PUBLIC__/images/tdicon.png"></a>
+								</div>
 							</div>
 						</div>
 					</div>
 
 					<div class='panel panel-bgcolor'>
-						<div class='panel-heading panel-header-text'>
+						<div class='panel-heading sub-title'>
 							近期博文
 						</div>
-						<div class='media'>
-							<div class='media-left'>
-								<a href="#">
-									<img src="__PUBLIC__/images/boke.jpg" class='mediaLeft img-rounded'>
-								</a>
+						<div class="panel-body">
+							<div class='media'>
+								<div class='media-left'>
+									<a href="#">
+										<img src="__PUBLIC__/images/boke.jpg" class='mediaLeft img-rounded'>
+									</a>
+								</div>
+								<div class='media-body'>
+									<a href="#" class="base-a">7000次弯腰能否止住瘾君子的弹指</a> 
+								</div>
 							</div>
-							<div class='media-body'>
-								7000次弯腰能否止住瘾君子的弹指
-							</div>
-						</div>
 
-						<div class='media'>
-							<div class='media-left'>
-								<a href="#">
-									<img src="__PUBLIC__/images/boke.jpg" class='mediaLeft img-rounded'>
-								</a>
+							<div class='media'>
+								<div class='media-left'>
+									<a href="#">
+										<img src="__PUBLIC__/images/boke.jpg" class='mediaLeft img-rounded'>
+									</a>
+								</div>
+								<div class='media-body'>
+									<a href="#" class="base-a">刘嘉玲为何想见裸拍她的绑架犯</a>
+								</div>
 							</div>
-							<div class='media-body'>
-								刘嘉玲为何想见裸拍她的绑架犯
-							</div>
-						</div>
 
-						<div class='media'>
-							<div class='media-left'>
-								<a href="#">
-									<img src="__PUBLIC__/images/boke.jpg" class='mediaLeft img-rounded'>
-								</a>
-							</div>
-							<div class='media-body'>
-								摄影大师与无名氏的联袂演出——偷窥的影像
+							<div class='media'>
+								<div class='media-left'>
+									<a href="#">
+										<img src="__PUBLIC__/images/boke.jpg" class='mediaLeft img-rounded'>
+									</a>
+								</div>
+								<div class='media-body'>
+									<a href="#" class="base-a">摄影大师与无名氏的联袂演出——偷窥的影像</a>
+								</div>
 							</div>
 						</div>
 					</div>
 
 					<div class='panel panel-bgcolor'>
-						<div class='panel-heading panel-header-text'>
+						<div class='panel-heading sub-title'>
 							热门博客
 						</div>
-						<ul class='panel-header-text'>
-							<li><a class='panel-header-text' href="">新浪博客</a></li>
-							<li><a class='panel-header-text' href="">环球博客</a></li>
-							<li><a class='panel-header-text' href="">精英博客</a></li>
-							<li><a class='panel-header-text' href="">搜狐博客</a></li>
-							<li><a class='panel-header-text' href="">旅游博客</a></li>
-							<li><a class='panel-header-text' href="">东方博客</a></li>
-						</ul>
+						<div class="panel-body">
+							<ul class='panel-header-text'>
+								<li><a class='a-wh-og' href="">新浪博客</a></li>
+								<li><a class='a-wh-og' href="">环球博客</a></li>
+								<li><a class='a-wh-og' href="">精英博客</a></li>
+								<li><a class='a-wh-og' href="">搜狐博客</a></li>
+								<li><a class='a-wh-og' href="">旅游博客</a></li>
+								<li><a class='a-wh-og' href="">东方博客</a></li>
+							</ul>
+						</div>
 					</div>
 
 					<div class='panel panel-bgcolor'>
-						<div class='panel-heading panel-header-text'>
+						<div class='panel-heading sub-title'>
 							公告栏
 						</div>
-						<div class='panel-body panel-header-text'>
+						<div class='panel-body'>
 							欢迎来到文峰视听播客，播客在进一步完善中，更多精彩博文将在以后的时间和大家见面~
 						</div>
 					</div>

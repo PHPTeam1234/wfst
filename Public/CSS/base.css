@@ -9,6 +9,7 @@
             /*背景图片颜色 #333*/
             background-image: url(../images/body_bg.png) repeat; 
             color: #abb6ba;
+            font-size: 13px;
             /*text-shadow 使导航下拉菜单字体模糊*/
             /*text-shadow: 1px 1px 1px rgba(0,0,0,0.54);*/
         }
@@ -19,6 +20,8 @@
             margin-top: 30px;
        }
 
+
+
        .page-title {
           color: #fff;
           /*background: url(../images/subheading_bg.png) repeat-x bottom;*/
@@ -28,6 +31,16 @@
         font-size: 18px;
         color: #a88a58;
        }
+
+
+       .clearfix::after {
+        content: "";
+        height: 0;
+        line-height: 0;
+        display: block;
+        clear: both;
+        visibility: hidden;
+        }
 
 
         /*右下角回到顶部按钮*/
@@ -214,12 +227,17 @@
             box-shadow: 0px 0px 30px black;
         }
 
+        .new-media-title {
+            font-size: 15px;
+        }
+
         /*new-media 样式*/
 
 
 
     /*博客相关超链接*/
       .a-blog-enter{
+        /*text-decoration: none;*/
         display: block;
         
         width: 50px;
