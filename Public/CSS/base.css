@@ -5,13 +5,28 @@
         	/*由于导航置顶，故设置padding*/
         	padding-top:50px;  
         	position:relative;
-        	background-color: #666666;
+        	background-color: #333;
+            /*背景图片颜色 #333*/
+            background-image: url(../images/body_bg.png) repeat; 
+            color: #abb6ba;
+            /*text-shadow 使导航下拉菜单字体模糊*/
+            /*text-shadow: 1px 1px 1px rgba(0,0,0,0.54);*/
         }
         
         footer{
        	    color:#99979c;
             background-color:#080808;
             margin-top: 30px;
+       }
+
+       .page-title {
+          color: #fff;
+          /*background: url(../images/subheading_bg.png) repeat-x bottom;*/
+       }
+
+       .sub-title {
+        font-size: 18px;
+        color: #a88a58;
        }
 
 
@@ -56,11 +71,11 @@
 
 
 		.panel-header-text{
-			color: orange;
+			color: #a88a58;
 		}
 
 		.panel-bgcolor{
-			background-color: #666666;
+			background-color: #333;
 		}
 
        /*修改缩略图样式开始*/
@@ -94,10 +109,11 @@
         ul.nav-left-list li a{
             text-decoration: none;
             display: block;
-            color: orange;
+            color: #a88a58;
             width: 150px;
             height: 25px;
             line-height: 25px;
+            /*font-size: 13px;*/
             
             padding: 0px 5px 0px 20px;
             margin: 10px 0px 10px 0px;
@@ -113,6 +129,7 @@
 
         ul.nav-left-list li a:hover{
             background: url(../images/nav_submenu_li_hover.png) #CF302D no-repeat 10px center;
+            color: #fff;
         }
  
         /*左边导航列表样式结束*/
@@ -137,7 +154,7 @@
         }
 
         a.base-a {
-           color: orange;
+           color: #a88a58;
            text-shadow: 1px 1px 1px rgba(0,0,0,0.54);
 
            /*过渡效果*/
@@ -154,7 +171,7 @@
 
 
         a.a-wh-og {
-            color: #333;
+            color: #cfcfcf;
             /*text-shadow: 1px 1px 1px rgba(0,0,0,0.54);*/
             -ms-transition: all 0.5s;
            -moz-transition: all 0.5s;;
@@ -167,7 +184,7 @@
         }
 
         a.a-wh-og:hover {
-            color: orange;
+            color: #a88a58;
         }
 
 
@@ -204,12 +221,7 @@
     /*博客相关超链接*/
       .a-blog-enter{
         display: block;
-        /*padding: 10px;*/
-        /*margin: 10px;*/
-        /*overflow: hidden;*/
-        /*margin: 10px;*/
-        /*width: 100%;*/
-        /*width: 100%;*/
+        
         width: 50px;
 
        font-size: 30px;
@@ -249,6 +261,11 @@
       }
     /**/
 
+   /**/
+      .vedio-title {
+        font-size: 16px;
+      }
+   /**/
 
 
         
