@@ -75,6 +75,14 @@
 
          /*修改缩略图样式结束*/
 
+
+        /* .panel ul 去掉样式*/
+        .panel ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
         /*左边导航列表样式开始*/
         ul.nav-left-list {
             padding: 0;
@@ -196,10 +204,48 @@
     /*博客相关超链接*/
       .a-blog-enter{
         display: block;
-        width: 50px;
+        /*padding: 10px;*/
+        /*margin: 10px;*/
+        /*overflow: hidden;*/
+        /*margin: 10px;*/
         /*width: 100%;*/
+        /*width: 100%;*/
+        width: 50px;
+
+       font-size: 30px;
+       color: #fff;
+       line-height: 1em;
+       padding: 5px 5px 22px;
+       text-align: center;
+        
+
         background: url(../images/bubble.png) no-repeat scroll center bottom #A88A58;
 
+        box-shadow: 0px 0px 10px black;
+
+      }
+
+      .a-blog-enter:hover {
+        background-color: #cf302d;
+
+        color: #fff;
+      }
+
+
+
+      .blog-span-date {
+        display: block;
+        font-size: 14px;
+        text-align: center;
+        line-height: 1em;
+      }
+
+      .blog-span-common-nums {
+        padding-top: 17px;
+        display: block;
+        font-size: 14px;
+        color: #cf302d;
+        line-height: 1em;
       }
     /**/
 
