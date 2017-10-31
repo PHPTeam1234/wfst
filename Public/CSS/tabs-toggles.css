@@ -28,6 +28,18 @@
 
           	/*border: 1px solid #000000;*/
           }
+
+
+          .collapse-panel > .collapse-panel-heading a.active {
+                background-color: #CF302D;
+                color: #fff;
+                text-decoration: none;
+          }
+
+          .collapse-panel > .collapse-panel-heading a.active span {
+               background-color: #0b0b0d;
+               background-position: 0px -15px;
+          }
            
           .collapse-panel-a {
           	text-decoration: none;
@@ -35,6 +47,7 @@
           	width: 100%;
           	background-color: #0b0b0d;
           	padding: 10px;
+            font-size: 13px;
           }
 
           

@@ -22,6 +22,10 @@ $(document).ready(function(){
 		$('[data-toggle="tooltip"]').tooltip();
 	});
 
+	$('a').click(function(){
+		$(this).css({"text-decoration":"none"});
+	});
+
 	
 
 

@@ -1,4 +1,6 @@
-        
+        /*
+           常用颜色：暗金色: #a88a58;
+        */
 
        /*body*/
         body{
@@ -10,6 +12,8 @@
             background-image: url(../images/body_bg.png) repeat; 
             color: #abb6ba;
             font-size: 13px;
+            line-height: 1.4;
+            /*font-family: "TitilliumText22LRegular";*/
             /*text-shadow 使导航下拉菜单字体模糊*/
             /*text-shadow: 1px 1px 1px rgba(0,0,0,0.54);*/
         }
@@ -22,6 +26,38 @@
 
         a:hover{
             text-decoration: none;
+        }
+        
+
+        footer ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        footer ul li {
+          padding-bottom: 5px;
+        }
+
+        footer .footer-title {
+          margin-top: 0px;
+          color: #cf302d;
+          font-size: 18px;
+          margin-bottom: 8px;
+        }
+
+        footer input {
+          background-color: #333!important;
+        }
+
+        footer .btn {
+            background-color: #a88a58;
+            color: #fff;
+        }
+
+        footer .btn:hover {
+          background-color: #cf302d;
+          color: #fff;
         }
 
 
@@ -127,6 +163,7 @@
 			position:fixed;
 			right:30px;
 			bottom:20px;
+      z-index: 20;
 		}
 
 		.scroll-top:hover{
@@ -147,7 +184,7 @@
         .inner-img{
 			width: 100%;
             /*阴影效果*/
-            box-shadow: 0px 0px 30px black;
+            box-shadow: 0px 0px 10px black;
             
 		}
 
@@ -166,10 +203,12 @@
         	padding: 0px;
         	border:  none;
             /*overflow: hidden;*/
+
         }
 
         .thumbnail img{
-        	padding: 4px;
+        	/*padding: 4px;*/
+          border: 4px solid #15191c;
         }
 
          /*修改缩略图样式结束*/
@@ -292,7 +331,8 @@
 
             /*屏幕变小后与下一行文字有间距*/
             /*margin-bottom: 10px;*/
-            box-shadow: 0px 0px 30px black;
+            border: 4px solid #15191c;
+            box-shadow: 0px 0px 10px black;
         }
 
         .new-media-title {
@@ -347,12 +387,86 @@
       }
     /**/
 
+       .blog-article {
+        margin-top: 10px;
+       }
+
    /**/
       .vedio-title {
         font-size: 16px;
+        margin-bottom: 10px;
+        display: block;
       }
    /**/
 
+   /**/
+   .a-followsIcon {
+    display: inline-block;
+    margin :3px;
+   }
+
+
+
+     /**/
+     .label-subtitle {
+        margin-bottom: 20px;
+        text-align: center;
+     }
+    
+     .label-subtitle h3 {
+        font-size: 15px;
+        line-height: 15px;
+        background-color: #cf302d;
+        font-weight: normal;
+        color: #fff;
+        padding: 5px 10px;
+        display: inline-block;
+        box-shadow: 0px 1px 0px #25272a;
+      }
+       
+
+       /*右边导航列表样式*/
+       .nav-right-list li {
+        padding-bottom: 5px;
+       }
+
+       /*输入组件景颜色*/
+       body input {
+        background-color: #1a1c1e!important;
+       }
+
+       body textarea {
+             background-color: #1a1c1e!important;
+       }
+
+
+       /*设置nav tab 样式*/
+       .nav-tabs li{
+            /*background-color: #0b0b0d;*/
+       }
+
+       .nav-tabs > li >a{
+          background-color: #0b0b0d;
+          color: #a88a58;
+
+       }
+
+       .nav-tabs > li >a:hover {
+           background-color: #CF302D;
+           color: #fff;
+       }
 
         
+
+       .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+           background-color: #CF302D;
+           color: #fff;
+       }
+
+       .tab-pane {
+           background-color: #0b0b0d;
+           padding: 5px 10px 5px;
+       }
+
        
+

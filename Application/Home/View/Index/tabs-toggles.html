@@ -15,6 +15,8 @@
 	<script type="text/javascript" src="__PUBLIC__/Bootstrap/js/bootstrap-submenu.min.js"></script>
 	<!-- scroll-top & submenu -->
 	<script type="text/javascript" src="__PUBLIC__/JS/base.js"></script>
+	<!-- 自身js -->
+	<script type="text/javascript" src="__PUBLIC__/JS/tabs-toggles.js"></script>
 </head>
 <style>
  
@@ -191,7 +193,21 @@
 
 					<h3 class="share-sub-title">社区动态</h3>
 					<div>
-						内容待续
+						<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+							<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+							<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+
+						</ul>
+
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="home">home</div>
+							<div role="tabpanel" class="tab-pane" id="profile">profile</div>
+							<div role="tabpanel" class="tab-pane" id="messages">message</div>
+						</div>
+
+
+
 					</div>
 					
 
@@ -210,37 +226,6 @@
 
 </body>
 <script>
-	$(document).ready(function(){
-
-
-       $(".collapse-panel-a").each(function(index,element){
-            var collapseId = $(this).attr('href');
-            // alert(collapseId);
-            var collapseStatus = $(collapseId).attr('class');
-            // alert(collapseStatus);
-            if (collapseStatus == 'panel-collapse collapse in'){
-                //如果 collapse 已经打开，则将图片改为 - 号 ,若未打开，则不用操作
-               $(this).find('span').css({"background-position":"0px -15px"});
-            }
-
-       });
- 
-
-         
-		$(".collapse-panel-a").click(function(){
-			var position = $(this).find('span').css('background-position');
-			if (position == "0px 0px"){
-			    $(this).find('span').css({"background-position":"0px -15px"});
-			    //打开 collapse 会对其他 + - 号有影响。
-			    var parentID = $(this).attr('data-parent');
-			    $(parentID).find('a').not($(this)).find('span').css({"background-position":"0px 0px"});
-			}else{
-				$(this).find('span').css({"background-position":"0px 0px"});
-			}
-
-		});
-
-		
-});
+	
 </script>
 </html>
