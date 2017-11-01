@@ -60,6 +60,15 @@
           color: #fff;
         }
 
+         /*输入组件景颜色*/
+       body input {
+        background-color: #1a1c1e!important;
+       }
+
+       body textarea {
+             background-color: #1a1c1e!important;
+       }
+
 
        /*图片的 hover*/
        .image-hover {
@@ -182,11 +191,10 @@
 
 
         .inner-img{
-			width: 100%;
+			   width: 100%;
             /*阴影效果*/
             box-shadow: 0px 0px 10px black;
-            
-		}
+		   }
 
 
 
@@ -259,16 +267,44 @@
 
 
 
-        /*修改dropdwon-menu样式*/
+        /*修改 顶部导航 样式*/
+
+
+         .nav .open > a, .nav .open > a:focus, .nav .open > a:hover {
+          background-color: black;
+          color: #9d9d9d;
+         }
+
+
         .dropdown-menu {
             background-color: rgba(34, 34, 34, 1);
+         }
 
+        .dropdown-menu li a {
+          color: #9d9d9d;
         }
 
-        .dropdown-menu > li > a{
-            color: #9d9d9d;
+        .navbar-collapse > li > a{
+            /*color: #9d9d9d;*/
+
+            color: #fff;
+           text-shadow: 1px 1px 1px rgba(0,0,0,0.54);
+
+           /*过渡效果*/
+           -ms-transition: all 0.5s;
+           -moz-transition: all 0.5s;;
+           -o-transition: all 0.5s;
+           -webkit-transition: all 0.5s;
+           transition: all 0.5s;
         }
-        /*修改dropdwon-menu样式结束*/
+
+        .dropdown-menu li a:hover{
+          background-color: rgba(34, 34, 34, 1);
+          color: #a88a58;
+
+
+        }
+        /*修改顶部导航样式结束*/
 
 
 
@@ -430,14 +466,7 @@
         padding-bottom: 5px;
        }
 
-       /*输入组件景颜色*/
-       body input {
-        background-color: #1a1c1e!important;
-       }
-
-       body textarea {
-             background-color: #1a1c1e!important;
-       }
+      
 
 
        /*设置nav tab 样式*/
