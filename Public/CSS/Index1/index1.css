@@ -1,0 +1,188 @@
+/**
+	公共参数设置
+*/
+
+* {
+	margin: 0 auto;
+}
+
+img {
+	width: 100%;
+}
+
+h4 {
+	color: #a87d39;
+	font-family: 宋体;
+	font-size: 18px;
+}
+
+p {
+	color: #abb6ba;
+	font-family: 宋体;
+}
+
+/*修改超链接样式*/
+a {
+   color: #a88a58;
+   text-shadow: 1px 1px 1px rgba(0,0,0,0.54);
+   /*过渡效果*/
+   -ms-transition: all 0.5s;
+   -moz-transition: all 0.5s;
+   -o-transition: all 0.5s;
+   -webkit-transition: all 0.5s;
+   transition: all 0.5s;
+   text-decoration: none;
+}
+
+a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+body {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    background-color: #33383a;
+}
+
+/**
+	顶部
+*/
+.top {
+	height: 60px;
+}
+
+.top .c_top {
+	height: 60px;
+}
+
+.top .c_top .top_r {
+	height: 25px;
+	width: 300px;
+	background-color: #0b0b0d;
+	line-height: 25px;
+	text-align: center;
+}
+
+/**
+	navbar
+*/
+.navbar {
+	background-color: #0b0b0d;
+}
+
+.navbar .navbar-brand img{
+	margin-top: -35px;
+}
+
+.navbar .navbar-right li a{
+	color: #FFF;
+	font-size: 15px;
+}
+
+.navbar .navbar-right li a:hover{
+	color: #a88a58;
+}
+
+.navbar .navbar-right .active a{
+	color: #a88a58;
+}
+
+.navbar .navbar-right .dropdown-menu{
+	background-color: #0b0b0d;
+}
+
+.navbar .navbar-right .dropdown-menu a{
+	color: #FFF;
+}
+
+.navbar .navbar-right .dropdown-menu a:hover{
+	color: #a88a58;
+	background-color: #0b0b0d;
+}
+
+/**
+	分割线
+*/
+.sep {
+	margin-top: 30px;
+	height: 65px;
+}
+.sep .c_sep {
+	height: 65px;
+}
+
+
+/**
+	轮播图
+*/
+.carousel {
+	height: 412px;
+	margin-top: -15px;
+}
+
+.carousel .c_carousel {
+	height: 412px;
+}
+
+.carousel .c_carousel .carousel_panel {
+	height: 352px;
+	background-color: black;
+}
+
+
+/**
+	欢迎&关注
+*/
+.welcome {
+	margin-top: 25px;
+	height: 95px;
+}
+
+.welcome .c_welcome {
+	height: 95px;
+}
+
+.welcome .c_welcome .w_left {
+	height: 95px;
+	line-height: 25px;
+}
+.welcome .c_welcome .w_left p{
+	line-height: 50px;
+}
+
+.welcome .c_welcome .w_right {
+	height: 95px;
+	line-height: 25px;
+}
+
+/**
+	最新动态
+*/
+
+.ZXDT {
+	text-align: center;
+	margin-top: -5px;
+}
+
+.ZXDT span{
+	font-size: 15px;
+    line-height: 15px;
+    background-color: #cf302d;
+    font-weight: normal;
+    color: #fff;
+    padding: 5px 10px;
+    display: inline-block;
+    box-shadow: 0px 1px 0px #25272a;
+}
+
+/**
+	动态列表
+*/
+.dtlb {
+	text-align: center;
+	margin-top: 20px;
+}
