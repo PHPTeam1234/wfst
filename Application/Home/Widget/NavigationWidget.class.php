@@ -6,5 +6,9 @@ class NavigationWidget extends Controller{
      public function nav(){
      	$this->display('Navigation:nav');
      }
+
+     public function nav1(){
+     	$this->display('Navigation:nav1');
+     }
  }
  ?>
