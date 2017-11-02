@@ -10,6 +10,12 @@ img {
 	width: 100%;
 }
 
+ul,li {
+	list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 h4 {
 	color: #a87d39;
 	font-family: 宋体;
@@ -19,6 +25,12 @@ h4 {
 p {
 	color: #abb6ba;
 	font-family: 宋体;
+	line-height: 20px;
+}
+
+.a-followsIcon {
+    display: inline-block;
+    margin :3px;
 }
 
 /*修改超链接样式*/
@@ -39,6 +51,63 @@ a:hover {
     text-decoration: none;
 }
 
+/*图片的 hover*/
+.image-hover {
+     position: relative;
+     overflow: hidden;
+     box-shadow: 0px 0px 30px black;
+}
+
+.image-hover:hover .img-fadeIn{
+    top: 50%;
+    margin-top: -20px;
+}
+
+.image-hover:hover .img-cover {
+    opacity: 0.5;
+}
+      
+.image-hover a.img-fadeIn {
+    position: absolute;
+    left: 50%;
+    top: -40px;
+    width: 40px;
+    height: 40px;
+    opacity: 0.7;
+    z-index: 10;
+    display: inline-block;
+    background: url(../../images/detail_icon.png) no-repeat scroll 50% 50%;
+    -ms-transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    -o-transition: all 0.35s;
+    -webkit-transition: all 0.35s;
+}
+
+.image-hover a.zoom-fadeIn {
+     margin-left: -37px;
+     background: url(../../images/zoom_icon.png) no-repeat scroll 50% 50%;
+}
+
+.image-hover a.zoom-center {
+     /*只有 zoom 的情况下*/
+    margin-left: -20px;
+}
+
+.image-hover span.img-cover {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   background: black;
+   left: 0;
+   top: 0;
+   opacity: 0;
+   z-index: 9;
+}
+
+.image-hover .img-fadeIn:hover {
+    opacity: 1;
+}
+
 body {
     font-style: normal;
     font-weight: normal;
@@ -48,10 +117,36 @@ body {
     background-color: #33383a;
 }
 
-.a-followsIcon {
+/**
+	index公用
+*/
+.imgdiv {
+	text-align: center;
+	margin-top: 50px;
+}
+
+.imglist {
+	text-align: center;
+	margin-top: -5px;
+	margin-bottom: 10px;
+}
+
+.imglist span{
+	font-size: 15px;
+    line-height: 15px;
+    background-color: #cf302d;
+    font-weight: normal;
+    color: #fff;
+    padding: 5px 10px;
     display: inline-block;
-    margin :3px;
-   }
+    box-shadow: 0px 1px 0px #25272a;
+}
+
+.img-title span {
+	font-size: 15px;
+	margin: 10px;
+}
+
 
 /**
 	顶部
@@ -165,33 +260,7 @@ body {
 	line-height: 10px;
 }
 
-/**
-	最新动态
-*/
 
-.ZXDT {
-	text-align: center;
-	margin-top: -5px;
-}
-
-.ZXDT span{
-	font-size: 15px;
-    line-height: 15px;
-    background-color: #cf302d;
-    font-weight: normal;
-    color: #fff;
-    padding: 5px 10px;
-    display: inline-block;
-    box-shadow: 0px 1px 0px #25272a;
-}
-
-/**
-	动态列表
-*/
-.dtlb {
-	text-align: center;
-	margin-top: 50px;
-}
 /**
 	修改缩略图样式
 */
@@ -204,5 +273,32 @@ body {
 .thumbnail img {
   	/*padding: 4px;*/
     border: 4px solid #15191c;
-  }
+}
 
+/**
+	footer
+*/
+footer {
+    color:#99979c;
+    background-color:#080808;
+    margin-top: 30px;
+    text-align: center;
+}
+
+footer .footer-title {
+  	margin-top: 0px;
+  	color: #cf302d;
+  	font-size: 18px;
+  	margin-bottom: 8px;
+}
+footer input {
+  	background-color: #333!important;
+}
+footer .btn {
+    background-color: #a88a58;
+    color: #fff;
+}
+footer .btn:hover {
+  	background-color: #cf302d;
+  	color: #fff;
+}
