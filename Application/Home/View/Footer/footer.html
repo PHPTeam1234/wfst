@@ -36,10 +36,80 @@
 				</div>
 				<p>为你提供相关的业务咨询服务,欢迎您的来访</p>
 				<!-- <p>欢迎您的来访</p> -->
-				<div class='form-group'>
-					<input type='text' class='form-control'>
+				
+				<button type='button' class='btn' data-toggle="modal" data-target="#register_modal">注册</button>
+
+				<!-- 注册模态框 -->
+			<div class="modal fade verifyCode_modal" tabindex="-1" id="register_modal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+							<h4 class="modal-title">请输入注册信息</h4>
+						</div>
+						<div class="modal-body">
+							
+							<form class="form-horizontal" id="registerForm">
+								<div class="form-group">
+									<label for="#register_username" class="col-md-3 control-label">username:</label>
+									<div class="col-md-6">
+										<input type="text" class="form-control" name="username" id="register_username">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="#register_password" class="col-md-3 control-label">password:</label>
+									<div class="col-md-6">
+										<input type="password" class="form-control" name="password" id="register_password">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="#register_phone" class="col-md-3 control-label">phone:</label>
+									<div class="col-md-6">
+										<input type="text" class="form-control" name="phone" id="register_phone">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="#register_email" class="col-md-3 control-label">email:</label>
+									<div class="col-md-6">
+										<input type="text" class="form-control" name="email" id="register_email">
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="#register_address" class="col-md-3 control-label">address:</label>
+									<div class="col-md-6">
+										<input type="text" class="form-control" name="address" id="register_address">
+									</div>
+								</div>
+
+								<div class="form-group" >
+									<label for="" class="col-md-3 control-label">验证码图片</label>
+									<div class="col-md-6">
+										<img src="{:U('VerifyCode')}" onclick="this.src=this.src+'?'+Math.random()">
+									</div>
+								</div>
+									<div class="form-group">
+
+										<label for="#register_verifyCode" class="col-md-3 control-label">请输入验证码:</label>
+										<div class="col-md-6">
+											<input type="text" class="form-control" name="verifyCode" id="register_verifyCode">
+										</div>
+									</div>
+									<dir class="form-group">
+										<div class="alert" id="register_message"></div>
+									</dir>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn" data-dismiss="modal">Close</button>
+								<button type="button" class="btn" id="register_btn">Save changes</button>
+							</div>
+						</div>
+					</div>
 				</div>
-				<button type='submit' class='btn'>现在加入</button>
+				
+                
 			</div>
 
 			<div class='col-md-3'>
@@ -73,5 +143,13 @@
 
 </body>
 <script>
+$(document).ready(function(){
+	
+	 $ajaxLoginUrl = "{:U('Home/Login/Login/login')}";
+	 $ajaxLogoutUrl = "{:U('Home/Login/Login/logout')}";
+	 $ajaxRegisterUrl = "{:U('Home/Login/Login/register')}";
+	 
+
+});
 </script>
 </html>

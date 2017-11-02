@@ -50,7 +50,7 @@
           background-color: #333!important;
         }
 
-        footer .btn {
+        footer .btn, .modal > .modal-dialog .btn {
             background-color: #a88a58;
             color: #fff;
         }
@@ -59,6 +59,8 @@
           background-color: #cf302d;
           color: #fff;
         }
+
+        
 
          /*输入组件景颜色*/
        body input {
@@ -497,5 +499,16 @@
            padding: 5px 10px 5px;
        }
 
+     /*修改模态框样式*/
+
+     .modal .modal-dialog .modal-content {
+          background-color: #333;
+     }
        
+
+      /*模态框按钮样式*/
+        .modal > .modal-dialog .btn:hover {
+          background-color: #cf302d;
+          color: #fff;
+        }
 

@@ -74,4 +74,10 @@ class IndexController extends Controller {
     public function typography(){
     	$this -> display();
     }
+
+    public function verifyCode(){
+    	$verify = new \Think\Verify();
+    	$verify->fontSize = 15;
+    	$verify->entry();
+    }
 }
