@@ -238,23 +238,6 @@ body {
 }
 
 
-/**
-	轮播图
-*/
-.carousel {
-	height: 412px;
-	
-}
-
-.carousel .c_carousel {
-	height: 412px;
-}
-
-.carousel .c_carousel .carousel_panel {
-	height: 352px;
-	
-}
-
 
 /**
 	欢迎&关注
