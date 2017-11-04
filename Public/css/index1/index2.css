@@ -12,8 +12,7 @@ img {
 
 ul,li {
 	list-style: none;
-    margin: 0;
-    padding: 0;
+    
 }
 
 h4 {
@@ -244,25 +243,22 @@ body {
 */
 .welcome {
 	margin-top: 25px;
-	height: 95px;
 }
 
 .welcome .c_welcome {
-	height: 95px;
 	text-align: center;
 }
 
 .welcome .c_welcome .w_left {
-	height: 95px;
-	line-height: 25px;
+  background: url(../../images/sep_scoial_icons.png) no-repeat top right;
 }
-.welcome .c_welcome .w_left p{
-	line-height: 50px;
+.welcome .c_welcome .w_sep img{
+  height: 5px;
+  width: 5px;	
 }
 
 .welcome .c_welcome .w_right {
-	height: 95px;
-	line-height: 10px;
+  padding-bottom: 8px;
 }
 
 
@@ -278,6 +274,24 @@ body {
 .thumbnail img {
   	/*padding: 4px;*/
     border: 4px solid #15191c;
+}
+
+/**
+  公告栏和微博信息
+*/
+
+.noticeinfo {
+  height: 150px;
+  margin-bottom: 80px;
+}
+
+.noticeinfo .news-wb {
+  text-align: center;
+}
+
+.noticeinfo .news-wb img {
+  height: 26px;
+  width: 26px;
 }
 
 /**
