@@ -336,6 +336,10 @@ footer .btn:hover {
     color: #fff;
  }
 
+ .modal > .modal-dialog .btn {
+    background-color: #a88a58;
+ }
+
 .modal > .modal-dialog input {
     background-color: #1a1c1e!important;
 }
