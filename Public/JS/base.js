@@ -55,6 +55,7 @@ $(document).ready(function(){
 
                 	// 清空模态框中的密码
                 	$("#input_password").val(null);
+                    $("#input_verifyCode").val(null);
                 	// 模态框消失
                 	$('#login_modal').modal('hide');
 

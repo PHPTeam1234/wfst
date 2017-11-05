@@ -35,7 +35,7 @@ class LoginController extends Controller {
 
 
 
-			if( !$this->check_verify($formVerifyCode) ){
+			if( $this->check_verify($formVerifyCode) ){
                     // 验证码输入正确
 
 				if(!$formUser->token(false)->create()){    //取消 token 令牌
@@ -194,7 +194,7 @@ class LoginController extends Controller {
 
             //get verfiy code from form
 			$formVerifyCode = $_POST['verifyCode'];
-			if ( !$this->check_verify($formVerifyCode)){
+			if ( $this->check_verify($formVerifyCode)){
 				 // verifyCode correct
 
 				$formUser = D("User");
@@ -204,7 +204,7 @@ class LoginController extends Controller {
 					if ( $formUser->add() ) {
                        // 插入成功
 
-						$this->success('注册成功',U("Home/Index/Index/about"), $pageRedirectWaitTime);
+						$this->success('注册成功',U("Home/Index/Index/index"), $pageRedirectWaitTime);
 
 
 					}else {
