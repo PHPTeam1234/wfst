@@ -321,3 +321,21 @@ footer .btn:hover {
     background-color: #cf302d;
     color: #fff;
 }
+
+
+
+/*2017-11-05 by lqs*/
+.modal .modal-dialog .modal-content {
+    background-color: #333;
+ }
+       
+
+/*模态框按钮样式*/
+ .modal > .modal-dialog .btn:hover {
+    background-color: #cf302d;
+    color: #fff;
+ }
+
+.modal > .modal-dialog input {
+    background-color: #1a1c1e!important;
+}
