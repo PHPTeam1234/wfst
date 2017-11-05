@@ -68,7 +68,39 @@
 					          <li><a href="#">购物经验分享</a></li>
 					        </ul>
 				        </li>
-				        <li><a href="#">在线互动</a></li>
+				        <!-- <li><a href="#">在线互动</a></li> -->
+				        <!-- 用户 -->
+				        <li class='dropdown' class="nav-user-block">
+				        	<empty name="Think.session.username">
+				        		<empty name="Think.cookie.username">
+				        			<a href="javascript:void(0);" id="nav-user-block-dropToggle" data-toggle="modal"  data-target="#login_modal">
+				        				<span id="nav_username">
+				        					未登录
+				        				</span>
+				        			</a>
+				        			<else />
+				        			<a href="" class='dropdown-toogle' data-toggle='dropdown' id="nav-user-block-dropToggle">
+				        				<span id="nav_username">
+				        					{$Think.cookie.username} <span class="caret"></span>
+				        				</span>
+				        			</a>
+				        		</empty>
+				        		<else />
+				        		<a href="" class='dropdown-toogle' data-toggle='dropdown' id="nav-user-block-dropToggle">
+				        			<span id="nav_username">
+				        				{$Think.session.username} <span class="caret"></span>
+				        			</span>
+				        		</a>
+				        	</empty>
+				        	<ul class="dropdown-menu">
+				        		<li><a href="javascript:void(0);" id="logout_link">注销</a></li>
+				        		<li><a href="{:U('blog_alternate')}">...</a></li>
+				        	</ul>
+				        </li>
+
+
+
+
 				    </ul>
 				<div class="collapse navbar-collapse" id="mynavbar" >
 
@@ -76,6 +108,66 @@
 			</nav>
 	</div>
 </div>
+
+<!-- 登陆模态框 -->
+<div class="modal fade verifyCode_modal" tabindex="-1" id="login_modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+				<h4 class="modal-title">请输入用户名和密码</h4>
+			</div>
+			<div class="modal-body">
+				
+				<form class="form-horizontal" id="loginForm">
+					<div class="form-group">
+						<label for="#input_username" class="col-md-3 control-label">username:</label>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="username" id="input_username">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="#input_password" class="col-md-3 control-label">password:</label>
+						<div class="col-md-6">
+							<input type="password" class="form-control" name="password" id="input_password">
+						</div>
+					</div>
+					<div class="form-group" >
+						<label for="" class="col-md-3 control-label">验证码图片</label>
+						<div class="col-md-6">
+							<img src="{:U('Home/Index/Index/VerifyCode')}" onclick="this.src=this.src+'?'+Math.random()">
+						</div>
+					</div>
+					<div class="form-group">
+
+						<label for="#input_verifyCode" class="col-md-3 control-label">请输入验证码:</label>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="verifyCode" id="input_verifyCode">
+						</div>
+					</div>
+
+					<div class="from-group">
+						<div class="col-md-offset-3">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" style="margin-top: 1px" name="isRememberMe"> Remember me
+								</label>
+							</div>
+						</div>
+					</div>
+					<dir class="form-group">
+						<div class="alert" id="login_message"></div>
+					</dir>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn" data-dismiss="modal">Close</button>
+				<button type="button" class="btn" id="login_btn">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div>
+				
 
 <!-- 右下角回到顶部，暂时放在这里 -->
 <div class='col-md-1'>
