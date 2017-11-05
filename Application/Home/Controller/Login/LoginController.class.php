@@ -223,7 +223,7 @@ class LoginController extends Controller {
 
 			}else {
 				// verifyCode incorrect
-				$this->error('wrong verifyCode',U('register'), $pageRedirectWaitTime);
+				$this->error('验证码输入错误',U('register'), $pageRedirectWaitTime);
 			}
 	}
 
