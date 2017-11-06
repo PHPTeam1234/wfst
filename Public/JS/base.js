@@ -53,9 +53,8 @@ $(document).ready(function(){
                 	$("#nav-user-block-dropToggle").attr('data-target','');
                 	$("#nav-user-block-dropToggle").attr("href","#")
 
-                	// 清空模态框中的密码
-                	$("#input_password").val(null);
-                    $("#input_verifyCode").val(null);
+
+                    $("#footer-register-link").hide(); //注册按钮消失
                 	// 模态框消失
                 	$('#login_modal').modal('hide');
 
@@ -66,8 +65,7 @@ $(document).ready(function(){
                 	$("#input_password").val(null);
                 	$("#input_verifyCode").val(null);
                 	$("#login_message").html($data.info);
-                	console.log($data.loginStatus);
-                	console.log($data.info);
+                    console.log($data);
                 }
         
 
@@ -84,8 +82,8 @@ $(document).ready(function(){
                  if ( $data.logoutStatus == 1 )
                  {
                  	// 注销成功
-                    console.log($data.logoutStatus);
-                    console.log($data.info);
+                    
+                     console.log($data);
                     // 修改导航栏样式
                 	$("#nav_username").html("未登录");
 
@@ -93,6 +91,8 @@ $(document).ready(function(){
                 	$("#nav-user-block-dropToggle").attr('data-toggle','modal');
                 	$("#nav-user-block-dropToggle").attr('data-target','#login_modal');
                 	$("#nav-user-block-dropToggle").attr("href","javascript:void(0);")
+
+                    $("#footer-register-link").show();  //注册按钮显示
                  }else {
                       // 注销失败
 
@@ -121,11 +121,15 @@ $(document).ready(function(){
 	});
 
      // 每次打开包含验证码的模态框就刷新验证码
-	$(".verifyCode_modal").on( 'show.bs.modal',function(e){
+	$(".login_modal").on( 'show.bs.modal',function(e){
          
-         // alert(666);
-         $newVerifyCode = $(this).find("img").attr("src") + "?" + Math.random();
+         $newVerifyCode = $verifyCodeUrl + "?" + Math.random();
          $(this).find("img").attr("src", $newVerifyCode);
+        
+         // 
+         $("#input_password").val(null);
+         $("#input_verifyCode").val(null);
+         $("#login_message").html(null);
 	});
 	
 	
