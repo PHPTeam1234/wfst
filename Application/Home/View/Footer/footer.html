@@ -37,9 +37,13 @@
 				<p>为你提供相关的业务咨询服务,欢迎您的来访</p>
 				<!-- <p>欢迎您的来访</p> -->
 				
-				<a href="{:U('Home/Login/Login/register')}">注册</a>
+				<!-- 若已经登录，就不显示登录按钮 -->
+				<empty name="Think.session.username">
+					<a href="{:U('Home/Login/Login/register')}" id="footer-register-link">注册</a>
+				<else />
+					<a href="{:U('Home/Login/Login/register')}" id="footer-register-link" style="display: none">注册</a>
+				</empty>
 				
-                
 			</div>
 
 			<div class='col-md-3'>
@@ -78,6 +82,7 @@ $(document).ready(function(){
 	 $ajaxLoginUrl = "{:U('Home/Login/Login/login','','')}";  //生成 ajax login url，以便在 .js 文件中调用
 	 $ajaxLogoutUrl = "{:U('Home/Login/Login/logout','','')}"; //生成 ajax logout url，以便在 .js 文件中调用
 	 $ajaxRegisterUrl = "{:U('Home/Login/Login/register','','')}";  //生成 ajax register url，以便在 .js 文件中调用
+	 $verifyCodeUrl = "{:U('Home/Index/Index/verifyCode','','')}";  //生成 verifyCode url，以便在 .js 文件中调用
 
 
 });

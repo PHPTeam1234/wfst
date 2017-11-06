@@ -110,7 +110,7 @@
 </div>
 
 <!-- 登陆模态框 -->
-<div class="modal fade verifyCode_modal" tabindex="-1" id="login_modal">
+<div class="modal fade login_modal" tabindex="-1" id="login_modal">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -135,7 +135,7 @@
 					<div class="form-group" >
 						<label for="" class="col-md-3 control-label">验证码图片</label>
 						<div class="col-md-6">
-							<img src="{:U('Home/Index/Index/VerifyCode')}" onclick="this.src=this.src+'?'+Math.random()">
+							<img src="" onclick="this.src=this.src+'?'+Math.random()">
 						</div>
 					</div>
 					<div class="form-group">
@@ -146,7 +146,14 @@
 						</div>
 					</div>
 
-					<div class="from-group">
+					<div class="form-group">
+						<div class="col-md-offset-7">
+							<a href="{:U('Home/Login/Login/register')}" style="margin-left: 20px">注册</a>
+						</div>
+					</div>
+
+					<!-- 功能未完善 -->
+					<!-- <div class="from-group">
 						<div class="col-md-offset-3">
 							<div class="checkbox">
 								<label>
@@ -154,7 +161,7 @@
 								</label>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<dir class="form-group">
 						<div class="alert" id="login_message"></div>
 					</dir>
