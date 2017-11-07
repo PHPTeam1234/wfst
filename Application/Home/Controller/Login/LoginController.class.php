@@ -173,6 +173,16 @@ class LoginController extends Controller {
 	var_dump( cookie() );
 	}
 
+	public function getVerifyCode(){
+          
+		if ( IS_AJAX ) {
+			$formVerifyCode = $_POST['ajaxVerifyCodeSent'];
+			$verifyMsg['verifyStatus'] = $this->check_verify( $formVerifyCode );
+			$verifyMsg['verifyInfo'] = $verifyMsg['verifyStatus'] ? "验证码正确!" : "验证码错误!";
+			$this->ajaxReturn( $verifyMsg, "json");
+		}
+	}
+
 }
 
 ?>
