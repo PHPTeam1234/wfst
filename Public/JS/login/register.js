@@ -1,55 +1,85 @@
 $.validator.setDefaults( {
-			submitHandler: function ( form ) {
+	submitHandler: function ( form ) {
 				// alert( "submitted!" );
 				// $('#registerForm').submit(); 这样写会出现死循环
-                form.submit();
+				form.submit();
 			}
 		} );
 
 
 
-    $( document ).ready( function() {
-	$formValidate = $( "#registerForm" ).validate( {
-				rules: {
-					
-					username: {
-						required: true,
-						minlength: 2
-					},
-					password: {
-						required: true,
-						minlength: 5
-					},
-					confirmPassword: {
-						required: true,
-						minlength: 5,
-						equalTo: "#register_password"
-					},
-					email: {
-						required: true,
-						email: true
-					},
+$( document ).ready( function() {
+        // 添加验证码方法
+        $.validator.addMethod( "verifyCode", function( value, element ) {
+    	// 如验证码长度修改时，此处也需要修改
+    	if ( value.length == 5 ) {
+
+    		$isVerifyCodeCorrect = $.ajax( {
+    			url: $ajaxGetVerifyCode,
+    			data:  "ajaxVerifyCodeSent=" + value,
+    			type: "POST",
+              	async: false,  //使用同步方式
+              	dataType: "json",
+              	// complete: function($data){ console.log($data); }
+              }).responseJSON;
+    		console.log($isVerifyCodeCorrect.verifyStatus);
+    		 // verifyStatue : true 验证码正确， false 验证码错误
+    		 return $isVerifyCodeCorrect.verifyStatus;
+    		}
+
+          // 长度不等直接 false
+          return false;
+      });
+
+
+
+        $formValidate = $( "#registerForm" ).validate( {
+        	rules: {
+        		username: {
+        			required: true,
+        			minlength: 2
+        		},
+        		password: {
+        			required: true,
+        			minlength: 5
+        		},
+        		confirmPassword: {
+        			required: true,
+        			minlength: 5,
+        			equalTo: "#register_password"
+        		},
+        		email: {
+        			required: true,
+        			email: true
+        		},
 					// agree1: "required"
-					verifyCode: {
-						required: false
-					}
+				verifyCode: {
+					required: true,
+					verifyCode: true
+				}
 				},
 				messages: {
 					username: {
-						required: "Please enter a username",
-						minlength: "Your username must consist of at least 2 characters"
+						required: "请输入用户名",
+						minlength: jQuery.validator.format("用户名至少包含{0}个字符"),
 					},
 					password: {
-						required: "Please provide a password",
-						minlength: "Your password must be at least 5 characters long"
+						required: "请输入密码",
+						minlength: jQuery.validator.format("你的密码至少包含{0}个字符"),
 					},
 					confirmPassword: {
-						required: "Please provide a password",
-						minlength: "Your password must be at least 5 characters long",
-						equalTo: "Please enter the same password as above"
+						required: "请输入确认密码",
+						equalTo: "确认密码和密码必须相同",
+						minlength: jQuery.validator.format("你的确认密码至少包含{0}个字符"),
 					},
-					email: "Please enter a valid email address",
-					// agree1: "Please accept our policy"
+					email: {
+						required: "请输入邮箱地址",
+						email: "请输入正确的邮箱地址格式"
+					},
+					verifyCode: {
+						required: "请输入验证码",
+						verifyCode: "验证码错误！"
+					}
 				},
 				errorElement: "em",
 				errorPlacement: function ( error, element ) {
@@ -87,7 +117,4 @@ $.validator.setDefaults( {
 				}
 			} );
 
-
-	
-
-     });
+    });

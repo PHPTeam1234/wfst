@@ -19,8 +19,11 @@
     <script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
     <!--表单验证  -->
     <script type="text/javascript" src="__PUBLIC__/js/validate/jquery.validate.js"></script>
+     <!-- validate 本地化 -->
+    <script type="text/javascript" src="__PUBLIC__/js/validate/messages_zh.js"></script>
     <!-- 自身js -->
     <script type="text/javascript" src="__PUBLIC__/js/login/register.js"></script>
+   
 </head>
 <body>
 	 <header>
@@ -110,6 +113,9 @@
 </body>
 
 <script>
+ 	$ajaxGetVerifyCode = "{:U('Home/Login/Login/getVerifyCode')}";   //用于 ajax 获取验证码的值
+ 	// alert($ajaxGetVerifyCode);
+
 </script>
 
 </html>
