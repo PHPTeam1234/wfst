@@ -183,6 +183,24 @@ class LoginController extends Controller {
 		}
 	}
 
+	public function getVideoInfo() {
+		if ( IS_AJAX ) {
+			// $loginMsg['loginStatus'] = 666;
+			$videoId = 0;
+			
+			$loginMsg['loginStatus'] = session("?username");
+			if ( $loginMsg['loginStatus'] ){
+				$loginMsg['username'] = session( "username" );
+				$videoLocation = __ROOT__."/Public/video/movie.mp4";
+				$loginMsg['videoLocation'] = $videoLocation;
+
+			}
+			$this->ajaxReturn( $loginMsg, "json" );
+
+
+		}
+	}
+
 }
 
 ?>
