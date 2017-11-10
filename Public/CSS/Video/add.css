@@ -1,0 +1,22 @@
+.panel-video-form, .panel-video-form .panel-body {
+	background-color: #33383a;
+}
+
+.panel-video-form .btn {
+	background-color: #a88a58;
+}
+
+.panel-video-form .btn:hover {
+	background-color: #cf302d;
+    color: #fff;
+}
+
+.panel-video-form input {
+	background-color: #1a1c1e!important;
+}
+
+.panel-video-form a {
+	text-shadow: none;
+    color: #333;
+    transition: none;
+}

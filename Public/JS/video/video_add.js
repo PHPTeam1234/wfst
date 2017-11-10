@@ -1,53 +1,39 @@
 
-
 $( document ).ready( function() {
 
-        $formValidate = $( "#registerForm" ).validate( {
+        $formValidate = $( "#videoAddForm" ).validate( {
         	rules: {
-        		username: {
-        			required: true,
-        			minlength: 2
+        		video_title: {
+        			required: true
         		},
-        		password: {
-        			required: true,
-        			minlength: 5
+        		video_desc: {
+        			required: true
         		},
-        		confirmPassword: {
+        		video_verifyCode: {
         			required: true,
-        			minlength: 5,
-        			equalTo: "#register_password"
+        			verifyCode: true
         		},
-        		email: {
+        		video_file: {
         			required: true,
-        			email: true
-        		},
-					// agree1: "required"
-				verifyCode: {
-					required: true,
-					verifyCode: true
-				}
+        			extension: 'mp4'
+        		}
+        		
 				},
 				messages: {
-					username: {
-						required: "请输入用户名",
-						minlength: jQuery.validator.format("用户名至少包含{0}个字符"),
+					video_title: {
+						required: "请输入视频标题",
 					},
-					password: {
-						required: "请输入密码",
-						minlength: jQuery.validator.format("你的密码至少包含{0}个字符"),
+					video_desc: {
+						required: "请输入视频描述",
 					},
-					confirmPassword: {
+					video_verifyCode: {
 						required: "请输入确认密码",
-						equalTo: "确认密码和密码必须相同",
-						minlength: jQuery.validator.format("你的确认密码至少包含{0}个字符"),
+						verifyCode: "请输入正确的验证",
 					},
-					email: {
-						required: "请输入邮箱地址",
-						email: "请输入正确的邮箱地址格式"
-					},
-					verifyCode: {
-						required: "请输入验证码",
-						verifyCode: "验证码错误！"
+
+					video_file: {
+						required: "请选择视频文件",
+						extension: "上传的视频文件必须为: {0}"
 					}
 				},
 				errorElement: "em",
