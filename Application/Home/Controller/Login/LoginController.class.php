@@ -7,12 +7,14 @@ class LoginController extends Controller {
         
         $noVerifyCode = 0;  //控制是否需要验证码，方便测试 1: 不用验证码，0：需要验证码
 
+        $verify = A("Home/VerifyCode/VerifyCode");
+
 		if( IS_AJAX ){
 			$user = D("User");
 			$formVerifyCode = $_POST['verifyCode'];
 
             // 验证码
-			if( $noVerifyCode || $this->check_verify( $formVerifyCode ) ){
+			if( $noVerifyCode || $verify->check_verify( $formVerifyCode ) ){
                     // 验证码输入正确
 
 				if( !$formUser = $user->token(false)->create() ){    //取消 token 令牌
@@ -27,7 +29,7 @@ class LoginController extends Controller {
 
                 // success to auto_validate
 				$condition['username'] = $formUser['username'];
-				$dbUser = $user->where($condition)->field('username, password, salt')->find();  
+				$dbUser = $user->where($condition)->field('username, password, salt, id')->find();  
                 
 				if ( !$dbUser ) {
 					//用户名不存在
@@ -120,9 +122,11 @@ class LoginController extends Controller {
 
 		$pageRedirectWaitTime = 1; //页面跳转等待时间
 
+		$verify = A("Home/VerifyCode/VerifyCode");
+
         //get verfiy code from form
 		$formVerifyCode = $_POST['verifyCode'];
-		if ( $noVerifyCode || $this->check_verify( $formVerifyCode ) ){
+		if ( $noVerifyCode || $verify->check_verify( $formVerifyCode ) ){
 			// verifyCode correct
 			$user = D("User");
 
@@ -151,55 +155,12 @@ class LoginController extends Controller {
 	}
 
 
-       
 
-	public function check_verify($code, $id = ""){
-		$config = array(
-             'reset' => false // 验证成功后是否重置，这里才是有效的。
-        );
-		$verify = new \Think\Verify( $config );
-		return $verify->check( $code, $id ); 
+	
+	public function test() {
+		// test
 	}
-
-
-	public function test(){
-    // 测试用
-
-	}
-
-	public function test2(){
-    // 测试用
-    // var_dump(session());
-	var_dump( cookie() );
-	}
-
-	public function getVerifyCode(){
-          
-		if ( IS_AJAX ) {
-			$formVerifyCode = $_POST['ajaxVerifyCodeSent'];
-			$verifyMsg['verifyStatus'] = $this->check_verify( $formVerifyCode );
-			$verifyMsg['verifyInfo'] = $verifyMsg['verifyStatus'] ? "验证码正确!" : "验证码错误!";
-			$this->ajaxReturn( $verifyMsg, "json");
-		}
-	}
-
-	public function getVideoInfo() {
-		if ( IS_AJAX ) {
-			// $loginMsg['loginStatus'] = 666;
-			$videoId = 0;
-			
-			$loginMsg['loginStatus'] = session("?username");
-			if ( $loginMsg['loginStatus'] ){
-				$loginMsg['username'] = session( "username" );
-				$videoLocation = __ROOT__."/Public/video/movie.mp4";
-				$loginMsg['videoLocation'] = $videoLocation;
-
-			}
-			$this->ajaxReturn( $loginMsg, "json" );
-
-
-		}
-	}
+     
 
 }
 

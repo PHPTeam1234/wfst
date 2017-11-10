@@ -79,9 +79,5 @@ class IndexController extends Controller {
     	$this -> display();
     }
 
-    public function verifyCode(){
-    	$verify = new \Think\Verify();
-    	$verify->fontSize = 15;
-    	$verify->entry();
-    }
+    
 }

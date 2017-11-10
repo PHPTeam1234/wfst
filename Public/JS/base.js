@@ -13,6 +13,14 @@ $(document).ready(function(){
 
 	});
 
+    
+
+
+     
+
+
+     
+
 	
 	$(function(){
 		// bootstrap 3 没有submenu, 以下导入 submenu
@@ -21,11 +29,6 @@ $(document).ready(function(){
 		// 导入 bootstrap 中的 tooltip
 		$('[data-toggle="tooltip"]').tooltip();
 
-		
-		
-
-
-		
 
 	});
 
