@@ -30,12 +30,18 @@
 	 	{:W("Navigation/nav1")}
 	 </header>
     
+    <div class='row top_head_label'>
+		<div class="container">
+			<div class='col-md-12 '>
+				<h3>请输入视频相关信息</h3>
+			</div>
+		</div>
+	</div>
+
 	 <div class="container">
 
 	 	  <div class="panel panel-video-form">
-	 	  	<div class="panel-headding">
-	 	  		<h4>请输入个人信息</h4>
-	 	  	</div>
+	 	  	
 	 	  	<div class="panel-body">
 	 	  		<form action="{:U('Home/Video/Video/videoUpload')}" class="form-horizontal" id="videoAddForm" method="post" enctype="multipart/form-data">
 	 	  			{__TOKEN__}  

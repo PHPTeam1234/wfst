@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>视频门户网站</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap-submenu.min.css">
+	<!-- 公共css文件 -->
+	<!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/base.css"> -->
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/index1/index1.css">
+	<!-- 自身css文件 -->
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/portfolio_details.css">
+	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/bootstrap-submenu.min.js"></script>
+	<!-- scroll-top & submenu -->
+	<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+	<!-- 自身js -->
+</head>
+<style>
+        
+
+</style>
+<body>
+	<nav>
+		{:W('Navigation/nav1')}
+	</nav>
+
+
+
+	<div class='row top_head_label'>
+		<div class="container">
+			<div class='col-md-12 '>
+				<h3>我的视频</h3>
+			</div>
+		</div>
+	</div>
+
+
+
+	<main class='main'>
+		<div class='container'>
+			<div class='row new-media video_container'>
+				<div class='col-md-5'>
+					<div class="image-hover video_container_l">
+						<img src="__PUBLIC__/images/hshys.jpg" class='img-rounded new-media-img'>
+						<video  width="100%" style="display: none">
+						</video>
+
+
+						<a href="#" class="zoom-fadeIn img-fadeIn zoom-center video_play" style="color: red"></a>
+						<span class="img-cover"></span>
+					</div>
+					<!-- <iframe width="100%" height="300" src='http://player.youku.com/embed/XNDcyMjc1NjI4' frameborder=0 allowfullscreen="allowfullscreen" style="display: none"></iframe> -->
+					
+
+					
+				</div>
+				<div class="col-md-7 video_container_r">
+					<div class='vedio-portal-title'>{$video_title}</div>
+					<ul>
+						<li>在线课堂链接</li>
+						<li><a class='base-a' href="#">http://www.youku.com/playlist_show/id_18548919.html</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<!-- 分割线 -->
+					<div class="sep">
+						<div class="container c_sep">
+							<img src="__PUBLIC__/images/sep_big.png">
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="imglist">
+						<span>最新动态</span>
+					</div>
+				</div>
+				<div class="container imgdiv">
+					<div class="row">
+						<div class="col-md-3">
+							<div class='thumbnail'>
+								<div class="image-hover">
+									<img class="inner-img" src="__PUBLIC__/images/youkus.png">
+									<a href="#" class="zoom-fadeIn img-fadeIn"></a>
+									<a href="#" class="img-fadeIn"></a>
+									<span class="img-cover"></span>
+								</div>
+							</div>
+							<a class="img-title" href="#">
+								YOUKU优酷
+							</a>
+							<img src="__PUBLIC__/images/sep_small.png">
+						</div>
+						<div class="col-md-3">
+							<div class='thumbnail'>
+								<div class="image-hover">
+									<img class="inner-img" src="__PUBLIC__/images/aqyb.jpg">
+									<a href="#" class="zoom-fadeIn img-fadeIn"></a>
+									<a href="#" class="img-fadeIn"></a>
+									<span class="img-cover"></span>
+								</div>
+							</div>
+							<a class="img-title" href="#">
+								爱奇艺
+							</a>
+							<img src="__PUBLIC__/images/sep_small.png">
+						</div>
+						<div class="col-md-3">
+							<div class='thumbnail'>
+								<div class="image-hover">
+									<img class="inner-img" src="__PUBLIC__/images/txb.jpg">
+									<a href="#" class="zoom-fadeIn img-fadeIn"></a>
+									<a href="#" class="img-fadeIn"></a>
+									<span class="img-cover"></span>
+								</div>
+							</div>
+							<a class="img-title" href="#">
+								腾讯视频
+							</a>
+							<img src="__PUBLIC__/images/sep_small.png">
+						</div>
+						<div class="col-md-3">
+							<div class='thumbnail'>
+								<div class="image-hover">
+									<img src="__PUBLIC__/images/wyspb.jpg" class="inner-img">
+									<a href="#" class="zoom-fadeIn img-fadeIn"></a>
+									<a href="#" class="img-fadeIn"></a>
+									<span class="img-cover"></span>
+								</div>
+							</div>
+							<a class="img-title" href="#">
+								网易视频
+							</a>
+							<img src="__PUBLIC__/images/sep_small.png">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+    <footer>
+    	{:W('Footer/footer')}
+    </footer>
+
+</body>
+<script>
+
+$( document ).ready(function (){
+    $(".video_container .video_container_l a.video_play").click( { video_id: {$video_id} }, function(event){
+         
+            // 获取登陆状态和视频信息
+            $videoInfo = $.ajax( {
+                url: $ajaxGetVideoInfo,
+                dataType: "json",
+                data: "video_id=" + event.data.video_id,
+                async: false,
+                type: "POST",
+            } ).responseJSON;
+            
+            console.log( $videoInfo);
+
+            if ( $videoInfo.loginStatus ) {
+                $(this).siblings("img").hide();
+                $(this).siblings("video").show();
+                $(this).siblings("video").attr("src",$videoInfo.videoLocation);
+                $(this).siblings("video")[0].play();
+                $(this).siblings("video").attr("controls", "true");
+                $(this).siblings("span").remove();
+                $(this).hide();
+            }
+            else {
+                $(this).attr("data-toggle", "popover").attr("data-content","需要登陆才能播放视频");
+                $(this).popover('show');
+                // $(this).popover('hide');
+               
+
+                var id = setTimeout(
+                    function () {
+                        $(".video_container .video_container_l a.video_play").popover('hide'); //
+                    }, 2000
+                );
+
+            }
+            return false;
+    });
+
+});
+	
+</script>
+</html>

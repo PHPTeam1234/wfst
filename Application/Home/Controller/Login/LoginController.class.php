@@ -46,9 +46,11 @@ class LoginController extends Controller {
 				if( $formUser['password'] == $dbUser['password'] ){
 					// 用户名和密码都正确
 
-					$dbUser['loginStatus'] = 1;
-					$dbUser['info'] = "登陆成功！";
-					$dbUser['isRememberMe'] = $_POST['isRememberMe'];
+					$loginMsg['loginStatus'] = 1;
+					$loginMsg['username'] = $dbUser['username'];
+					$loginMsg['id'] = $dbUser['id'];
+					$loginMsg['info'] = "登陆成功！";
+					$loginMsg['isRememberMe'] = $_POST['isRememberMe'];
 
                     // 设置 session  thinkphp 设置单个 session expire 无效
                     session( 'username', $dbUser['username'] );
@@ -62,7 +64,7 @@ class LoginController extends Controller {
                     }
 
 					// 返回 ajax
-                    $this->ajaxReturn( $dbUser, 'json' );
+                    $this->ajaxReturn( $loginMsg, 'json' );
 				}else {
 					// password incorrect
                     $loginMsg = array(
@@ -102,6 +104,7 @@ class LoginController extends Controller {
         	$msg = array(
         		   'logoutStatus' => 1,
         		   'info'         => "退出成功！",
+        		   'redirect_location' => U('Home/Index/Index/index'),
         	);
 
         	$this->ajaxReturn($msg, "json");
