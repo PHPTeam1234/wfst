@@ -96,6 +96,8 @@ $(document).ready(function(){
                 	$("#nav-user-block-dropToggle").attr("href","javascript:void(0);")
 
                     $("#footer-register-link").show();  //注册按钮显示
+
+                    window.location.href=$data.redirect_location;  //退出后返回主页
                  }else {
                       // 注销失败
 
