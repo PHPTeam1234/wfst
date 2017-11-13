@@ -33,7 +33,7 @@ class VideoController extends Controller {
 
 
 		$config = array (
-               'maxSize'  => 5*1024*1024,
+               'maxSize'  => 10*1024*1024,
                'rootPath' => "./Uploads/video/",
                'exts'     => "mp4",
                'autoSub'  => true,
@@ -62,7 +62,7 @@ class VideoController extends Controller {
             
 
 			if ( $video->add() ) {
-				$this->success('上传成功', U("Home/Video/Video/video_add") , $pageRedirectWaitTime);
+				$this->success('上传成功', U("Home/Video/Video/myVideo_list") , $pageRedirectWaitTime);
 			  	exit;
 			}else {
 				$this->error('上传失败', U("Home/Video/Video/video_add") , $pageRedirectWaitTime);
@@ -75,14 +75,19 @@ class VideoController extends Controller {
 
 	public function getVideoInfo() {
 		if ( IS_AJAX ) {
-			// $loginMsg['loginStatus'] = 666;
-			$videoId = 0;
+			
+			// 获取video_id
+			$video_id = I("post.video_id");
+			
 			
 			$loginMsg['loginStatus'] = session("?username");
 			if ( $loginMsg['loginStatus'] ){
-				$loginMsg['username'] = session( "username" );
+				$conditions['user_id'] = session('user_id');
+				$conditions['video_id'] = $video_id;
 				$video = M("video");
-				$dbVideo = $video->find(1);
+				$dbVideo = $video->where($conditions)->find();
+
+				$loginMsg['username'] = session( "username" );
 				$loginMsg['videoLocation'] = __ROOT__."/".substr( $dbVideo['video_dir'].$dbVideo['video_name'], 2 );
 
 			}
@@ -90,6 +95,43 @@ class VideoController extends Controller {
 
 
 		}
+	}
+
+	public function myVideo_list() {
+		$pageRedirectWaitTime = 1;
+		$video = M("video");
+		if ( !session("?user_id")) {
+			// 未登陆
+			$this->error('未登陆', U("Home/Index/Index/index") , $pageRedirectWaitTime);
+			exit;
+		}
+
+		$condition['user_id'] = session("user_id");
+		$condition['video_status'] = 1;
+		$count = $video->where($conditions)->count();
+		$page = new \Think\Page($count, 12);  //每页数据12条
+		$show = $page->show();
+		$videos_list = $video->where($condition)->field("video_id, video_title")->order('video_create_time')->limit($page->firstRow.",".$page->listRows)->select();
+		// dump($videos_list);
+		$this->assign("videos_list", $videos_list);
+		$this->assign("page", $show);
+		$this->display();
+	}
+
+	public function myVideo(){
+		$pageRedirectWaitTime = 1;
+		if ( !session("?user_id")) {
+			// 未登陆
+			$this->error('未登陆', U("Home/Index/Index/index") , $pageRedirectWaitTime);
+			exit;
+		}
+
+		$this->assign("video_title", I('get.video_title'));
+		$this->assign("video_id", I('get.video_id'));
+		// dump(I('get.video_title'));
+		$this->display();
+
+
 	}
 
 }

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>视频原创</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap-submenu.min.css">
+    <!-- 公共css -->
+    <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/CSS/base.css"> -->
+    <!-- 自身css -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/index1/index1.css">
+	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/bootstrap-submenu.min.js"></script>
+    <!-- scroll-top & submenu -->
+    <script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+</head>
+<style>
+		
+</style>
+<body>
+	<nav>
+		{:W('Navigation/nav1')}
+	</nav>
+
+	<div class='row top_head_label'>
+		<div class="container">
+			<div class='col-md-12 '>
+				<h3>视频原创（构建中）</h3>
+			</div>
+		</div>
+	</div>
+
+	<main class='main'>
+		<div class='container'>
+			
+			<div class='row '>
+
+
+				<volist name="videos_list" id="vo">
+					<div class='col-md-3 imgdiv'>
+						<div class='thumbnail'>
+							<div class="image-hover">
+								<img src="__PUBLIC__/images/ddpb.jpg" class='inner-img'>
+								<a href="{:U('Home/Video/Video/myVideo', array('video_title'=> $vo['video_title'], 'video_id'=>$vo['video_id']))}" class="zoom-fadeIn img-fadeIn"></a>
+								<a href="#" class="img-fadeIn"></a>
+								<span class="img-cover"></span>
+							</div>
+						</div>
+						<a class='img-title' href="{:U('Home/Video/Video/myVideo', array('video_title'=> $vo['video_title'], 'video_id'=>$vo['video_id']))}">{$vo.video_title}</a>
+					</div>
+				</volist>
+
+
+
+				
+
+				
+			</div>
+			<div class="row">
+				{$page}
+			</div>
+
+				
+
+			<div class='col-md-12'>
+						<nav aria-label='Page navigation'>
+							<ul class='pagination'>
+								<li>
+									<a href="#" aria-label='Previous'>
+										<span aria-hidden='true'>&laquo;</span>
+									</a>
+								</li>
+								<li><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li>
+									<a href="#" aria-label='Next'>
+										<span aria-hidden='true'>&raquo;</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+
+			</div>
+	</main>
+
+    <footer>
+    	{:W('Footer/footer')}
+    </footer>
+
+</body>
+<script>
+
+</script>
+</html>
