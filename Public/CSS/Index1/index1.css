@@ -281,7 +281,10 @@ body {
 */
 
 .noticeinfo {
+  /*
   height: 150px;
+  */
+  height: 100%; 
   margin-bottom: 80px;
 }
 
