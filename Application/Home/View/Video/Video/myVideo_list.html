@@ -35,7 +35,7 @@
 	<main class='main'>
 		<div class='container'>
 			
-			<div class='row '>
+			<div class='row myVideoList'>
 
 
 				<volist name="videos_list" id="vo">
@@ -46,6 +46,9 @@
 								<a href="{:U('Home/Video/Video/myVideo', array('video_title'=> $vo['video_title'], 'video_id'=>$vo['video_id']))}" class="zoom-fadeIn img-fadeIn"></a>
 								<a href="#" class="img-fadeIn"></a>
 								<span class="img-cover"></span>
+								<a href="#" class="glyphicon glyphicon-trash"></a>
+								<span name="video_id" style="display:none">{$vo.video_id}</span>
+								<!-- <span class="glyphicon glyphicon-trash"></span> -->
 							</div>
 						</div>
 						<a class='img-title' href="{:U('Home/Video/Video/myVideo', array('video_title'=> $vo['video_title'], 'video_id'=>$vo['video_id']))}">{$vo.video_title}</a>
@@ -95,6 +98,38 @@
 
 </body>
 <script>
+$(document).ready(function(){
 
+$(".image-hover .glyphicon-trash").click(function(){
+
+	$deleteConfirm = confirm("确定删除该视频？");
+	if ( !$deleteConfirm ){
+		// 取消删除视频
+		return false;
+	}
+	$video_id = $(this).next("span[name='video_id']").text();
+	// alert( $video_id );
+	// alert( 666 );
+	$videoDeleteMsg = $.ajax({
+		url: $ajaxVideoDeleteUrl,
+		data: "video_id=" + $video_id,
+		type: "GET",
+		async: false,
+		dataType: "json"
+	}).responseJSON;
+	console.log( $videoDeleteMsg );
+
+	if ( $videoDeleteMsg.status == 1 ){
+		$(this).parents(".imgdiv").remove();
+	}
+
+
+	return false;   //点击不跳转
+
+
+});
+
+
+});
 </script>
 </html>

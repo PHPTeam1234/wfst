@@ -51,6 +51,8 @@
 
 						<a href="#" class="zoom-fadeIn img-fadeIn zoom-center video_play" style="color: red"></a>
 						<span class="img-cover"></span>
+						<a href="{:U('Home/Video/Video/videoDelete',array('video_id'=>$video_id))}" class="glyphicon glyphicon-trash"></a>
+						<span name="video_id" style="display:none">{$video_id}</span>
 					</div>
 					<!-- <iframe width="100%" height="300" src='http://player.youku.com/embed/XNDcyMjc1NjI4' frameborder=0 allowfullscreen="allowfullscreen" style="display: none"></iframe> -->
 					
@@ -192,6 +194,16 @@ $( document ).ready(function (){
 
             }
             return false;
+    });
+
+    $(".video_container .video_container_l a.glyphicon-trash").click(function(){
+    	$deleteConfirm = confirm("确定删除该视频？");
+    	if ( !$deleteConfirm ){
+
+    		return false;
+    	}else {
+    		return true;
+    	}
     });
 
 });

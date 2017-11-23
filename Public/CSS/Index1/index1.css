@@ -65,6 +65,21 @@ a:hover {
 .image-hover:hover .img-cover {
     opacity: 0.5;
 }
+
+.image-hover .glyphicon-trash {
+    position: absolute; 
+    right:10px; 
+    top:10px;  
+    font-size: 17px;  
+    width: 20px; 
+    height: 20px;
+    display: none;
+}
+
+.image-hover:hover .glyphicon-trash {
+    display: inline-block;
+    z-index: 10;
+}
       
 .image-hover a.img-fadeIn {
     position: absolute;
