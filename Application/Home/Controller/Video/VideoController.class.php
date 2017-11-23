@@ -134,6 +134,133 @@ class VideoController extends Controller {
 
 	}
 
+	public function videoDelete(){
+		$pageRedirectWaitTime = 1;
+
+		
+			if (!session("?user_id")) {
+				$videoDeleteMsg['status'] = "0";
+				$videoDeleteMsg['info'] = "未登陆，无法进行删除操作";
+				if ( IS_AJAX ) {
+					$this->ajaxReturn( $videoDeleteMsg, "json");
+					exit;
+				}else {
+					$this->error('未登陆，无法进行删除操作', U("Home/Index/Index/index") , $pageRedirectWaitTime);
+					exit;
+				}
+				
+			}
+			$video = M("video");
+			$conditions['video_id'] = I("get.video_id");
+			
+			// $conditions['video_id'] = $_POST['video_id'];
+			$dbVideo = $video->where( $conditions )->field("user_id, video_id, video_dir, video_name")->find();
+			if ( $dbVideo ){
+				// 数据库中视频记录存在
+				if ( session('user_id') == $dbVideo['user_id'] || session('user_id') == 'admin'){
+					// 删除操作是自己本人或者管理员
+
+					// $videoDeleteMsg['video_path'] = __ROOT__."/".substr( $dbVideo['video_dir'].$dbVideo['video_name'], 2 );
+					$videoDeleteMsg['video_path'] = $dbVideo['video_dir'].$dbVideo['video_name'];
+
+					if ( file_exists( $videoDeleteMsg['video_path'] ) ){
+						// 服务器中视频文件存在
+						$isDelete = $video->where("video_id=".$conditions['video_id'])->delete();
+						if ( $isDelete ){
+							// 数据库删除视频记录成功
+							
+							if ( !unlink( $videoDeleteMsg['video_path'] ) ){
+								// 服务器文件删除失败
+								if ( IS_AJAX ) {
+								$videoDeleteMsg['status'] = "0";
+								$videoDeleteMsg['info'] = "服务器文件视频删除失败！";
+								$this->ajaxReturn( $videoDeleteMsg, "json");
+								exit;
+								}else {
+									$this->error('服务器文件视频删除失败！', U("Home/Video/Video/myVideo_list") , $pageRedirectWaitTime);
+									exit;
+								}
+							}
+
+						}else {
+							// 数据库视频记录删除失败
+							if ( IS_AJAX ) {
+								$videoDeleteMsg['status'] = "0";
+								$videoDeleteMsg['info'] = "数据库视频记录删除失败！";
+								$this->ajaxReturn( $videoDeleteMsg, "json");
+								exit;
+							}else {
+								$this->error('数据库视频记录删除失败！', U("Home/Video/Video/myVideo_list") , $pageRedirectWaitTime);
+								exit;
+							}
+						}
+						
+					}else {
+						// 服务器中视频文件不存在，删除数据库中对应记录
+						$isDelete = $video->where("video_id=".$conditions['video_id'])->delete();
+						if ( !$isDelete ) {
+							// 数据库视频记录删除失败
+							if ( IS_AJAX ) {
+								$videoDeleteMsg['status'] = "0";
+								$videoDeleteMsg['info'] = "服务器中视频文件不存在时，数据库视频记录删除失败！";
+								$this->ajaxReturn( $videoDeleteMsg, "json");
+								exit;
+							}else {
+								$this->error('服务器中视频文件不存在时，数据库视频记录删除失败！', U("Home/Video/Video/myVideo_list") , $pageRedirectWaitTime);
+								exit;
+							}
+						}
+
+					}
+					
+
+					// 删除操作
+					$videoDeleteMsg['status'] = "1";
+					$videoDeleteMsg['info'] = "删除成功！";
+					$videoDeleteMsg['video_id'] = $conditions['video_id'];
+					$videoDeleteMsg['sql'] = $video->getLastSql();
+					
+					if ( IS_AJAX ){
+						$this->ajaxReturn( $videoDeleteMsg, "json");
+					}else {
+						// dump($videoDeleteMsg['video_path']);
+						$this->success('删除成功！', U("Home/Video/Video/myVideo_list") , $pageRedirectWaitTime);
+						exit;
+					}
+					
+
+				}else {
+					// 非本人或admin 删除操作
+					$videoDeleteMsg['status'] = "0";
+					$videoDeleteMsg['info'] = "您没有权限删除该视频！";
+					if ( IS_AJAX ) {
+						$this->ajaxReturn( $videoDeleteMsg, "json");
+						exit;
+					}else {
+						$this->error('您没有权限删除该视频！', U("Home/Video/Video/myVideo_list") , $pageRedirectWaitTime);
+						exit;
+					}
+					
+				}
+
+			}else {
+ 				// 数据库中视频记录不存在
+ 				$videoDeleteMsg['status'] = "1";
+				$videoDeleteMsg['info'] = "该视频已删除，无需重复删除";
+				$videoDeleteMsg['video_id'] = $conditions['video_id'];
+				// $videoDeleteMsg['sql'] = $video->getLastSql();
+				if ( IS_AJAX ) {
+					$this->ajaxReturn( $videoDeleteMsg, "json");
+				}else {
+					$this->error('该视频已删除，无需重复删除', U("Home/Video/Video/myVideo_list") , $pageRedirectWaitTime);
+					exit;
+				}
+				
+			}
+
+		
+	}
+
 }
 
 
