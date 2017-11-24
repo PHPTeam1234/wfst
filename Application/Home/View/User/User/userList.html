@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>文峰视听门户网站</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap-submenu.min.css">
+    <!-- 公共css -->
+    <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/CSS/base.css"> -->
+    <!-- 自身css -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/index1/index1.css">
+    <!-- 自身css -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/user/userList.css">
+	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/bootstrap-submenu.min.js"></script>
+    <!-- scroll-top & submenu -->
+    <script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+    <!--表单验证  -->
+    <!-- <script type="text/javascript" src="__PUBLIC__/js/validate/jquery.validate.js"></script> -->
+    <!-- 自定义验证方法 -->
+    <!-- <script type="text/javascript" src="__PUBLIC__/js/validate/additional.js"></script> -->
+    <!-- 自身js -->
+    <!-- <script type="text/javascript" src="__PUBLIC__/js/user/myInfo.js"></script> -->
+   
+</head>
+<body>
+	 <header>
+	 	{:W("Navigation/nav1")}
+	 </header>
+    
+	 <div class="container">
+
+	 	  <div class="panel panel-userList">
+	 	  	<div class="panel-headding">
+	 	  		<h4>用户管理</h4>
+	 	  	</div>
+	 	  	<table class="table">
+	 	  		<tr">
+	 	  			<th>序号</th>
+	 	  			<th>用户id</th>
+	 	  			<th>用户名</th>
+	 	  			<th>昵称</th>
+	 	  			<th>电话号码</th>
+	 	  			<th>邮箱</th>
+	 	  			<th>状态</th>
+	 	  			<th>注册时间</th>
+	 	  			<th>操作</th>
+	 	  		</tr>
+	 	  		<volist name="users" id="user">
+	 	  			<tr>
+	 	  				<td>{$firstRecordNum++}</td>
+	 	  				<td>{$user.id}</td>
+	 	  				<td>{$user.username}</td>
+	 	  				<td>{$user.nickname}</td>
+	 	  				<td>{$user.phone}</td>
+	 	  				<td>{$user.email}</td>
+	 	  				<td>{$user.status}</td>
+	 	  				<td>{$user.register_time|date="Y-m-d",###}</td>
+	 	  				<td>
+	 	  					<div class="btn-group">
+	 	  						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+	 	  							操作<span class="caret"></span>
+	 	  						</button>
+	 	  						<ul class="dropdown-menu">
+	 	  							<li><a href="{:U('Home/User/User/userDelete',array('user_id'=>$user['id']))}">删除</a></li>
+	 	  							<li><a href="{:U('Home/User/User/userInfo',array('user_id'=>$user['id']))}">修改</a></li>
+	 	  						</ul>
+	 	  					</div>
+	 	  				</td>
+	 	  			</tr>
+	 	  		</volist>
+	 	  	</table>
+	 	  	{$page}
+	 	  	
+	 	  </div>
+	 </div>
+
+	 <footer>
+	 	{:W("Footer/footer")}
+	 </footer>
+</body>
+
+<script>
+ 	
+</script>
+
+</html>

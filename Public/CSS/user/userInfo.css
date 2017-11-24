@@ -1,0 +1,25 @@
+.panel-userInfo {
+    background-color: #33383a;
+    margin-top: 40px;
+}
+
+.panel-userInfo input {
+    background-color: #1a1c1e!important;
+}
+
+
+.panel-userInfo .btn {
+    background-color: #a88a58;
+    border: none;
+}
+
+.panel-userInfo .btn:hover {
+    background-color: #cf302d;
+    color: #fff;
+}
+
+.panel-userInfo a {
+    text-shadow: none;
+    color: #333;
+    transition: none;
+}
