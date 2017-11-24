@@ -1,0 +1,25 @@
+.panel-userList {
+    background-color: #33383a;
+    margin-top: 40px;
+}
+
+.panel-myInfo input {
+    background-color: #1a1c1e!important;
+}
+
+
+.panel-myInfo .btn {
+    background-color: #a88a58;
+    border: none;
+}
+
+.panel-myInfo .btn:hover {
+    background-color: #cf302d;
+    color: #fff;
+}
+
+.panel-myInfo a {
+    text-shadow: none;
+    color: #333;
+    transition: none;
+}

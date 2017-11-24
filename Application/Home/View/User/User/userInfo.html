@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>文峰视听门户网站</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap-submenu.min.css">
+    <!-- 公共css -->
+    <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/CSS/base.css"> -->
+    <!-- 自身css -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/index1/index1.css">
+    <!-- 自身css -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/user/userInfo.css">
+	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/bootstrap-submenu.min.js"></script>
+    <!-- scroll-top & submenu -->
+    <script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+    <!--表单验证  -->
+    <script type="text/javascript" src="__PUBLIC__/js/validate/jquery.validate.js"></script>
+    <!-- 自定义验证方法 -->
+    <script type="text/javascript" src="__PUBLIC__/js/validate/additional.js"></script>
+    <!-- 自身js -->
+    <script type="text/javascript" src="__PUBLIC__/js/user/userInfo.js"></script>
+   
+</head>
+<body>
+	 <header>
+	 	{:W("Navigation/nav1")}
+	 </header>
+    
+	 <div class="container">
+
+	 	  <div class="panel panel-userInfo">
+	 	  	<div class="panel-headding">
+	 	  		<h4>个人信息</h4>
+	 	  	</div>
+	 	  	<div class="panel-body">
+	 	  		<form action="{:U('Home/User/User/userUpdate')}" class="form-horizontal" id="userInfoForm" method="post">
+	 	  			
+
+	 	  			<div class="form-group" style="display:none">
+	 	  				<label for="#userInfo_id" class="col-md-1 col-sm-2  control-label">id</label>
+	 	  				<div class="col-md-3 col-sm-5 ">
+	 	  					<input type="text" class="form-control" name="id" id="userInfo_id" value="{$user['id']}" readonly>
+	 	  				</div>
+	 	  			</div>
+
+	 	  			<div class="form-group">
+	 	  				<label for="#userInfo_username" class="col-md-1 col-sm-2  control-label">用户名:</label>
+	 	  				<div class="col-md-3 col-sm-5 ">
+	 	  					<input type="text" class="form-control" name="username" id="userInfo_username" value="{$user['username']}" readonly>
+	 	  				</div>
+	 	  			</div>
+	 	  			
+	 	  			
+	 	  			<div class="form-group">
+	 	  				<label for="#userInfo_phone" class="col-md-1 col-sm-2 control-label">手机:</label>
+	 	  				<div class="col-md-3 col-sm-5">
+	 	  					<input type="text" class="form-control" name="phone" id="userInfo_phone" value="{$user['phone']}">
+	 	  				</div>
+	 	  			</div>
+
+	 	  			<div class="form-group">
+	 	  				<label for="#userInfo_email" class="col-md-1 col-sm-2 control-label">邮箱:</label>
+	 	  				<div class="col-md-3 col-sm-5">
+	 	  					<input type="text" class="form-control" name="email" id="userInfo_email" value="{$user['email']}">
+	 	  				</div>
+	 	  			</div>
+
+	 	  			
+	 	  			<div class="form-group">
+	 	  				<label for="#userInfo_nickname" class="col-md-1 col-sm-2 control-label">昵称:</label>
+	 	  				<div class="col-md-3 col-sm-5">
+	 	  					<input type="text" class="form-control" name="nickname" id="userInfo_nickname" value="{$user['nickname']}">
+	 	  				</div>
+	 	  			</div>
+
+	 	  			<div class="form-group">
+	 	  				<label for="#userInfo_register_time" class="col-md-1 col-sm-2 control-label">注册时间:</label>
+	 	  				<div class="col-md-3 col-sm-5">
+	 	  					<input type="text" class="form-control" name="register_time" id="userInfo_register_time" value="{$user['register_time']|date='Y-m-d', ###}" readonly>
+	 	  				</div>
+	 	  			</div>
+
+	 	  			<div class="form-group">
+	 	  				<label for="#userInfo_address" class="col-md-1 col-sm-2 control-label">地址:</label>
+	 	  				<div class="col-md-4 col-sm-5">
+	 	  					<input type="text" class="form-control" name="address" id="userInfo_address" value="{$user['address']}">
+	 	  				</div>
+	 	  			</div>
+
+	 	  			
+
+	 	  			
+	 	  			<dir class="form-group">
+	 	  				<div class="alert" id="userInfo_message"></div>
+	 	  			</dir>
+
+                    <button type="submit" class="btn btn-default col-md-offset-1 col-sm-offset-2">确定</button>&nbsp;&nbsp;&nbsp;
+                    <a href="{:U('Home/Index/Index/index')}" class="btn ">取消</a>
+
+	 	  		</form>
+
+	 	  	</div>
+	 	  </div>
+	 </div>
+
+	 <footer>
+	 	{:W("Footer/footer")}
+	 </footer>
+</body>
+
+<script>
+ 	
+</script>
+
+</html>
