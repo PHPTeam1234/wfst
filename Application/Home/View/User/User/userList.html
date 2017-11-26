@@ -18,11 +18,11 @@
     <!-- scroll-top & submenu -->
     <script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
     <!--表单验证  -->
-    <!-- <script type="text/javascript" src="__PUBLIC__/js/validate/jquery.validate.js"></script> -->
+    <script type="text/javascript" src="__PUBLIC__/js/validate/jquery.validate.js"></script>
     <!-- 自定义验证方法 -->
-    <!-- <script type="text/javascript" src="__PUBLIC__/js/validate/additional.js"></script> -->
+    <script type="text/javascript" src="__PUBLIC__/js/validate/additional.js"></script>
     <!-- 自身js -->
-    <!-- <script type="text/javascript" src="__PUBLIC__/js/user/myInfo.js"></script> -->
+    <script type="text/javascript" src="__PUBLIC__/js/user/userList.js"></script>
    
 </head>
 <body>
@@ -35,9 +35,29 @@
 	 	  <div class="panel panel-userList">
 	 	  	<div class="panel-headding">
 	 	  		<h4>用户管理</h4>
+	 	  		<div>
+	 	  			<button class="btn btn-success" id="userImportByExcelBtn" data-toggle="modal"  data-target="#userImportByExcel_modal">
+	 	  				Excel 导入用户
+	 	  			</button>
+	 	  		</div>
+	 	  		
+	 	  		<form class="form-inline pull-right user-search-form">
+
+	 	  			<select class="form-control" name="search-condition">
+	 	  				<option value="id">用户ID</option>
+	 	  				<option value="username">用户名</option>
+	 	  				<option value="email">邮箱</option>
+	 	  				<option value="status">状态</option>
+	 	  			</select>
+	 	  			<div class="form-group">
+	 	  				<input type="text" class="form-control" name="search_value">
+	 	  			</div>
+	 	  			<button class="btn btn-default search-form-submit">搜索</button>
+
+	 	  		</form>
 	 	  	</div>
 	 	  	<table class="table">
-	 	  		<tr">
+	 	  		<tr>
 	 	  			<th>序号</th>
 	 	  			<th>用户id</th>
 	 	  			<th>用户名</th>
@@ -49,9 +69,9 @@
 	 	  			<th>操作</th>
 	 	  		</tr>
 	 	  		<volist name="users" id="user">
-	 	  			<tr>
+	 	  			<tr class="table-data-row">
 	 	  				<td>{$firstRecordNum++}</td>
-	 	  				<td>{$user.id}</td>
+	 	  				<td name="user_id">{$user.id}</td>
 	 	  				<td>{$user.username}</td>
 	 	  				<td>{$user.nickname}</td>
 	 	  				<td>{$user.phone}</td>
@@ -64,26 +84,357 @@
 	 	  							操作<span class="caret"></span>
 	 	  						</button>
 	 	  						<ul class="dropdown-menu">
-	 	  							<li><a href="{:U('Home/User/User/userDelete',array('user_id'=>$user['id']))}">删除</a></li>
-	 	  							<li><a href="{:U('Home/User/User/userInfo',array('user_id'=>$user['id']))}">修改</a></li>
+	 	  							<li><a href="#" name="userUpdate">修改</a></li>
+	 	  							<li><a href="#" name="userDelete">删除</a></li>
 	 	  						</ul>
 	 	  					</div>
 	 	  				</td>
 	 	  			</tr>
 	 	  		</volist>
 	 	  	</table>
-	 	  	{$page}
-	 	  	
+	 	  	<nav aria-label="Page navigation">
+	 	  		<ul class="pagination">
+	 	  			<if condition="$pageInfo['totalPages'] egt 5">
+	 	  				<li class="disabled">
+	 	  					<a href="#" aria-label="Previous">
+	 	  						<span aria-hidden="true"><<</span>
+	 	  					</a>
+	 	  				</li>
+	 	  				<li class="active"><a href="#">1</a></li>
+	 	  				<li><a href="#">2</a></li>
+	 	  				<li><a href="#">3</a></li>
+	 	  				<li><a href="#">4</a></li>
+	 	  				<li><a href="#">5</a></li>
+	 	  				<li>
+	 	  					<a href="#" aria-label="Next">
+	 	  						<span aria-hidden="true">>></span>
+	 	  						<span class="totalPages" style="display:none">{$pageInfo['totalPages']}</span>
+	 	  					</a>
+	 	  				</li>
+	 	  				<else />
+	 	  				<li class="disabled" style="display:none">
+	 	  					<a href="#" aria-label="Previous">
+	 	  						<span aria-hidden="true"><<</span>
+	 	  					</a>
+	 	  				</li>
+	 	  				<li class="active"><a href="#">1</a></li>
+	 	  				<for start="2" end="$pageInfo['totalPages']+1">
+	 	  					<li><a href="#">{$i}</a></li>
+	 	  				</for>
+	 	  				<for start="$pageInfo['totalPages']+1" end="6">
+	 	  					<li><a href="#" style="display:none"></a></li>
+	 	  				</for>
+	 	  				<li style="display:none">
+	 	  					<a href="#" aria-label="Next">
+	 	  						<span aria-hidden="true">>></span>
+	 	  						<span class="totalPages" style="display:none">{$pageInfo['totalPages']}</span>
+	 	  					</a>
+	 	  				</li>
+	 	  			</if>
+	 	  		</ul>
+	 	  	</nav>
 	 	  </div>
 	 </div>
 
 	 <footer>
 	 	{:W("Footer/footer")}
 	 </footer>
+
+	 <div class="modal fade userImportByExcel_modal" tabindex="-1" id="userImportByExcel_modal">
+		<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+				<h4 class="modal-title">目前只支持 .xls 后缀文件</h4>
+			</div>
+			<div class="modal-body">
+				
+				<form class="form-horizontal" id="userImportByExcelForm" method="post" action="{:U('Home/User/User/addUserByExcel')}" enctype="multipart/form-data">
+					
+					
+					<!-- <div class="form-group" >
+						<label for="" class="col-md-3 control-label">验证码图片</label>
+						<div class="col-md-6">
+							<img src="" onclick="this.src=this.src+'?'+Math.random()">
+						</div>
+					</div>
+					<div class="form-group">
+
+						<label for="#input_verifyCode" class="col-md-3 control-label">请输入验证码:</label>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="verifyCode" id="input_verifyCode">
+						</div>
+					</div> -->
+					
+
+					<div class="form-group">
+						<label for="#users_file" class="col-md-6 control-label">请选择需要导入的文件:</label>
+						<div class="col-md-6">
+							<input type="file" class="form-control" name="users_file" id="users_file">
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<div class="alert" id="login_message"></div>
+					</div>
+					
+				</form>
+			</div>
+			<div class="modal-footer">
+				<a class="btn btn-info" href="{:U('Home/User/User/downloadTemplet')}">点击下载导入模板文件</a>
+				<button type="submit" class="btn" id="userImportModal_btn">导入</button>
+				<button type="button" class="btn" data-dismiss="modal">取消</button>
+			</div>
+			
+		</div>
+	</div>
+ </div>
+
 </body>
 
 <script>
- 	
-</script>
 
+	
+$(document).ready(function(){
+
+	$.fn.extend({
+
+		tableUserRepaint:function($userInfo, $firstRec){
+			//  $userInfo 用户数据（二维数组）
+			// $firstRec  每页一个用户数据的序号
+			$(this).find("tr.table-data-row").remove(); //删除之前数据
+			
+			
+			for (var i=0; i < $userInfo.length; i++){
+        	$(this).append(
+        		  "<tr class='table-data-row'>"
+        		 +"<td>"+ ( $firstRec + i ) +"</td>"
+        		+"<td name='user_id'>"+ $userInfo[i]['id'] +"</td>"
+        		+"<td>"+ $userInfo[i].username +"</td>"
+        		+"<td>"+ $userInfo[i].nickname +"</td>"
+        		+"<td>"+ $userInfo[i].phone +"</td>"
+        		+"<td>"+ $userInfo[i].email +"</td>"
+        		+"<td>"+ $userInfo[i].status +"</td>"
+        		+"<td>"+ $userInfo[i].register_time +"</td>"
+        		+"<td>"
+        		+"<div class='btn-group'>"
+        		+"<button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'>"
+        		+"操作<span class='caret'></span>"
+        		+"</button>"
+        		+"<ul class='dropdown-menu'>"
+        		+"<li><a href='#' name='userUpdate'>修改</a></li>"
+        		+"<li><a href='#' name='userDelete'>删除</a></li>"
+        		+"</ul>"
+        		+"</div>"
+        		+"</td>"
+        		+"</tr>"
+        		);
+        }
+		},
+		paginationRepaint:function($pageInfo){
+			
+			$(this).empty();
+			
+			$maxPageCount = 5;
+			$pageString = "";
+			if ( $pageInfo.totalPages >= $maxPageCount ){
+				 if ($pageInfo.nowPage >= ($maxPageCount+1)/2 && $pageInfo.nowPage <= ( $pageInfo.totalPages - ($maxPageCount-1)/2) ){
+						$leftLi = "<li>"
+							+"<a href='#'' aria-label='Previous'>"
+							+"<span aria-hidden='true'><<</span>"
+							+"</a></li>";
+						$centerLi = "<li class='active'><a href='#'>" + $pageInfo.nowPage + "</a></li>";
+						for ( $i = ($maxPageCount-1)/2, $j = 1; 1 <= $i; $i--, $j++){
+							$centerLi = "<li><a href='#'>" + ($pageInfo.nowPage-$j) + "</a></li>" + $centerLi;
+						}
+						for ( $i = ($maxPageCount-1)/2, $j = 1; 1 <= $i; $i--, $j++){
+							$centerLi = $centerLi + "<li><a href='#'>" + ($pageInfo.nowPage+$j) + "</a></li>";
+						}
+						$rightLi = "<li>"
+							+"<a href='#'' aria-label='Next'>"
+							+"<span aria-hidden='true'>>></span>"
+							+"<span class='totalPages' style='display:none'>" + $pageInfo.totalPages + "</span>"
+							+"</a></li>";
+						$pageString = $leftLi + $centerLi + $rightLi;
+					}else if ( $pageInfo.nowPage < ($maxPageCount+1)/2 ){
+						$leftLi = "<li "
+							+ ( ($pageInfo.nowPage == 1)?"class='disabled'>":" >" )
+							+"<a href='#'' aria-label='Previous'>"
+							+"<span aria-hidden='true'><<</span>"
+							+"</a></li>";
+						$centerLi = "";
+						for( $i = 1; $i <= $maxPageCount; $i++) {
+							$centerLi = $centerLi + "<li " + ( ($pageInfo.nowPage == $i)?"class='active'>":">" )
+									    + "<a href='#'>" + $i + "</a></li>";
+						}
+						$rightLi = "<li>"
+							+"<a href='#'' aria-label='Next'>"
+							+"<span aria-hidden='true'>>></span>"
+							+"<span class='totalPages' style='display:none'>" + $pageInfo.totalPages + "</span>"
+							+"</a></li>";
+						$pageString = $leftLi + $centerLi + $rightLi;
+					}
+					else {
+						// $pageInfo.nowPage > $pageInfo.nowPage <= ( $pageInfo.totalPages - ($maxPageCount-1)/2)
+						$leftLi = "<li>"
+							+"<a href='#'' aria-label='Previous'>"
+							+"<span aria-hidden='true'><<</span>"
+							+"</a></li>";
+						$centerLi = "";
+						for( $i = $pageInfo.totalPages; $i > ($pageInfo.totalPages - $maxPageCount); $i--) {
+							$centerLi = "<li " + ( ($pageInfo.nowPage == $i)?"class='active'>":">" )
+									    + "<a href='#'>" + $i + "</a></li>" + $centerLi;
+						}
+						$rightLi = "<li "
+							+ ( ($pageInfo.nowPage == $pageInfo.totalPages)?"class='disabled'>":" >" )
+							+"<a href='#'' aria-label='Previous'>"
+							+"<span aria-hidden='true'>>></span>"
+							+"<span class='totalPages' style='display:none'>" + $pageInfo.totalPages + "</span>"
+							+"</a></li>";
+						$pageString = $leftLi + $centerLi + $rightLi;
+					}
+				}else {
+					// $pageInfo.totalPages < $maxPageCount
+					// alert("totalPages:" + $pageInfo.totalPages);
+					for( $i = 1; $i <=  $pageInfo.totalPages; $i++){
+						$pageString = $pageString +  "<li " + ( ($pageInfo.nowPage == $i)?"class='active'>":">" )
+									    + "<a href='#'>" + $i + "</a></li>" ;
+						 // alert($pageString);
+					}
+					// $(this).append($pageString);
+				}
+
+				$(this).append($pageString);
+				
+				
+			}
+	});
+
+
+	$("#userImportModal_btn").click(function(){
+		$("#userImportByExcelForm").submit();
+	});
+	
+	// 根据id, username, email 等搜索 用户
+	 $(".panel-userList .user-search-form button.search-form-submit").click( function(){
+        $search_condition = $(this).siblings("select[name='search-condition']").children("option:selected").val();
+        
+        $search_value = $(this).siblings(".form-group").children("input[name='search_value']").val();
+        // alert("con:"+ $search_condition + "    va:" + $search_value);
+        $ajaxUserSearchUrl = "{:U('Home/User/User/userSearch')}";
+        $searchRst = $.ajax({
+        	url: $ajaxUserSearchUrl,
+        	dataType: "json",
+        	data: "search_condition=" + $search_condition + "&search_value=" + $search_value,
+        	async: false,
+        	type: "GET"
+        }).responseJSON;
+        
+        
+        $pageInfo = $searchRst[$searchRst.length-1];  //页面数据
+        $searchRst.pop();  //弹出最后一条数据($pageInfo)，剩下的为用户数据
+        $(".panel-userList table").tableUserRepaint($searchRst, ( ($pageInfo.nowPage-1)*$pageInfo.maxRecordPage +1 ));   //重画用户表格
+        
+
+        $('nav ul.pagination').paginationRepaint($pageInfo);  //重画页码信息
+		return false;
+
+
+	});
+
+	// ajax delete user 动态绑定
+	$(".panel-userList").on("click","tr.table-data-row a[name='userDelete']",function(){
+		$user_id = $(this).parents(".table-data-row").children("td[name='user_id']").text();
+		$search_condition = $(".panel-userList .user-search-form select[name='search-condition'] option:selected").val();
+		$search_value = $("form.user-search-form").find("input[name='search_value']").val();
+		$serach_page = $("nav ul.pagination li[class='active'] a").text();
+
+		// 删除操作
+		$ajaxUserDeleteUrl = "{:U('Home/User/User/userDelete')}";
+		$deleteMsgAndUserList = $.ajax({
+			url: $ajaxUserDeleteUrl,
+			dataType: "json",
+			async: false,
+			data: "user_id=" + $user_id,
+			type: "GET"
+		}).responseJSON;
+
+		// console.log($deleteMsgAndUserList);
+
+		if ($deleteMsgAndUserList.status == 0){
+			alert("删除失败：" + $deleteMsgAndUserList.info);
+			return false;
+		}
+
+		// 删除成功后重新加载数据
+		$ajaxUserSearchUrl = "{:U('Home/User/User/userSearch')}";
+        $searchRst = $.ajax({
+        	url: $ajaxUserSearchUrl,
+        	dataType: "json",
+        	data: "search_condition=" + $search_condition + "&search_value=" + $search_value + "&p=" + $serach_page,
+        	async: false,
+        	type: "GET"
+        }).responseJSON;
+        
+        
+        $pageInfo = $searchRst[$searchRst.length-1];  //页面数据
+        $searchRst.pop();  //弹出最后一条数据($pageInfo)，剩下的为用户数据
+        $(".panel-userList table").tableUserRepaint($searchRst, ( ($pageInfo.nowPage-1)*$pageInfo.maxRecordPage +1 ));   //重画用户表格
+        
+
+        $('nav ul.pagination').paginationRepaint($pageInfo);  //重画页码信息
+
+		return false;
+
+
+	});
+
+	// 进入修改用户信息页面
+	$(".panel-userList").on("click","tr.table-data-row a[name='userUpdate']",function(){
+		$user_id = $(this).parents(".table-data-row").children("td[name='user_id']").text();
+		$userInfoUrl = "{:U('Home/User/User/userInfo','','')}" + "/user_id/" + $user_id + ".html";
+		$(this).attr("href",$userInfoUrl );
+		// alert($(this).attr("href"));
+		return true;
+	});
+
+	// 翻页(动态绑定)
+	$("nav ul.pagination").on("click","li a",function(){
+		if ( $(this).parent("li").attr("class") == "disabled" ){
+			return false;
+		}
+		$search_condition = $("form.user-search-form").children("select[name='search-condition']").children("option:selected").val();
+        
+        $search_value = $("form.user-search-form").find("input[name='search_value']").val();
+        $serach_page = $(this).text();
+        if ( isNaN($serach_page) ){
+        	if ( $serach_page=="<<" ){
+        		$serach_page = 1;
+        	}else {
+        		$serach_page = $(this).children("span.totalPages").text();
+        	}
+        }
+
+        $ajaxUserSearchUrl = "{:U('Home/User/User/userSearch')}";
+        $searchRst = $.ajax({
+        	url: $ajaxUserSearchUrl,
+        	dataType: "json",
+        	data: "search_condition=" + $search_condition + "&search_value=" + $search_value + "&p=" + $serach_page,
+        	async: false,
+        	type: "GET"
+        }).responseJSON;
+        
+        $pageInfo = $searchRst[$searchRst.length-1];  //页面数据
+        $searchRst.pop();  //弹出最后一条数据($pageInfo)，剩下的为用户数据
+        $(".panel-userList table").tableUserRepaint($searchRst, ( ($pageInfo.nowPage-1)*$pageInfo.maxRecordPage +1 ));   //重画用户表格
+        $('nav ul.pagination').paginationRepaint($pageInfo);  //重画页码信息
+		return false;
+	});
+
+	
+
+});
+</script>
+	
 </html>
