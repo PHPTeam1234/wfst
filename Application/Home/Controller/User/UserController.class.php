@@ -45,6 +45,7 @@ class UserController extends Controller {
 			if ( $isSave === false){
 				// 更新失败
 				$this->error("数据库更新用户信息失败", U("Home/Index/Index/index"), $pageRedirectWaitTime);
+				exit;
 			}
 			// dump($userDAO->getLastSql());
 			$this->success("个人信息修改成功", U("Home/Index/Index/index"), $pageRedirectWaitTime);
@@ -282,17 +283,17 @@ class UserController extends Controller {
 
 				if ( $userDAO->add($userDataCombine) ){
 				// 数据库插入成功
-				$userAddSuccess[] = $userDataCombine['username'];
-				}
-
-				if (count($userAddSuccess) == $userTotalCount){
-					$this->success("用户全部导入成功",U("Home/User/User/userList"), $pageRedirectWaitTime);
-				}else {
-				dump("部分插入成功，插入成功的数据: ");
-				dump($userAddSuccess);
+					$userAddSuccess[] = $userDataCombine['username'];
 				}
 			}
-		exit;
+			if (count($userAddSuccess) == $userTotalCount){
+				$this->success("用户全部导入成功",U("Home/User/User/userList"), $pageRedirectWaitTime);
+				exit;
+			}else {
+				dump("部分插入成功，插入成功的数据: ");
+				dump($userAddSuccess);
+			}
+			exit;
 		}
     }
 
