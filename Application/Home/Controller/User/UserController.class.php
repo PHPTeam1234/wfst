@@ -154,8 +154,9 @@ class UserController extends Controller {
 		$count = null;
 		$page = null;  //
 		$show = null;
+
 		
-        if ( !$search_value ){
+        if ( (!isset($search_value)) || $search_value == "" ){
         	// 若搜索框没有值，则不设置查询条件
         	$count = $user->count();
         	$page = new \Think\Page($count, $maxRecordPage);
@@ -163,13 +164,16 @@ class UserController extends Controller {
         	$show = $page->show();
         	$users = $user->field("id, username, address, phone, email, nickname, status, register_time")->limit($page->firstRow.",".$page->listRows)->select();
         }else {
+        	if ( (I("get.search_condition") == "id") && (!is_numeric( $search_value )) ){
+        		// 由于user_id 字段在数据库中类型为 int, 故当用户查询条件: id = 非数字 时, 直接设置 查询条件不成立
+        		$condition = "0=1";
+        	}
         	$count = $user->where($condition)->count();
         	$page = new \Think\Page($count, $maxRecordPage);
 
         	$show = $page->show();
         	$users = $user->where($condition)->field("id, username, address, phone, email, nickname, status, register_time")->limit($page->firstRow.",".$page->listRows)->select();
         }
-		
 		// 将时间进行转换
 		for( $i = 0; $i < count($users); $i++ ){
 				$users[$i]['register_time'] = date('Y-m-d',$users[$i]['register_time']);
@@ -293,6 +297,103 @@ class UserController extends Controller {
 				dump("部分插入成功，插入成功的数据: ");
 				dump($userAddSuccess);
 			}
+			exit;
+		}
+    }
+
+    public function userPassword(){
+    	
+		if ( !session("?user_id") ){
+			$this->error("未登陆",U("Home/Index/Index/index"), 3);
+			exit;
+		}
+		
+		$this->display();
+    }
+
+    public function changePassByAdmin(){
+
+    	$pageRedirectWaitTime = 1;
+    	if ( session("username") != "admin" ){
+    		
+    		if ( IS_AJAX ){
+    			$passwordChangeMsg['status'] = 0;
+    			$passwordChangeMsg['info'] = "未登陆或者无权修改密码";
+    			$this->ajaxReturn( $passwordChangeMsg, "json" );
+    			exit;
+    		}
+    		$this->error("未登陆或者无权修改密码",U("Home/Index/Index/index"), $pageRedirectWaitTime);
+    		exit;
+    	}
+
+    	$newPassword = I("post.newPassword");
+    	$formUserID = I("post.user_id");
+    	vendor("AuthenticationWFST.AuthenticationWFST");
+		$newPasswordInfo = \AuthenticationWFST::getPasswordAndSalt( $newPassword );
+		$userDAO = M("user");
+		$isSaveSuccess = $userDAO->where("id=".$formUserID)->save( $newPasswordInfo );
+		if ( $isSaveSuccess === false ){
+			// 密码修改失败
+			if ( IS_AJAX ){
+    			$passwordChangeMsg['status'] = 0;
+    			$passwordChangeMsg['info'] = "修改密码失败";
+    			$this->ajaxReturn( $passwordChangeMsg, "json" );
+    			exit;
+    		}
+			$this->error($userDAO->getError(), U("Home/User/User/userInfo"), $pageRedirectWaitTime);
+			exit;
+		}else {
+			// 密码修改成功
+			if ( IS_AJAX ){
+    			$passwordChangeMsg['status'] = 1;
+    			$passwordChangeMsg['info'] = "修改密码成功";
+    			$this->ajaxReturn( $passwordChangeMsg, "json" );
+    			exit;
+    		}
+			$this->success("密码修改成功",U("Home/User/User/userInfo"), $pageRedirectWaitTime);
+			exit;
+		}
+
+
+    }
+
+    public function changePassBySelf(){
+    	
+    	$pageRedirectWaitTime = 1;
+    	if ( !session("?user_id") ){
+    		$this->error("未登陆",U("Home/Index/Index/index"), $pageRedirectWaitTime);
+    	}
+
+    	if ( !( I("post.oldPassword") && I("post.newPassword") && I("post.newPasswordConfirm") ) ){
+    		$this->error("密码信息输入不完整",U("Home/User/User/userPassword"), $pageRedirectWaitTime);
+    	}
+
+
+    	vendor("AuthenticationWFST.AuthenticationWFST");
+    	
+    	$oldPassword = I("post.oldPassword");
+    	$isOldPassCorrect = \AuthenticationWFST::authenticate( session("username"), $oldPassword );
+		if ( !$isOldPassCorrect ){
+			$this->error("原密码不正确", U("Home/User/User/userPassword"), $pageRedirectWaitTime);
+			exit;
+		}
+
+    	if( I("post.newPassword") != I("post.newPasswordConfirm") ){
+    		$this->error("确认密码与新密码必须一致", U("Home/User/User/userPassword"), $pageRedirectWaitTime);
+    		exit;
+    	}
+    	$formUserID = session("user_id");
+    	$newPassword = I("post.newPassword");
+		$newPasswordInfo = \AuthenticationWFST::getPasswordAndSalt( $newPassword );
+		$userDAO = M("user");
+		$isSaveSuccess = $userDAO->where("id=".$formUserID)->save( $newPasswordInfo );
+		if ( $isSaveSuccess === false ){
+			// 密码修改失败
+			$this->error($userDAO->getError(), U("Home/User/User/userInfo"), $pageRedirectWaitTime);
+			exit;
+		}else {
+			// 密码修改成功
+			$this->success("密码修改成功",U("Home/User/User/userInfo"), $pageRedirectWaitTime);
 			exit;
 		}
     }
