@@ -30,6 +30,7 @@ class LoginController extends Controller {
                 // success to auto_validate
 				$condition['username'] = $formUser['username'];
 				$dbUser = $user->where($condition)->field('username, password, salt, id')->find();  
+
                 
 				if ( !$dbUser ) {
 					//用户名不存在
@@ -40,10 +41,12 @@ class LoginController extends Controller {
 				    exit;
 				}
 
-				// 盐处理： md5 ( password.salt )
-				$formUser['password'] = md5( $formUser['password'].$dbUser['salt'] );  //密码对比之前盐处理
-				   
-				if( $formUser['password'] == $dbUser['password'] ){
+				// 密码处理封装在 AuthenticationWFST 中
+				
+				vendor("AuthenticationWFST.AuthenticationWFST");
+				$isPasswordRight = \AuthenticationWFST::authByPassAndSalt( $formUser['password'], $dbUser['salt'], $dbUser['password']);
+
+				 if( $isPasswordRight ) {
 					// 用户名和密码都正确
 
 					$loginMsg['loginStatus'] = 1;
@@ -70,7 +73,7 @@ class LoginController extends Controller {
                     $loginMsg = array(
                              'loginStatus' => 0,
                              'info'          => "用户名或密码错误！",
-                             'sql'           =>  $user->getLastSql(),
+                             // 'sql'           =>  $user->getLastSql(),
                      );
 
 					$this->ajaxReturn( $loginMsg, "json" );
@@ -135,8 +138,11 @@ class LoginController extends Controller {
 
 			if( $user->create() ){
                 // success to auto_validate
- 				$user->salt = substr ( time(), -4, 4 );  //截取时间戳后四位作为 salt 
- 				$user->password = md5( ($user->password).($user->salt) );  //密码加盐用md5加密
+                // AuthenticationWFST 获得处理后的 密码 和 salt
+                vendor("AuthenticationWFST.AuthenticationWFST");
+                $passwordInfo = \AuthenticationWFST::getPasswordAndSalt( $user->password );
+ 				$user->salt = $passwordInfo['salt'];
+ 				$user->password = $passwordInfo['password'];  //密码加盐用md5加密
 
 				if ( $user->add() ) {
                     // 插入成功
@@ -162,6 +168,9 @@ class LoginController extends Controller {
 	
 	public function test() {
 		// test
+
+		$dizhi = "localhost/wfst/index.php/Home/Login/Login/test";
+
 	}
      
 

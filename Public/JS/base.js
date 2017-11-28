@@ -9,7 +9,8 @@ $(document).ready(function(){
 	});
 
 	$('.scroll-top').click(function(){
-		$(window).scrollTop(0);
+       
+        $('body,html').animate({ scrollTop: 0 }, 500);
 
 	});
 

@@ -72,7 +72,7 @@
 	 	  			<tr class="table-data-row">
 	 	  				<td>{$firstRecordNum++}</td>
 	 	  				<td name="user_id">{$user.id}</td>
-	 	  				<td>{$user.username}</td>
+	 	  				<td name="username">{$user.username}</td>
 	 	  				<td>{$user.nickname}</td>
 	 	  				<td>{$user.phone}</td>
 	 	  				<td>{$user.email}</td>
@@ -84,7 +84,8 @@
 	 	  							操作<span class="caret"></span>
 	 	  						</button>
 	 	  						<ul class="dropdown-menu">
-	 	  							<li><a href="#" name="userUpdate">修改</a></li>
+	 	  							<li><a href="#" name="userUpdate">修改信息</a></li>
+	 	  							<li><a href="#" name="passChange">修改密码</a></li>
 	 	  							<li><a href="#" name="userDelete">删除</a></li>
 	 	  						</ul>
 	 	  					</div>
@@ -191,6 +192,54 @@
 	</div>
  </div>
 
+ <div class="modal fade passwordChange_modal" tabindex="-1" id="passwordChange_modal">
+		<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+				<h4 class="modal-title">请输入修改后的密码：</h4>
+			</div>
+			<div class="modal-body">
+				
+				<form class="form-horizontal" id="passChangeByAdminForm" >
+
+					<div class="form-group">
+						<label for="#" class="col-md-6 control-label">user_id</label>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="user_id" readonly>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="#" class="col-md-6 control-label">用户名：</label>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="username" readonly>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="#" class="col-md-6 control-label">请输入修改后的密码：</label>
+						<div class="col-md-6">
+							<input type="password" class="form-control" name="newPassword" id="users_file">
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<div class="alert" id="login_message"></div>
+					</div>
+					
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn" name="passChangeByAdmin_btn">确认修改</button>
+				<button type="button" class="btn" data-dismiss="modal">取消</button>
+			</div>
+			
+		</div>
+	</div>
+ </div>
+
 </body>
 
 <script>
@@ -210,20 +259,21 @@ $(document).ready(function(){
         	$(this).append(
         		  "<tr class='table-data-row'>"
         		 +"<td>"+ ( $firstRec + i ) +"</td>"
-        		+"<td name='user_id'>"+ $userInfo[i]['id'] +"</td>"
-        		+"<td>"+ $userInfo[i].username +"</td>"
-        		+"<td>"+ $userInfo[i].nickname +"</td>"
-        		+"<td>"+ $userInfo[i].phone +"</td>"
-        		+"<td>"+ $userInfo[i].email +"</td>"
-        		+"<td>"+ $userInfo[i].status +"</td>"
-        		+"<td>"+ $userInfo[i].register_time +"</td>"
+        		+"<td name='user_id'>"+ $userInfo[i].id + "</td>"
+        		+"<td name='username'>"+ $userInfo[i].username +"</td>"
+        		+"<td>"+ ($userInfo[i].nickname?$userInfo[i].nickname:"") + "</td>"
+        		+"<td>"+ ($userInfo[i].phone?$userInfo[i].phone:"") + "</td>"
+        		+"<td>"+ ($userInfo[i].email?$userInfo[i].email:"") + "</td>"
+        		+"<td>"+ $userInfo[i].status + "</td>"
+        		+"<td>"+ ($userInfo[i].register_time?$userInfo[i].register_time:"") + "</td>"
         		+"<td>"
         		+"<div class='btn-group'>"
         		+"<button type='button' class='btn btn-default dropdown-toggle' data-toggle='dropdown'>"
         		+"操作<span class='caret'></span>"
         		+"</button>"
         		+"<ul class='dropdown-menu'>"
-        		+"<li><a href='#' name='userUpdate'>修改</a></li>"
+        		+"<li><a href='#' name='userUpdate'>修改信息</a></li>"
+        		+"<li><a href='#' name='passChange'>修改密码</a></li>"
         		+"<li><a href='#' name='userDelete'>删除</a></li>"
         		+"</ul>"
         		+"</div>"
@@ -331,13 +381,13 @@ $(document).ready(function(){
         	type: "GET"
         }).responseJSON;
         
-        
         $pageInfo = $searchRst[$searchRst.length-1];  //页面数据
         $searchRst.pop();  //弹出最后一条数据($pageInfo)，剩下的为用户数据
         $(".panel-userList table").tableUserRepaint($searchRst, ( ($pageInfo.nowPage-1)*$pageInfo.maxRecordPage +1 ));   //重画用户表格
         
 
         $('nav ul.pagination').paginationRepaint($pageInfo);  //重画页码信息
+        $('body,html').animate({ scrollTop: 0 }, 500); //回到顶部
 		return false;
 
 
@@ -404,6 +454,9 @@ $(document).ready(function(){
 		if ( $(this).parent("li").attr("class") == "disabled" ){
 			return false;
 		}
+		if ( $(this).parent("li").attr("class") == "active" ){
+			return false;
+		}
 		$search_condition = $("form.user-search-form").children("select[name='search-condition']").children("option:selected").val();
         
         $search_value = $("form.user-search-form").find("input[name='search_value']").val();
@@ -429,8 +482,40 @@ $(document).ready(function(){
         $searchRst.pop();  //弹出最后一条数据($pageInfo)，剩下的为用户数据
         $(".panel-userList table").tableUserRepaint($searchRst, ( ($pageInfo.nowPage-1)*$pageInfo.maxRecordPage +1 ));   //重画用户表格
         $('nav ul.pagination').paginationRepaint($pageInfo);  //重画页码信息
+        $('body,html').animate({ scrollTop: 0 }, 500); //回到顶部
 		return false;
 	});
+
+	$(".panel-userList table").on("click",".table-data-row a[name='passChange']",function(){
+		$changePassUsername = $(this).parents(".table-data-row").children("td[name='username']").text();
+		$changePassUserId = $(this).parents(".table-data-row").children("td[name='user_id']").text();
+		$("#passChangeByAdminForm").find("input[name='user_id']").val($changePassUserId);
+		$("#passChangeByAdminForm").find("input[name='username']").val($changePassUsername);
+		$("#passChangeByAdminForm").find("input[name='newPassword']").val(null);
+
+		$("#passwordChange_modal").modal("show");
+		return false;
+	});
+
+	$("#passwordChange_modal button[name='passChangeByAdmin_btn']").click(function(){
+		$user_id = $("#passChangeByAdminForm input[name='user_id'] ").val();
+		$username = $("#passChangeByAdminForm input[name='username'] ").val();
+		$newPassword = $("#passChangeByAdminForm input[name='newPassword'] ").val();
+		$passwordChangeByAdminUrl = "{:U('Home/User/User/changePassByAdmin')}";
+		$passChangeMsg = $.ajax({
+			url: $passwordChangeByAdminUrl,
+			data: "user_id=" + $user_id + "&username=" + $username +"&newPassword=" + $newPassword,
+			dataType: "json",
+			type: "post",
+			async: false,
+		}).responseJSON;
+
+		console.log($passChangeMsg);
+
+		$("#passwordChange_modal").modal("hide");
+
+	});
+		
 
 	
 
