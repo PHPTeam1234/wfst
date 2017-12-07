@@ -90,7 +90,7 @@
 	 	  				<div class="col-md-12 col-sm-12">
 	 	  					<!-- <input type="text" style="display: none" class="form-control" name="web_desc1" id="web_desc" value="{$webPortalInfo['web_desc']}"> -->
 	 	  					<!-- <script id="editor" type="text/plain" name="web_desc" style="width:100%;height:100%;"></script> -->
-	 	  					<textarea id="editor_id" name="web_desc" style="width:700px;height:300px;"></textarea>
+	 	  					<textarea id="editor_id" name="web_desc" style="width:700px;height:300px;">{$webPortalInfo['web_desc']}</textarea>
 	 	  				</div>
 	 	  			</div>
 
@@ -99,8 +99,6 @@
                     <a href="{:U('Home/Index/Index/index')}" class="btn ">取消</a>
 
 	 	  		</form>
-
-
 	 	  	</div>
 	 	  </div>
 	 </div>
@@ -114,19 +112,12 @@
 	$(document).ready(function(){
 		// var ue = UE.getEditor('editor');
 
-		// ue.addListener('ready', function(e){
-		// 	UE.getEditor('editor').setContent('{$webPortalInfo["web_desc"]}');
-		// });
-
 		var editor;
         KindEditor.ready(function(K) {
                 editor = K.create('#editor_id',{
-                	themeType : 'simple'
+                	themeType : 'simple',
                 });
-                editor.html('{$webPortalInfo["web_desc"]}');
         });
-	
-		
 	});
  	
 </script>
