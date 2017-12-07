@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>文峰视听门户网站</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap-submenu.min.css">
+    <!-- 公共css -->
+    <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/CSS/base.css"> -->
+    <!-- 自身css -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/index1/index1.css">
+    <!-- 自身css -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/shop/webPortalList.css">
+	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/bootstrap-submenu.min.js"></script>
+    <!-- scroll-top & submenu -->
+    <script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+    <!--表单验证  -->
+    <script type="text/javascript" src="__PUBLIC__/js/validate/jquery.validate.js"></script>
+    <!-- 自定义验证方法 -->
+    <script type="text/javascript" src="__PUBLIC__/js/validate/additional.js"></script>
+    <!-- 自身js -->
+
+</head>
+<body>
+	 <header>
+	 	{:W("Navigation/nav1")}
+	 </header>
+    
+	 <div class="container">
+
+	 	  <div class="panel panel-webPortalList">
+	 	  	<div class="panel-headding">
+	 	  		<h4>购物门户网站页面管理</h4>
+	 	  		<a class="btn btn-success" href="{:U('Home/Shop/Shop/webPortalAdd')}">增加购物门户网站信息</a>
+	 	  	</div>
+	 	  	<table class="table">
+	 	  		<tr>
+	 	  			<!-- <th>序号</th> -->
+	 	  			<th>门户网站id</th>
+	 	  			<th>门户网站名称</th>
+	 	  			<th>门户网站描述</th>
+	 	  			<th>门户网站地址</th>
+	 	  			<th>门户网站显示排名</th>
+	 	  			<th>修改时间</th>
+	 	  		</tr>
+	 	  		<volist name="websPortal" id="web">
+	 	  			<tr class="table-data-row">
+	 	  				<!-- <td>{$firstRecordNum++}</td> -->
+	 	  				<td name="web_id">{$web.web_id}</td>
+	 	  				<td name="web_name">{$web.web_name}</td>
+	 	  				<td name="web_address">{$web.web_address}</td>
+	 	  				<td name="web_desc" value="{$web.web_desc}">{$web.web_desc|mb_substr=0,40,'utf-8'}...</td>
+	 	  				<td name="show_rank">{$web.show_rank}</td>
+	 	  				<td>{$web.edit_time|date="Y-m-d",###}</td>
+	 	  				<td>
+	 	  					<div class="btn-group">
+	 	  						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+	 	  							操作<span class="caret"></span>
+	 	  						</button>
+	 	  						<ul class="dropdown-menu">
+	 	  							<li><a href="{:U('Home/Shop/Shop/webPortalInfo', array('web_id'=>$web['web_id']))}" name="webPortalUpdate">修改门户网站信息</a></li>
+	 	  							<li><a href="{:U('Home/Shop/Shop/webPortalDelete', array('web_id'=>$web['web_id']))}" name="webPortalDelete">删除</a></li>
+	 	  						</ul>
+	 	  					</div>
+	 	  				</td>
+	 	  			</tr>
+	 	  		</volist>
+	 	  	</table>
+	 	  	
+	 	  </div>
+	 </div>
+
+	 <footer>
+	 	{:W("Footer/footer")}
+	 </footer>
+
+</body>
+
+<script>
+
+	
+$(document).ready(function(){
+
+	$(".panel-webPortalList table .table-data-row a[name='webPortalDelete']").click(function(){
+		$web_name = $(this).parents(".table-data-row").find("td[name='web_name']").text();
+		$isConfirm = confirm("是否确定删除购物门户网站：" + $web_name + "?");
+		if ( !$isConfirm ){
+			// 若为 false, 收起下拉菜单
+			$(this).parents(".table-data-row").find(".dropdown-toggle").dropdown('toggle');
+		}
+		return $isConfirm ? true : false;
+
+	});
+	
+
+});
+</script>
+	
+</html>

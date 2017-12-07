@@ -1,0 +1,25 @@
+/*自定义编辑器样式*/
+.edui-default .edui-for-fontsize .edui-listitem-label {
+  color: black!important;
+}
+
+.edui-default .edui-toolbar .edui-button, .edui-default .edui-toolbar .edui-splitbutton, .edui-default .edui-toolbar .edui-menubutton, .edui-default .edui-toolbar .edui-combox {
+  color: black!important;
+}
+
+.edui-default .edui-for-fontfamily .edui-listitem-label{
+  color: black!important;
+}
+
+.edui-default .edui-for-paragraph .edui-listitem-label{
+  color: black!important;
+}
+
+.edui-default .edui-editor-iframeholder {  
+ /*height: 200px;  */
+ background-color: #33383a; 
+}  
+
+textarea{
+   color: black;
+}

@@ -168,8 +168,17 @@ class LoginController extends Controller {
 	
 	public function test() {
 		// test
+		$file = "./Uploads/user/templet/templet.xls";
+		// $file = "templet.xls";
+		// $type = finfo::file($file);
 
+		// new finfo(FILEINFO_MIME); 
+		$finfo = finfo_open(FILEINFO_MIME_TYPE); 
+		echo finfo_file($finfo, $file);
+		finfo_close($finfo);
+		// dump($type);
 		$dizhi = "localhost/wfst/index.php/Home/Login/Login/test";
+
 
 	}
      

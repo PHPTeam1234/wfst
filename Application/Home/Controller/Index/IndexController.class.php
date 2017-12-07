@@ -76,6 +76,13 @@ class IndexController extends Controller {
     }
 
     public function typography(){
+        header("Content-Type: text/html;charset=utf-8"); 
+    	$shopPortalDAO = M("shop_portal");
+    	$shopPortal = $shopPortalDAO->order('show_rank')->select();
+        for($i = 0; $i < count($shopPortal); $i++ ){
+            $shopPortal[$i]['web_desc'] = htmlspecialchars_decode($shopPortal[$i]['web_desc']);
+        }
+    	$this->assign('websPortal', $shopPortal);
     	$this -> display();
     }
 
