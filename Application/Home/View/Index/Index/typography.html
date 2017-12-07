@@ -7,7 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap-submenu.min.css">
 	<!-- 公共css文件 -->
-	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/base.css">
+	<!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/base.css"> -->
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/index1/index1.css">
 	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/jquery.min.js"></script>
 	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/bootstrap-submenu.min.js"></script>
@@ -15,65 +16,51 @@
 	<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
 </head>
 <style>
-
-		
+.panel-bgcolor{
+	background-color: #33383a;
+}
 </style>
+
 <body>
 	<nav>
-		{:W('Navigation/nav')}
+		{:W('Navigation/nav1')}
 	</nav>
+
+	<div class='row top_head_label'>
+		<div class="container">
+			<div class='col-md-12 '>
+				<h3>购物门户网站</h3>
+			</div>
+		</div>
+	</div>
 
 	<main class='main'>
 		<div class='container'>
-			<div clas='row'>
-				<div class='col-md-12  page-title'>
-					<h3>购物门户网站</h3>
-				</div>
-			</div>
-
 			<div class='row'>
-
   				<div class='col-md-2'>
 					<!-- 文峰视听门户网站经营理念 -->
-					<h4 class='panel-header-text'>点击进入网站</h4>
+					<h4 class="nav-left-list-title">点击进入网站</h4>
 					<ul class='nav-left-list'>
-						<li><a href="">天猫商城</a></li>
-						<li><a href="">京东商城</a></li>
-						<li><a href="">亚马逊中国</a></li>
-						<li><a href="">淘宝网</a></li>
-						<li><a href="">易趣网</a></li>
-						<li><a href="">拍拍网</a></li>
+						<volist name="websPortal" id="vo">
+							<li><a href="{$vo.web_address}">{$vo.web_name}</a></li>
+						</volist>
 					</ul>
 				</div>
 
 
 				<div class='col-md-10'>
-					<div class='panel panel-bgcolor'>
-						<div class='panel-heading panel-header-text'>
-							<h3><b>天猫商城</b></h3>
-						</div>
-						<div class='panel-body'>
-							<p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 天猫原名“淘宝商城”，是一个综合性购物网站。淘宝网全新打造的B2C（Business-to-Consumer，商业零售）。其整合数千家品牌商、现货、生产商，为商家和消费者之间提供一站式解决方案。提供100%品质保证的商品，7天无理由退货的售后服务，以及购物积分返现等优质服务。2012年1月11日上午，淘宝商城正式宣布更名为“天猫”。2012年3月29日天猫发布全新Logo形象。2012年11月11日，天猫借光棍节大赚一笔，宣称13小时卖100亿，创世界纪录。</p>
-						</div>
-					</div>
 
-					<div class='panel panel-bgcolor'>
-						<div class='panel-heading panel-header-text'>
-							<h3><b>京东商城</b></h3>
+					<volist name="websPortal" id="vo">
+						<div class='panel panel-bgcolor'>
+						<div class='panel-heading'>
+							<h3>{$vo.web_name}</h3>
 						</div>
 						<div class='panel-body'>
-							<p>&nbsp;&nbsp;&nbsp;  &nbsp;    &nbsp; 京东商城自2004年初涉足电子商务领域以来，专注于该领域的长足发展，凭借在3C领域的深厚积淀，秉承&ldquo;先人后企&rdquo;的发展理念，奉行&ldquo;<A href="/subview/183582/5063859.htm" target="_blank">合作</A>、<A href="/subview/34118/6305448.htm" target="_blank">诚信</A>、<A href="/view/3369.htm" target="_blank">交友</A>&rdquo;的经营理念，先后组建了上海及广州全资子公司，富有战略远见地将华北、华东和<A href="/view/144307.htm" target="_blank">华南</A>三点连成一线，使全国大部分地区都覆盖在京东商城的物流配送网络之下；同时不断加强和充实公司的技术实力，改进并完善售后服务、物流配送及市场推广等各方面的软、硬件设施和服务条件。根据战略规划，京东商城将组建以<A href="/view/2621.htm" target="_blank">北京</A>、<A href="/view/1735.htm" target="_blank">上海</A>、<A href="/subview/6771/10628575.htm" target="_blank">广州</A>和<A href="/view/2585.htm" target="_blank">成都</A>为中心的四大物流平台，以期能为全国用户提供更加快捷的配送服务，进一步深化和拓展公司的业务空间。</p>
+							{$vo.web_desc}
 						</div>
 					</div>
+					</volist>
 
-					<div class='panel panel-bgcolor'>
-						<div class='panel-heading panel-header-text'>
-							<h3><b>亚马逊中国</b></h3>
-						</div>
-						<div class='panel-body'>
-							<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 亚马逊中国是全球最大的<A href="/view/757.htm" target="_blank">电子商务</A>公司亚马逊在中国的网站。一直都秉承&ldquo;以客户为中心&rdquo;的理念，亚马逊中国承诺&ldquo;天天低价，正品行货&rdquo;，致力于从低价、选品、便利三个方面为消费者打造一个可信赖的网上购物环境。亚马逊中国经营图书、音像、软件、图书 、影视等。</p>
-						</div>
-					</div>
 						
 					</div>
 				</div>

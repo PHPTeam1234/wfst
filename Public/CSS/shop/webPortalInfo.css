@@ -1,0 +1,25 @@
+.panel-webPortalInfo {
+    background-color: #33383a;
+    margin-top: 40px;
+}
+
+.panel-webPortalInfo input {
+    background-color: #1a1c1e!important;
+}
+
+
+.panel-webPortalInfo .btn {
+    background-color: #a88a58;
+    border: none;
+}
+
+.panel-webPortalInfo .btn:hover {
+    background-color: #cf302d;
+    color: #fff;
+}
+
+.panel-webPortalInfo a {
+    text-shadow: none;
+    color: #333;
+    transition: none;
+}
