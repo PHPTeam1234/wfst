@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>文峰视听后台管理</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/bootstrap/css/bootstrap.min.css">
+    <!-- 自身css -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/index1/index1.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/admin/index/index.css">
+	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<block name="_header">
+		<!-- 顶部收藏 -->
+		<div class='top'>
+			<div class='container c_top'>
+				<div class='row'>
+					<div class="col-md-4 col-md-offset-8">
+						<div class="top_r">
+							邮箱: 
+							<a href="#">370134974.com</a> |&nbsp;■■■
+							<a href=javascript:window.external.addFavorite('http:/www.wfstin.net','文峰视听')" >收藏本站</a>■■■
+							<a href="#" onClick="this.style.behavio='url(#default#homepage)';this.setHomePage('http:/www.wfstin.com/')">设为主页</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 导航 -->
+		<div class="row">
+			<div class="col-md-12">
+				<!-- Logo&Banner -->
+					<nav class="navbar navbar-inverse">
+					  <div class="container">
+
+					    <!-- 手机的缩小菜单 -->
+					    <div class="navbar-header">
+						    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+						     	<span class="sr-only">Toggle navigation</span>
+						        <span class="icon-bar"></span>
+						        <span class="icon-bar"></span>
+						        <span class="icon-bar"></span>
+						    </button>
+							
+							<!-- Logo图片 -->
+						    <a class="navbar-brand" href="#">
+						    	<img src="__PUBLIC__/images/logo.png">
+						  	</a>
+					    </div>
+
+					    <div class="collapse navbar-collapse" id="navbar" >
+					    </div>
+						    
+						<div class="collapse navbar-collapse" id="mynavbar" >
+						</div>
+
+					  </div><!-- /.container -->
+					</nav>
+			</div>
+		</div>
+						
+
+		<!-- 右下角回到顶部，暂时放在这里 -->
+		<div class='col-md-1'>
+			<div class='scroll-top'>
+				<span class='glyphicon glyphicon-menu-up'></span>
+			</div>
+		</div>
+	</block>
+	<block name="_content">
+		123
+	</block>
+	<block name="_footer">
+		<footer class='main-footer' style='padding-top:20px'>
+			<div class='container'>
+				<!-- 分类，加入，与我们联系 -->
+				<div clas='row'>
+					<div class='col-md-3'>
+						<img src="__PUBLIC__/images/logo.png">
+					</div>
+
+					<div class='col-md-3'>
+						<div class="footer-title">
+							分类
+						</div>
+						<!-- <h4>分类</h4> -->
+						<ul class="categories">
+							<li><a href="#" class="base-a"> 教学区</a>（分类构建中）</li>
+							<li><a href="#" class="base-a">视频区 </a>（分类构建中）</li>
+							<li><a href="#" class="base-a">品牌馆</a>（分类构建中）</li>
+							<li><a href="#" class="base-a"> 购物区</a>（分类构建中）</li>
+							<li><a href="#" class="base-a"> DIY</a>（分类构建中）</li>
+							<li><a href="#" class="base-a">媒体资源下载 </a>（分类构建中）</li>
+							<li><a href="#" class="base-a">广告业务 </a>（分类构建中）</li>
+						</ul>
+					</div>
+
+					<div class='col-md-3'>
+						<div class="footer-title">
+							加入我们的业务通讯
+						</div>
+						<p>为你提供相关的业务咨询服务,欢迎您的来访</p>
+						<!-- <p>欢迎您的来访</p> -->
+						
+						<!-- 若已经登录，就不显示登录按钮 -->
+						<empty name="Think.session.username">
+							<a href="{:U('Home/Login/Login/register')}" id="footer-register-link">注册</a>
+						<else />
+							<a href="{:U('Home/Login/Login/register')}" id="footer-register-link" style="display: none">注册</a>
+						</empty>
+						
+					</div>
+
+					<div class='col-md-3'>
+						<div class="footer-title">
+							与我们联系
+						</div>
+						<p>我们会第一时间为你服务</p>
+						<div>
+							<ul>
+								<li>手机<span> :</span>18277393936</li>
+								<li><span>QQ :</span>370134974|1532575484</li>
+								<li><span>邮箱 :</span>370134974@qq.com</li>
+								<li><span>地址 :</span>广西桂林</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		    <!-- copyright -->
+			<div class='copyright'>
+				<div class='container'>
+					<div class='row'>
+						<div class='col-md-12'>
+							<span>Copyright © 2013—文峰视听. All rights reserved.</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</block>
+</body>
+</html>

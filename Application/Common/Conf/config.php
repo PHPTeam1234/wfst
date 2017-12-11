@@ -6,5 +6,17 @@ return array(
     'TOKEN_NAME'    =>    '__hash__',    // 令牌验证的表单隐藏字段名称，默认为__hash__  
     'TOKEN_TYPE'    =>    'md5',  //令牌哈希验证规则 默认为MD5  
     'TOKEN_RESET'   =>    true,  //令牌验证出错后是否重置令牌 默认为true  
+    //数据库链接
+    'DB_TYPE'               =>  'mysql',     // 数据库类型
+    'DB_HOST'               =>  'localhost', // 服务器地址
+    'DB_NAME'               =>  'wfst_lao4j_tech',          // 数据库名
+    'DB_USER'               =>  'wfst_lao4j_tech',      // 用户名
+    'DB_PWD'                =>  'wfst_lao4j_tech',          // 密码
+    'DB_PORT'               =>  '3306',        // 端口
+    'DB_PREFIX'             =>  '',    // 数据库表前缀
+    //控制器配置
+    'DEFAULT_MODULE'        =>  'Home',  // 默认模块
+    'DEFAULT_CONTROLLER'    =>  'Index/Index', // 默认控制器名称
+    'DEFAULT_ACTION'        =>  'index', // 默认操作名称
 
 );

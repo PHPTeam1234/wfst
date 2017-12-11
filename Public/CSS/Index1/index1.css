@@ -154,6 +154,18 @@ body {
     background-color: #33383a;
 }
 
+._header {
+  margin: 50px;
+}
+
+._content {
+  margin: 50px;
+}
+
+._footer {
+  margin: 50px;
+}
+
 /**
   index公用
 */

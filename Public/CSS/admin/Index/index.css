@@ -1,0 +1,25 @@
+* {
+	margin: 0;
+	padding: 0;
+} 
+html,body {
+	height: 100%
+} /*这里很关键*/ 
+
+/*只有同时为html和body设置height: 100%时，这里的height才生效， 并且随浏览器窗口变化始终保持和浏览器视窗等高*/ 
+.login { 
+	height: 100%; 
+	position: relative; 
+} 
+.login-panel { 
+	width: 600px;
+	height: 300px;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	box-shadow: 0 0 10px 10px #888;
+	margin-top: -250px; 
+	margin-left: -300px;
+	border-radius: 100px 0 100px 0;
+	padding: 50px;
+}
