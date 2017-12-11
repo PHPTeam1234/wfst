@@ -22,6 +22,7 @@
     <script type="text/javascript" src="__PUBLIC__/js/validate/additional.js"></script>
     <!-- 自身js -->
     <!-- <script type="text/javascript" src="__PUBLIC__/js/user/userInfo.js"></script> -->
+    <script type="text/javascript" src="__PUBLIC__/js/shop/webPortalInfo.js"></script>
 
     <!-- 在线编辑器 -->
     <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/ueditor/themes/default/css/additions.css">
@@ -32,7 +33,7 @@
     <!-- kindeditor -->
     <link rel="stylesheet" type="text/css" href="__PUBLIC__/kindeditor/themes/default/default.css">
     <link rel="stylesheet" type="text/css" href="__PUBLIC__/kindeditor/themes/simple/simple.css">
-    <script type="text/javascript" src="__PUBLIC__/kindeditor/kindeditor-all-min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/kindeditor/kindeditor-all.js"></script>
     <script type="text/javascript" src="__PUBLIC__/kindeditor/lang/zh-CN.js"></script>
     
 
@@ -116,6 +117,9 @@
         KindEditor.ready(function(K) {
                 editor = K.create('#editor_id',{
                 	themeType : 'simple',
+                	formatUploadUrl: false,
+                	uploadJson: "{:U('Home/Image/Image/shopWebPortalImgUpload')}",
+                	afterBlur: function(){ this.sync(); } //富文本失去焦点后将内容同步到 textarea
                 });
         });
 	});
