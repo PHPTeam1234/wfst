@@ -24,10 +24,16 @@
     <script type="text/javascript" src="__PUBLIC__/js/shop/webPortalInfo.js"></script>
 
     <!-- 在线编辑器 -->
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/ueditor/themes/default/css/additions.css">
+    <!-- <link rel="stylesheet" type="text/css" href="__PUBLIC__/ueditor/themes/default/css/additions.css">
     <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.all.min.js"></script>
-    <script type="text/javascript" src="__PUBLIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/ueditor/lang/zh-cn/zh-cn.js"></script> -->
+
+    <!-- kindeditor -->
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/kindeditor/themes/default/default.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/kindeditor/themes/simple/simple.css">
+    <script type="text/javascript" src="__PUBLIC__/kindeditor/kindeditor-all.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/kindeditor/lang/zh-CN.js"></script>
 
 </head>
 <body>
@@ -71,7 +77,8 @@
 	 	  			<div class="form-group">
 	 	  				<label for="#web_desc" class="col-md-1 col-sm-2 control-label">网站描述:</label>
 	 	  				<div class="col-md-12 col-sm-12">
-	 	  					<script id="editor" type="text/plain" name="web_desc" style="width:100%;height:100%;"></script>
+	 	  					<!-- <script id="editor" type="text/plain" name="web_desc" style="width:100%;height:100%;"></script> -->
+	 	  					<textarea id="webPortalAdd" name="web_desc" style="width:700px;height:300px;">{$webPortalInfo['web_desc']}</textarea>
 	 	  				</div>
 	 	  			</div>
 
@@ -94,11 +101,16 @@
 
 <script>
 	$(document).ready(function(){
-		var ue = UE.getEditor('editor');
 
-		ue.addListener('ready', function(e){
-			// UE.getEditor('editor').setContent('{$webPortalInfo["web_desc"]}');
-		});
+		var editor;
+        KindEditor.ready(function(K) {
+                editor = K.create('#webPortalAdd',{
+                	themeType : 'simple',
+                	formatUploadUrl: false,
+                	uploadJson: "{:U('Home/Image/Image/shopWebPortalImgUpload')}",
+                	afterBlur: function(){ this.sync(); }  //富文本失去焦点后将内容同步到 textarea
+                });
+        });
 		
 	});
  	

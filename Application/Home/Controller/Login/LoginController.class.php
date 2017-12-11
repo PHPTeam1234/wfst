@@ -173,11 +173,16 @@ class LoginController extends Controller {
 		// $type = finfo::file($file);
 
 		// new finfo(FILEINFO_MIME); 
-		$finfo = finfo_open(FILEINFO_MIME_TYPE); 
-		echo finfo_file($finfo, $file);
-		finfo_close($finfo);
+		// $finfo = finfo_open(FILEINFO_MIME_TYPE); 
+		// echo finfo_file($finfo, $file);
+		// finfo_close($finfo);
 		// dump($type);
+
+		dump(__ROOT__);
+
 		$dizhi = "localhost/wfst/index.php/Home/Login/Login/test";
+
+
 
 
 	}
