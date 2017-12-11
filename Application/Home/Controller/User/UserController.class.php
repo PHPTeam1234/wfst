@@ -14,7 +14,7 @@ class UserController extends Controller {
 			$this->error("未登录", U("Home/Index/Index/index"), 1);
 		}
 		$user_id = I("get.user_id")?I("get.user_id"):session("user_id");
-		if ( $user_id == session("user_id") || session("username") == "admin"){
+		if ( $user_id == session("user_id") || session("username") == "admin1"){
 			$dbUser = $userDAO->where("id=".$user_id)->field('id, username, address, phone, email, nickname, register_time')->find();
 			$this->assign('user', $dbUser);
 			$this->display();
@@ -39,7 +39,7 @@ class UserController extends Controller {
 		$user['nickname'] = I("post.nickname");
 
 
-		if ( session("user_id") == I("post.id") || session("username") == "admin"){
+		if ( session("user_id") == I("post.id") || session("username") == "admin1"){
 			// 自己修改信息或者管理员修改信息
 			$isSave = $userDAO->where( "id=".I("post.id") )->save($user);
 			if ( $isSave === false){
@@ -58,7 +58,7 @@ class UserController extends Controller {
 	public function userList(){
 		$pageRedirectWaitTime = 1;
 		$maxRecordPage = 12;
-		if ( session("?user_id") && session("username") == "admin" ){
+		if ( session("?user_id") && session("username") == "admin1" ){
 			$user = M("user");
 			$count = $user->count();
 			$page = new \Think\Page($count, $maxRecordPage);  //
@@ -86,7 +86,7 @@ class UserController extends Controller {
 
 
 		$pageRedirectWaitTime = 1;
-		if ( session("username") != "admin"){
+		if ( session("username") != "admin1"){
 			$this->error("你未登陆或者没有权限进行该项操作", U("Home/Index/Index/index"), $pageRedirectWaitTime);
 			exit;
 		}
@@ -126,7 +126,7 @@ class UserController extends Controller {
 	public function userSearch(){
          
 		$pageRedirectWaitTime = 1;
-		if ( session("username") != "admin"){
+		if ( session("username") != "admin1"){
 			$this->error("你未登陆或者没有权限进行该项操作", U("Home/Index/Index/index"), $pageRedirectWaitTime);
 			exit;
 		}
@@ -190,7 +190,7 @@ class UserController extends Controller {
 
 	public function addUserByExcel(){
 		
-		if ( session("username") != "admin"){
+		if ( session("username") != "admin1"){
 			$this->error("你未登陆或者没有权限进行该项操作", U("Home/Index/Index/index"), $pageRedirectWaitTime);
 			exit;
 		}
@@ -311,10 +311,10 @@ class UserController extends Controller {
 		$this->display();
     }
 
-    public function changePassByAdmin(){
+    public function changePassByadmin(){
 
     	$pageRedirectWaitTime = 1;
-    	if ( session("username") != "admin" ){
+    	if ( session("username") != "admin1" ){
     		
     		if ( IS_AJAX ){
     			$passwordChangeMsg['status'] = 0;

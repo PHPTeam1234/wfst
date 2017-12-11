@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/admin/index/index.css">
 	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/jquery.min.js"></script>
 	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/admin/index.js"></script>
+
 </head>
 <body>
 	<block name="_header">
@@ -71,7 +73,41 @@
 		</div>
 	</block>
 	<block name="_content">
-		123
+		<div class="content container">
+			<input type="hidden" id="menu" value="{$_GET['menu']}">
+			<div class="row">
+				<!-- 左 -->
+				<div class="col-md-2">
+					<block name="_left">
+						<div class="nav-left">
+							<ul class="list-group">
+							  <a href="javascript:void(0)" class="list-group-item active main">主页</a>
+							  <a href="__URL__/index/menu/main" class="list-group-item main">轮播图管理</a>
+							  <a href="__URL__/index/menu/main" class="list-group-item main">文章推荐管理</a>
+							  <a href="__URL__/index/menu/main" class="list-group-item main">公告管理</a>
+							</ul>
+
+							<ul class="list-group">
+							  <a href="javascript:void(0)" class="list-group-item active user">用户管理</a>
+							  <a href="__MODULE__/User/index/menu/user" class="list-group-item user">用户管理</a>
+							  <a href="__URL__/index/menu/user" class="list-group-item user">添加用户</a>
+							</ul>
+						</div>
+						
+						
+					</block>
+				</div>
+
+				<!-- 右 -->
+				<div class="col-md-10">
+					<block name="_right">
+						<div class="page-header">
+							<h3>欢迎进入后台管理界面</h3>
+						</div>
+					</block>
+				</div>
+			</div>
+		</div>
 	</block>
 	<block name="_footer">
 		<footer class='main-footer' style='padding-top:20px'>

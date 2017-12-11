@@ -6,6 +6,9 @@ html,body {
 	height: 100%
 } /*这里很关键*/ 
 
+/**
+	登录框
+*/
 /*只有同时为html和body设置height: 100%时，这里的height才生效， 并且随浏览器窗口变化始终保持和浏览器视窗等高*/ 
 .login { 
 	height: 100%; 
@@ -22,4 +25,15 @@ html,body {
 	margin-left: -300px;
 	border-radius: 100px 0 100px 0;
 	padding: 50px;
+}
+
+/**
+	首页信息
+*/
+.content {
+	padding: 50px;
+}
+
+.content .nav-left {
+	margin-top: 50px;
 }

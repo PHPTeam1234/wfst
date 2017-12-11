@@ -5,7 +5,7 @@ class ShopController extends Controller{
 
 	public function websPortal(){
 
-		if(session("username") != "admin"){
+		if(session("username") != "admin1"){
 			$this->error("未登陆或者没有权限", U("Home/Index/Index/index"));
 			exit;
 		}
@@ -20,7 +20,7 @@ class ShopController extends Controller{
 
 	public function webPortalAdd(){
 
-		if(session("username") != "admin"){
+		if(session("username") != "admin1"){
 			$this->error("未登陆或者没有权限", U("Home/Index/Index/index"));
 			exit;
 		}
@@ -29,7 +29,7 @@ class ShopController extends Controller{
 	}
 
 	public function webPortalInsert(){
-		if(session("username") != "admin"){
+		if(session("username") != "admin1"){
 			$this->error("未登陆或者没有权限", U("Home/Index/Index/index"));
 			exit;
 		}
@@ -51,7 +51,7 @@ class ShopController extends Controller{
 	}
 
 	public function webPortalDelete(){
-		if(session("username") != "admin"){
+		if(session("username") != "admin1"){
 			$this->error("未登陆或者没有权限", U("Home/Index/Index/index"));
 			exit;
 		}
@@ -71,7 +71,7 @@ class ShopController extends Controller{
 
 	public function webPortalInfo(){
 
-		if(session("username") != "admin"){
+		if(session("username") != "admin1"){
 			$this->error("未登陆或者没有权限", U("Home/Index/Index/index"));
 			exit;
 		}
@@ -88,7 +88,7 @@ class ShopController extends Controller{
 
 	public function webPortalInfoUpdate(){
 
-		if(session("username") != "admin"){
+		if(session("username") != "admin1"){
 			$this->error("未登陆或者没有权限", U("Home/Index/Index/index"));
 			exit;
 		}
