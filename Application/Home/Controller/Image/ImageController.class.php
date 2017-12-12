@@ -18,8 +18,6 @@ class ImageController extends Controller{
 			'saveName' => 'uniqid',
 		);
 
-		
-
 		$upload = new \Think\Upload( $config );
 		$info = $upload->upload();
 		if ( !$info ) {
@@ -33,8 +31,6 @@ class ImageController extends Controller{
 
 		$imageDAO->image_title = "";
 		$imageDAO->image_desc = "";
-		$imageDAO->webportal_id = I('get.webProtalId');
-		$imageDAO->webportal_name = I('get.webProtalName');
 		$imageDAO->user_id = session('user_id');
 		$imageDAO->image_dir = $config['rootPath'].$info['imgFile']['savepath'];
 		$imageDAO->image_name = $info['imgFile']['savename'];
