@@ -118,7 +118,7 @@
                 editor = K.create('#editor_id',{
                 	themeType : 'simple',
                 	formatUploadUrl: false,
-                	uploadJson: "{:U('Home/Image/Image/shopWebPortalImgUpload')}",
+                	uploadJson: "{:U('Home/Image/Image/shopWebPortalImgUpload', array('webProtalName'=>$webPortalInfo['web_name'], 'webProtalId'=>$webPortalInfo['web_id'] ))}",
                 	afterBlur: function(){ this.sync(); } //富文本失去焦点后将内容同步到 textarea
                 });
         });
