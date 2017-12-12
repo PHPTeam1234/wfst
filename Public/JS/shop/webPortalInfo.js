@@ -4,9 +4,9 @@ $(document).ready(function(){
         		web_name: {
         			required: true,
         		},
-        		web_desc: {
-        			required: true,
-        		},
+        		// web_desc: {
+        		// 	required: true,
+        		// },
         		web_address: {
         			required: true,
         			url: true,
@@ -21,9 +21,9 @@ $(document).ready(function(){
 					web_name: {
 						required: "请输入网站名称",
 					},
-					web_desc: {
-						required: "请输入网站描述",
-					},
+					// web_desc: {
+					// 	required: "请输入网站描述",
+					// },
 					web_address: {
 						required: "请输入网站地址",
 						url: "请输入正确的网站格式 (必须为 http://example.com  或者 https://example.com)"

@@ -6,7 +6,7 @@
   margin: 0 auto;
 }
 
-img {
+img{
   width: 100%;
 }
 
@@ -429,3 +429,10 @@ ul.nav-left-list li a:hover{
       color: #FFFFFF;
 }
 
+.shop_webportal_desc img {
+  width: auto;
+}
+
+.ke-dialog-row img {
+  width: auto;
+}

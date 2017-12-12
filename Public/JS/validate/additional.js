@@ -4,7 +4,8 @@
         submitHandler: function ( form ) {
                 // $('#registerForm').submit(); 这样写会出现死循环
                 form.submit();
-            }
+            },
+        ignore: "",
         } );
 
 	// Older "accept" file extension method. Old docs: http://docs.jquery.com/Plugins/Validation/Methods/accept
