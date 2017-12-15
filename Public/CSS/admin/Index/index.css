@@ -37,3 +37,8 @@ html,body {
 .content .nav-left {
 	margin-top: 50px;
 }
+
+.table {
+	background-color: #FFF;
+	color: black;
+}

@@ -11,7 +11,6 @@
 	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/jquery.min.js"></script>
 	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="__PUBLIC__/js/admin/index.js"></script>
-
 </head>
 <body>
 	<block name="_header">
@@ -89,8 +88,8 @@
 
 							<ul class="list-group">
 							  <a href="javascript:void(0)" class="list-group-item active user">用户管理</a>
-							  <a href="__MODULE__/User/index/menu/user" class="list-group-item user">用户管理</a>
-							  <a href="__URL__/index/menu/user" class="list-group-item user">添加用户</a>
+							  <a href="{:U('User/index',array('menu'=>'user'))}" class="list-group-item user">用户管理</a>
+							  <a href="{:U('User/add',array('menu'=>'user'))}" class="list-group-item user">添加用户</a>
 							</ul>
 						</div>
 						
@@ -179,5 +178,7 @@
 			</div>
 		</footer>
 	</block>
+
 </body>
+	
 </html>
