@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/admin/index/index.css">
 	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/jquery.min.js"></script>
 	<script type="text/javascript" src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/kindeditor/kindeditor-all-min.js"></script>
 	<script type="text/javascript" src="__PUBLIC__/js/admin/index.js"></script>
 </head>
 <body>
@@ -91,6 +92,11 @@
 							  <a href="{:U('User/index',array('menu'=>'user'))}" class="list-group-item user">用户管理</a>
 							  <a href="{:U('User/add',array('menu'=>'user'))}" class="list-group-item user">添加用户</a>
 							</ul>
+
+							<ul class="list-group">
+							  <a href="javascript:void(0)" class="list-group-item active website">网站管理</a>
+							  <a href="{:U('Website/shopMgr',array('menu'=>'website'))}" class="list-group-item user">购物门户网站管理</a>
+							</ul>
 						</div>
 						
 						
@@ -118,50 +124,11 @@
 					</div>
 
 					<div class='col-md-3'>
-						<div class="footer-title">
-							分类
-						</div>
-						<!-- <h4>分类</h4> -->
-						<ul class="categories">
-							<li><a href="#" class="base-a"> 教学区</a>（分类构建中）</li>
-							<li><a href="#" class="base-a">视频区 </a>（分类构建中）</li>
-							<li><a href="#" class="base-a">品牌馆</a>（分类构建中）</li>
-							<li><a href="#" class="base-a"> 购物区</a>（分类构建中）</li>
-							<li><a href="#" class="base-a"> DIY</a>（分类构建中）</li>
-							<li><a href="#" class="base-a">媒体资源下载 </a>（分类构建中）</li>
-							<li><a href="#" class="base-a">广告业务 </a>（分类构建中）</li>
-						</ul>
-					</div>
-
-					<div class='col-md-3'>
-						<div class="footer-title">
-							加入我们的业务通讯
-						</div>
-						<p>为你提供相关的业务咨询服务,欢迎您的来访</p>
-						<!-- <p>欢迎您的来访</p> -->
-						
-						<!-- 若已经登录，就不显示登录按钮 -->
-						<empty name="Think.session.username">
-							<a href="{:U('Home/Login/Login/register')}" id="footer-register-link">注册</a>
-						<else />
-							<a href="{:U('Home/Login/Login/register')}" id="footer-register-link" style="display: none">注册</a>
-						</empty>
 						
 					</div>
 
 					<div class='col-md-3'>
-						<div class="footer-title">
-							与我们联系
-						</div>
-						<p>我们会第一时间为你服务</p>
-						<div>
-							<ul>
-								<li>手机<span> :</span>18277393936</li>
-								<li><span>QQ :</span>370134974|1532575484</li>
-								<li><span>邮箱 :</span>370134974@qq.com</li>
-								<li><span>地址 :</span>广西桂林</li>
-							</ul>
-						</div>
+						
 					</div>
 				</div>
 			</div>

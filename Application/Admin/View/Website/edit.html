@@ -1,0 +1,46 @@
+<extend name="Index:index" />
+
+<block name="_right">
+	<div class="page-header">
+		<h3>文峰视听购物官网管理-编辑页面</h3>
+		<a href="{:U('shopmgr',array('menu'=>'website'))}" class="btn btn-success">返回</a>
+	</div>
+	<div class="">
+		<form class="form-horizontal" action="{:U('save')}" method="post">
+		  <input type="hidden" name="web_id" value="{$website.web_id}">
+		  <div class="form-group">
+		    <label for="web_name" class="col-sm-2 control-label">网站名称</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" name="web_name" placeholder="网站名称"
+		      value="{$website.web_name}" >
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="web_address" class="col-sm-2 control-label">网站地址</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" name="web_address" placeholder="网站地址" value="{$website.web_address}">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="show_rank" class="col-sm-2 control-label">网站显示排名</label>
+		    <div class="col-sm-10">
+		      <input type="text" class="form-control" name="show_rank" placeholder="网站显示排名" value="{$website.show_rank}">
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <label for="show_rank" class="col-sm-2 control-label">网站描述</label>
+		    <div class="col-sm-10">
+		      <textarea name="web_desc" style="height: 400px;" class="form-control">
+		      	{$website.web_desc}
+		      </textarea>
+		    </div>
+		  </div>
+		  <div class="form-group">
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <button type="submit" class="btn btn-primary">提交</button>
+		      <button type="reset" class="btn btn-danger">重置</button>
+		    </div>
+		  </div>
+		</form>
+	</div>
+</block>
