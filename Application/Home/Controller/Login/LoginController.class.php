@@ -3,96 +3,135 @@ namespace Home\Controller\Login;
 use Think\Controller;
 class LoginController extends Controller {
 
+
+	/**				
+	*@return 1.Browser 非ajax请求：,$this->assign(username等信息)$this->success(error) 页面跳转
+			 2.Browser ajax请求: 返回 json 信息：{ 'username': "", 'loginStatus':"", 'info': ""}
+			 3.移动端请求: 返回 json 信息：{ 'username': "", 'loginStatus':"", 'info': ""}
+    *@date 2017-12-18
+	*/
 	public function login() {
-        
+
         $noVerifyCode = 0;  //控制是否需要验证码，方便测试 1: 不用验证码，0：需要验证码
-
         $verify = A("Home/VerifyCode/VerifyCode");
+        $user = D("User");
+        $formVerifyCode = $_POST['verifyCode'];
+        $loginPlatform = I('get.loginPlatform');
+        if ( $loginPlatform == "browser" ){
+        	if( !$formUser = $user->token(false)->create() ){    //取消 token 令牌
+	            // fail to auto_validate 
+	        	$loginMsg['loginStatus'] = 0;
+	        	$loginMsg['info'] = $user->getError();
+	        	$this->ajaxReturn($loginMsg,'json');
+	        	exit;
+        	}
+        }
 
-		if( IS_AJAX ){
-			$user = D("User");
-			$formVerifyCode = $_POST['verifyCode'];
+        if ( $loginPlatform == "mobileClient" ){
+        	// 对用 json对象传输的数据进行处理(移动客户端默认json传输)
+        	$userJson = file_get_contents("php://input");
+        	$formUser = (array)json_decode($userJson) ;
+        	$formUser['username'] = htmlspecialchars( $formUser['username'] );
+        	$formUser['password'] = htmlspecialchars( $formUser['password'] );
+        }
+        
 
-            // 验证码
-			if( $noVerifyCode || $verify->check_verify( $formVerifyCode ) ){
-                    // 验证码输入正确
-
-				if( !$formUser = $user->token(false)->create() ){    //取消 token 令牌
-                    // fail to auto_validate 
-
-				    $loginMsg['loginStatus'] = 0;
-				    $loginMsg['info'] = $user->getError();
+        if ( $loginPlatform == "browser" ){
+        	// 浏览器登陆方式
+        	if ( !$verify->check_verify( $formVerifyCode ) ){
+        		// 验证码错误
+        		if ( IS_AJAX ){
+        			$loginMsg['loginStatus'] = 0;
+				    $loginMsg['info'] = "验证码错误！";
 				    $this->ajaxReturn($loginMsg,'json');
 				    exit;
-			    }
+        		}else {
+        			$this->error("验证码错误，请重新登陆!", U("Home/Index/Index/index"));
+        			exit;
+        		}
+        	}else {
+        		// 验证码正确
+        	}
 
+        }else if ( $loginPlatform == "mobileClient" ){
+        	//移动客户端登陆方式
+        }else {
+        	// 其他登陆方式
+        }
 
-                // success to auto_validate
-				$condition['username'] = $formUser['username'];
-				$dbUser = $user->where($condition)->field('username, password, salt, id')->find();  
+        vendor("WFST.UserService.UserService");
+        $dbUser = \UserService::getUserInfoByUsername( $formUser['username'] );
 
-                
-				if ( !$dbUser ) {
-					//用户名不存在
-					$loginMsg['loginStatus'] = 0;
-				    $loginMsg['info'] = "用户名或密码错误！";
-				    // $loginMsg['LastSql'] = $user->getLastSql();
-				    $this->ajaxReturn( $loginMsg,'json' );
-				    exit;
+        if ( !$dbUser ) {
+			//用户名不存在
+			if ( $loginPlatform == "browser" ){
+				// browser
+				if ( !IS_AJAX ){
+					// 非ajax
+					$this->error("用户名或密码错误！", U("Home/Index/Index/index") );
+					exit;
 				}
-
-				// 密码处理封装在 AuthenticationWFST 中
-				
-				vendor("AuthenticationWFST.AuthenticationWFST");
-				$isPasswordRight = \AuthenticationWFST::authByPassAndSalt( $formUser['password'], $dbUser['salt'], $dbUser['password']);
-
-				 if( $isPasswordRight ) {
-					// 用户名和密码都正确
-
-					$loginMsg['loginStatus'] = 1;
-					$loginMsg['username'] = $dbUser['username'];
-					$loginMsg['id'] = $dbUser['id'];
-					$loginMsg['info'] = "登陆成功！";
-					$loginMsg['isRememberMe'] = $_POST['isRememberMe'];
-
-                    // 设置 session  thinkphp 设置单个 session expire 无效
-                    session( 'username', $dbUser['username'] );
-                    session( 'user_id', $dbUser['id'] );
-                    session( 'loginStatus', 1 );
-
-                    // 设置 cookie  expire 有效
-                    if ( $_POST['isRememberMe'] == "on" ) {
-                    	//if check RememberMe 
-                        cookie( 'username', $dbUser['username'], 3600*12*15 );
-                    }
-
-					// 返回 ajax
-                    $this->ajaxReturn( $loginMsg, 'json' );
-				}else {
-					// password incorrect
-                    $loginMsg = array(
-                             'loginStatus' => 0,
-                             'info'          => "用户名或密码错误！",
-                             // 'sql'           =>  $user->getLastSql(),
-                     );
-
-					$this->ajaxReturn( $loginMsg, "json" );
-				}
-
-			}else{
-                    // 验证码错误
-				    $loginMsg = array(
-                             'loginStatus' => 0,
-                             'info'          => "验证码错误！",
-                     );
-				    $this->ajaxReturn( $loginMsg, "json" );
-
 			}
-
-
-
-
+			// browser Ajax请求 和 mobileClient情况使用 $this->ajaxReturn
+			$loginMsg['loginStatus'] = 0;
+		    $loginMsg['info'] = "用户名或密码错误！";
+		    // $loginMsg['LastSql'] = $user->getLastSql();
+		    $this->ajaxReturn( $loginMsg,'json' );
+		    exit;
 		}
+
+		vendor("AuthenticationWFST.AuthenticationWFST");
+		$isPasswordRight = \AuthenticationWFST::authByPassAndSalt( $formUser['password'], $dbUser['salt'], $dbUser['password']);
+
+		if ( !$isPasswordRight ) {
+			//密码不正确
+			if ( $loginPlatform == "browser" ){
+				// browser
+				if ( !IS_AJAX ){
+					// 非ajax
+					$this->error("用户名或密码错误！", U("Home/Index/Index/index") );
+					exit;
+				}
+			}
+			// browser Ajax请求 和 mobileClient情况使用 $this->ajaxReturn
+			$loginMsg['loginStatus'] = 0;
+		    $loginMsg['info'] = "用户名或密码错误！";
+		    // $loginMsg['LastSql'] = $user->getLastSql();
+		    $this->ajaxReturn( $loginMsg,'json' );
+		    exit;
+		}
+
+		$loginMsg['loginStatus'] = 1;
+		$loginMsg['username'] = $dbUser['username'];
+		$loginMsg['id'] = $dbUser['id'];
+		$loginMsg['info'] = "登陆成功！";
+		$loginMsg['isRememberMe'] = $_POST['isRememberMe'];
+
+        // 设置 session  thinkphp 设置单个 session expire 无效
+        session( 'username', $dbUser['username'] );
+        session( 'user_id', $dbUser['id'] );
+        session( 'loginStatus', 1 );
+
+        // 设置 cookie  expire 有效
+        if ( $_POST['isRememberMe'] == "on" ) {
+        	//if check RememberMe 
+            cookie( 'username', $dbUser['username'], 3600*12*15 );
+        }
+
+        if ( $loginPlatform == "browser"){
+        	if ( !IS_AJAX ){
+        		// browser  非ajax请求使用页面跳转
+        		$this->assign('username', $dbUser['username'] );
+        		$this->assign('user_id', $dbUser['id'] );
+        		$this->assign('info', '登陆成功！' );
+        		$this->assign('loginStatus', 1 );
+        		$this->success("登陆成功！", U('Home/Index/Index/index') );
+        		exit;
+        	}
+        }
+		// browser Ajax请求 和 mobileClient情况使用 $this->ajaxReturn
+        $this->ajaxReturn( $loginMsg, 'json' );
+        exit;
 	}
 
 	public function logout() {
@@ -178,7 +217,18 @@ class LoginController extends Controller {
 		// finfo_close($finfo);
 		// dump($type);
 
-		dump(__ROOT__);
+		// dump(__ROOT__);
+
+		$userJson = file_get_contents("php://input");
+        $formUser = (array)json_decode($userJson) ; 
+
+        $loginMsg = array(
+        	'loginStatus' => 666,
+        	'username' => $formUser['username'],
+        	'password' => $formUser['password']
+        );
+
+        $this->ajaxReturn( $loginMsg,'json' );
 
 		$dizhi = "localhost/wfst/index.php/Home/Login/Login/test";
 
