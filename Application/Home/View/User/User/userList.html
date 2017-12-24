@@ -44,7 +44,7 @@
 	 	  		<form class="form-inline pull-right user-search-form">
 
 	 	  			<select class="form-control" name="search-condition">
-	 	  				<option value="id">用户ID</option>
+	 	  				<option value="user_id">用户ID</option>
 	 	  				<option value="username">用户名</option>
 	 	  				<option value="email">邮箱</option>
 	 	  				<option value="status">状态</option>
@@ -71,7 +71,7 @@
 	 	  		<volist name="users" id="user">
 	 	  			<tr class="table-data-row">
 	 	  				<td>{$firstRecordNum++}</td>
-	 	  				<td name="user_id">{$user.id}</td>
+	 	  				<td name="user_id">{$user.user_id}</td>
 	 	  				<td name="username">{$user.username}</td>
 	 	  				<td>{$user.nickname}</td>
 	 	  				<td>{$user.phone}</td>
@@ -259,7 +259,7 @@ $(document).ready(function(){
         	$(this).append(
         		  "<tr class='table-data-row'>"
         		 +"<td>"+ ( $firstRec + i ) +"</td>"
-        		+"<td name='user_id'>"+ $userInfo[i].id + "</td>"
+        		+"<td name='user_id'>"+ $userInfo[i].user_id + "</td>"
         		+"<td name='username'>"+ $userInfo[i].username +"</td>"
         		+"<td>"+ ($userInfo[i].nickname?$userInfo[i].nickname:"") + "</td>"
         		+"<td>"+ ($userInfo[i].phone?$userInfo[i].phone:"") + "</td>"
@@ -443,7 +443,7 @@ $(document).ready(function(){
 	// 进入修改用户信息页面
 	$(".panel-userList").on("click","tr.table-data-row a[name='userUpdate']",function(){
 		$user_id = $(this).parents(".table-data-row").children("td[name='user_id']").text();
-		$userInfoUrl = "{:U('Home/User/User/userInfo','','')}" + "/user_id/" + $user_id + ".html";
+		$userInfoUrl = "{:U('Home/User/User/userInfo','','')}" + "/user_id/" + $user_id + "/queryPlatform/"+"browser"+".html";
 		$(this).attr("href",$userInfoUrl );
 		// alert($(this).attr("href"));
 		return true;

@@ -7,53 +7,167 @@ class UserController extends Controller {
 
 	}
 
+
+	/**		用户信息查询		
+	*@return 1.Browser 非ajax请求：,$this->assign(user等信息)$this->success(error) 页面跳转
+			 2.Browser ajax请求: 返回 json 信息：{ '用户信息': "", 'queryStatus':" 0 | 1", 'info': "失败|成功"}
+			 3.移动端请求: 返回 json 信息：{ '用户信息': "", 'queryStatus':" 0 | 1", 'info': "失败|成功"}
+    *@date 2017-12-24
+	*/
 	public function userInfo(){
-		$pageRedirectWaitTime = 1;
+		$queryPlatform = "";
+		$errorMsg = "";
+		$isQuerySuccess = false;
+		$dbUser;
 		$userDAO = M("user");
-		if ( !session("?user_id") ) {
-			$this->error("未登录", U("Home/Index/Index/index"), 1);
-		}
-		$user_id = I("get.user_id")?I("get.user_id"):session("user_id");
-		if ( $user_id == session("user_id") || session("username") == "admin"){
-			$dbUser = $userDAO->where("id=".$user_id)->field('id, username, address, phone, email, nickname, register_time')->find();
-			$this->assign('user', $dbUser);
-			$this->display();
+		$user_id;
+		$queryPlatform;
+
+		if ( session("?user_id") ){
+			// 用户已登录
+			$user_id = I("get.user_id")?I("get.user_id"):session("user_id");
+			$queryPlatform = I("get.queryPlatform");
+
+			if ( ( $user_id != session('user_id') ) && (session('username') != "admin") ){
+				// 无权或者未登陆
+				$isQuerySuccess = false;
+				$errorMsg = "无权查看用户信息或者未登录";
+			}else {
+				// 
+				vendor("WFST.UserService.UserService");
+	        	$dbUser = \UserService::getUserInfoById( $user_id );
+	        	if ( $dbUser ) {
+	        		$isQuerySuccess = true;
+	        	}else {
+	        		$isQuerySuccess = false;
+	        		$errorMsg = "数据库查询失败或该用户不存在";
+	        	}
+			}
 		}else {
-			$this->error("你没有权限查看该用户的信息", U("Home/Index/Index/index"), $pageRedirectWaitTime);
+			// 用户未登陆
+			$isQuerySuccess = false;
+	        $errorMsg = "用户未登陆无法查询信息";
 		}
-		
-	}
 
-	public function userUpdate(){
-		$pageRedirectWaitTime = 1;
-		$userDAO = M("user");
-		if ( !session("?user_id") ) {
-			$this->error("未登录", U("Home/Index/Index/index"), $pageRedirectWaitTime);
-			exit;
-		}
-		
-		// $user['id'] = I("post.id");
-		$user['phone'] = I("post.phone")?I("post.phone"):null;
-		$user['address'] = I("post.address");
-		$user['email'] = I("post.email");
-		$user['nickname'] = I("post.nickname");
-
-
-		if ( session("user_id") == I("post.id") || session("username") == "admin"){
-			// 自己修改信息或者管理员修改信息
-			$isSave = $userDAO->where( "id=".I("post.id") )->save($user);
-			if ( $isSave === false){
-				// 更新失败
-				$this->error("数据库更新用户信息失败", U("Home/Index/Index/index"), $pageRedirectWaitTime);
+		if ( ($queryPlatform == "browser") && (!IS_AJAX) ){
+			if( $isQuerySuccess == true ){
+				$this->assign( 'user', $dbUser );
+				$this->display();
+				exit;
+			}else {
+				$this->error( $errorMsg , U("Home/Index/Index/index"));
 				exit;
 			}
-			// dump($userDAO->getLastSql());
-			$this->success("个人信息修改成功", U("Home/Index/Index/index"), $pageRedirectWaitTime);
-		}else{
-			$this->error("你没有权限修改该用户的信息", U("Home/Index/Index/index"), $pageRedirectWaitTime);
+		} else {
+			if ( $isQuerySuccess == true ){
+				$dbUser['queryStatus'] = 1;
+				$dbUser['info'] = "查询成功";
+				$this->ajaxReturn( $dbUser, 'json' );
+				exit;
+			}else {
+				$errorJson['queryStatus'] = 0;
+				$errorJson['info'] = $errorMsg;
+				$this->ajaxReturn( $errorJson, 'json' );
+				exit;
+			}
+			
+		}
+	}
+
+
+	/**		用户信息更新		
+	*@return 1.Browser 非ajax请求：,$this->assign(user等信息)$this->success(error) 页面跳转
+			 2.Browser ajax请求: 返回 json 信息：{  'queryStatus':" 0 | 1", 'info': "失败|成功"}
+			 3.移动端请求: 返回 json 信息：{  'queryStatus':" 0 | 1", 'info': "失败|成功"}
+    *@date 2017-12-24
+	*/
+	public function userUpdate(){
+
+		$updatePlatform = "";
+		$errorMsg = "";
+		$isUpdateSuccess = false;
+		$user;
+		$user_id;
+		$updatePlatform;
+		$userServiceUpdateRst;
+
+		$updatePlatform = I("get.updatePlatform");
+
+		if ( session("?user_id") ){
+			// 用户已登录
+
+			if ( $updatePlatform == "mobileClient" ){
+				// 移动端
+				$userJson = file_get_contents("php://input");
+				$formUser = (array)json_decode( $userJson );
+
+				$user_id = htmlspecialchars( $formUser['user_id'] ) ? htmlspecialchars( $formUser['user_id'] ) : session("user_id");
+
+				$user['user_id'] = $user_id;
+				$user['phone'] = htmlspecialchars( $formUser['phone'] );
+				$user['email'] = htmlspecialchars( $formUser['email'] );
+				$user['nickname'] = htmlspecialchars( $formUser['nickname'] );
+				$user['address'] = htmlspecialchars( $formUser['address'] );
+
+			}else {
+				// browser端
+				$user_id = I("post.user_id")?I("post.user_id"):session("user_id");
+				$user['user_id'] = $user_id;
+				$user['phone'] = I("post.phone")?I("post.phone"):null;
+				$user['address'] = I("post.address");
+				$user['email'] = I("post.email");
+				$user['nickname'] = I("post.nickname");
+			}
+
+			if ( ( $user_id != session('user_id') ) && (session('username') != "admin") ){
+				// 无权或者未登陆
+				$isUpdateSuccess = false;
+				$errorMsg = "无权修改用户信息或者未登录";
+			}else {
+				// 
+				vendor("WFST.UserService.UserService");
+	        	$userServiceUpdateRst = \UserService::updateUserInfo( $user );
+	        	if ( $userServiceUpdateRst ) {
+	        		$isUpdateSuccess = true;
+	        	}else {
+	        		$isUpdateSuccess = false;
+	        		$errorMsg = "数据库修改失败或该用户不存在";
+	        	}
+			}
+		}else {
+			// 用户未登陆
+			$isUpdateSuccess = false;
+	        $errorMsg = "用户未登陆无法修改信息";
 		}
 
+		if ( ($updatePlatform == "browser") && (!IS_AJAX) ){
+			if( $isUpdateSuccess == true ){
+				// 信息修改成功
+				$this->success( "个人信息修改成功", U("Home/Index/Index/index") );
+				exit;
+			}else {
+				// 信息修改失败
+				$this->error( $errorMsg , U("Home/Index/Index/index"));
+				exit;
+			}
+		} else {
+			if ( $isUpdateSuccess == true ){
+				// 信息修改成功( $updatePlatform == "mobileClient")
+				$updateRst['updateStatus'] = 1;
+				$updateRst['info'] = "修改成功！";
+				$this->ajaxReturn( $updateRst, 'json' );
+				exit;
+			}else {
+				// 信息修改失败( $updatePlatform == "mobileClient")
+				$updateRst['updateStatus'] = 0;
+				$updateRst['info'] = $errorMsg;
+				$this->ajaxReturn( $updateRst, 'json' );
+				exit;
+			}
+			
+		}
 	}
+
 
 	public function userList(){
 		$pageRedirectWaitTime = 1;
@@ -63,7 +177,7 @@ class UserController extends Controller {
 			$count = $user->count();
 			$page = new \Think\Page($count, $maxRecordPage);  //
 			$show = $page->show();
-			$users = $user->field("id, username, address, phone, email, nickname, status, register_time")->order('register_time')->limit($page->firstRow.",".$page->listRows)->select();
+			$users = $user->field("user_id, username, address, phone, email, nickname, status, register_time")->order('register_time')->limit($page->firstRow.",".$page->listRows)->select();
 			// dump($videos_list);
 			$this->assign("users", $users);
 			$this->assign("page", $show);
@@ -93,8 +207,8 @@ class UserController extends Controller {
 
 
 		$userDAO = M("user");
-		$user['id'] = I("get.user_id");
-		$isDelete = $userDAO->where("id=".$user['id'])->delete();
+		$user['user_id'] = I("get.user_id");
+		$isDelete = $userDAO->where("user_id=".$user['user_id'])->delete();
 
 		if ( IS_AJAX ){
 			if ( $isDelete === false ){
@@ -135,8 +249,8 @@ class UserController extends Controller {
 		$search_value = I("get.search_value");
 
 		switch(I("get.search_condition")){
-			case "id": 
-				$condition['id'] = $search_value;
+			case "user_id": 
+				$condition['user_id'] = $search_value;
 				break;
 			case "username": 
 				$condition['username'] = $search_value;
@@ -162,9 +276,9 @@ class UserController extends Controller {
         	$page = new \Think\Page($count, $maxRecordPage);
         	
         	$show = $page->show();
-        	$users = $user->field("id, username, address, phone, email, nickname, status, register_time")->limit($page->firstRow.",".$page->listRows)->select();
+        	$users = $user->field("user_id, username, address, phone, email, nickname, status, register_time")->limit($page->firstRow.",".$page->listRows)->select();
         }else {
-        	if ( (I("get.search_condition") == "id") && (!is_numeric( $search_value )) ){
+        	if ( (I("get.search_condition") == "user_id") && (!is_numeric( $search_value )) ){
         		// 由于user_id 字段在数据库中类型为 int, 故当用户查询条件: id = 非数字 时, 直接设置 查询条件不成立
         		$condition = "0=1";
         	}
@@ -172,7 +286,7 @@ class UserController extends Controller {
         	$page = new \Think\Page($count, $maxRecordPage);
 
         	$show = $page->show();
-        	$users = $user->where($condition)->field("id, username, address, phone, email, nickname, status, register_time")->limit($page->firstRow.",".$page->listRows)->select();
+        	$users = $user->where($condition)->field("user_id, username, address, phone, email, nickname, status, register_time")->limit($page->firstRow.",".$page->listRows)->select();
         }
 		// 将时间进行转换
 		for( $i = 0; $i < count($users); $i++ ){
@@ -331,7 +445,7 @@ class UserController extends Controller {
     	vendor("AuthenticationWFST.AuthenticationWFST");
 		$newPasswordInfo = \AuthenticationWFST::getPasswordAndSalt( $newPassword );
 		$userDAO = M("user");
-		$isSaveSuccess = $userDAO->where("id=".$formUserID)->save( $newPasswordInfo );
+		$isSaveSuccess = $userDAO->where("user_id=".$formUserID)->save( $newPasswordInfo );
 		if ( $isSaveSuccess === false ){
 			// 密码修改失败
 			if ( IS_AJAX ){
@@ -386,7 +500,7 @@ class UserController extends Controller {
     	$newPassword = I("post.newPassword");
 		$newPasswordInfo = \AuthenticationWFST::getPasswordAndSalt( $newPassword );
 		$userDAO = M("user");
-		$isSaveSuccess = $userDAO->where("id=".$formUserID)->save( $newPasswordInfo );
+		$isSaveSuccess = $userDAO->where("user_id=".$formUserID)->save( $newPasswordInfo );
 		if ( $isSaveSuccess === false ){
 			// 密码修改失败
 			$this->error($userDAO->getError(), U("Home/User/User/userInfo"), $pageRedirectWaitTime);

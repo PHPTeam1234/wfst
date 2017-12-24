@@ -103,13 +103,13 @@ class LoginController extends Controller {
 
 		$loginMsg['loginStatus'] = 1;
 		$loginMsg['username'] = $dbUser['username'];
-		$loginMsg['id'] = $dbUser['id'];
+		$loginMsg['user_id'] = $dbUser['user_id'];
 		$loginMsg['info'] = "登陆成功！";
 		$loginMsg['isRememberMe'] = $_POST['isRememberMe'];
 
         // 设置 session  thinkphp 设置单个 session expire 无效
         session( 'username', $dbUser['username'] );
-        session( 'user_id', $dbUser['id'] );
+        session( 'user_id', $dbUser['user_id'] );
         session( 'loginStatus', 1 );
 
         // 设置 cookie  expire 有效
@@ -122,7 +122,7 @@ class LoginController extends Controller {
         	if ( !IS_AJAX ){
         		// browser  非ajax请求使用页面跳转
         		$this->assign('username', $dbUser['username'] );
-        		$this->assign('user_id', $dbUser['id'] );
+        		$this->assign('user_id', $dbUser['user_id'] );
         		$this->assign('info', '登陆成功！' );
         		$this->assign('loginStatus', 1 );
         		$this->success("登陆成功！", U('Home/Index/Index/index') );
@@ -219,16 +219,18 @@ class LoginController extends Controller {
 
 		// dump(__ROOT__);
 
-		$userJson = file_get_contents("php://input");
-        $formUser = (array)json_decode($userJson) ; 
+		// $userJson = file_get_contents("php://input");
+  //       $formUser = (array)json_decode($userJson) ; 
 
-        $loginMsg = array(
-        	'loginStatus' => 666,
-        	'username' => $formUser['username'],
-        	'password' => $formUser['password']
-        );
+  //       $loginMsg = array(
+  //       	'loginStatus' => 666,
+  //       	'username' => $formUser['username'],
+  //       	'password' => $formUser['password']
+  //       );
 
-        $this->ajaxReturn( $loginMsg,'json' );
+  //       $this->ajaxReturn( $loginMsg,'json' );
+
+		dump(session("user_id"));
 
 		$dizhi = "localhost/wfst/index.php/Home/Login/Login/test";
 

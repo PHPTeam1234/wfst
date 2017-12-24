@@ -37,13 +37,13 @@
 	 	  		<h4>个人信息</h4>
 	 	  	</div>
 	 	  	<div class="panel-body">
-	 	  		<form action="{:U('Home/User/User/userUpdate')}" class="form-horizontal" id="userInfoForm" method="post">
+	 	  		<form action="{:U('Home/User/User/userUpdate/updatePlatform/browser')}" class="form-horizontal" id="userInfoForm" method="post">
 	 	  			
 
 	 	  			<div class="form-group" style="display:none">
-	 	  				<label for="#userInfo_id" class="col-md-1 col-sm-2  control-label">id</label>
+	 	  				<label for="#userInfo_id" class="col-md-1 col-sm-2  control-label">user_id</label>
 	 	  				<div class="col-md-3 col-sm-5 ">
-	 	  					<input type="text" class="form-control" name="id" id="userInfo_id" value="{$user['id']}" readonly>
+	 	  					<input type="text" class="form-control" name="user_id" id="userInfo_id" value="{$user['user_id']}" readonly>
 	 	  				</div>
 	 	  			</div>
 
@@ -104,7 +104,7 @@
 	 	  		</form>
 
 	 	  		<div class="row">
-	 	  			<a class="btn btn-danger" href="{:U('Home/User/User/userPassword', array('user_id'=>$user['id'], 'username'=>$user['username']))}">修改密码</a>
+	 	  			<a class="btn btn-danger" href="{:U('Home/User/User/userPassword', array('user_id'=>$user['user_id'], 'username'=>$user['username']))}">修改密码</a>
 	 	  		</div>
 
 	 	  	</div>
