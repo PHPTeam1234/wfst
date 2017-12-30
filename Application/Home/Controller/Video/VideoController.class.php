@@ -33,7 +33,7 @@ class VideoController extends Controller {
 
 
 		$config = array (
-               'maxSize'  => 10*1024*1024,
+               'maxSize'  => 1000*1024*1024,
                'rootPath' => "./Uploads/video/",
                'exts'     => "mp4",
                'autoSub'  => true,
@@ -62,7 +62,7 @@ class VideoController extends Controller {
             
 
 			if ( $video->add() ) {
-				$this->success('上传成功', U("Home/Video/Video/myVideo_list") , $pageRedirectWaitTime);
+				$this->success('上传成功', U("Home/Video/Video/myVideoList/platform/browser") , $pageRedirectWaitTime);
 			  	exit;
 			}else {
 				$this->error('上传失败', U("Home/Video/Video/video_add") , $pageRedirectWaitTime);
@@ -74,48 +74,182 @@ class VideoController extends Controller {
 
 
 	public function getVideoInfo() {
-		if ( IS_AJAX ) {
-			
-			// 获取video_id
-			$video_id = I("post.video_id");
-			
-			
-			$loginMsg['loginStatus'] = session("?username");
-			if ( $loginMsg['loginStatus'] ){
-				$conditions['user_id'] = session('user_id');
-				$conditions['video_id'] = $video_id;
-				$video = M("video");
-				$dbVideo = $video->where($conditions)->find();
 
-				$loginMsg['username'] = session( "username" );
-				$loginMsg['videoLocation'] = __ROOT__."/".substr( $dbVideo['video_dir'].$dbVideo['video_name'], 2 );
+		$isQuerySuccess = false;
+		$errorMsg;
+		$platform = I('get.platform');
+		$videoInfo;
+		$video_id = I("get.video_id");
 
+		if ( !session('?user_id') ) {
+			$isQuerySuccess = false;
+			$errorMsg = "未登陆，请先登陆！";
+		}else {
+			vendor("WFST.VideoService.VideoService");
+			$condition['user_id'] = session("user_id");
+			$condition['video_status'] = 1;
+			$condition['video_id'] = $video_id;
+       		
+			$videoQueryRst = \VideoService::getOneVideoInfo( $condition );
+			if ( $videoQueryRst['queryStatus'] ){
+				// 数据库查询成功
+				$videosListData = $videoQueryRst['data'];
+				$isQuerySuccess = true;
+
+			}else {
+				// 数据库查询失败
+				$isQuerySuccess = false;
+				$errorMsg = "数据库查询过程失败！";
 			}
-			$this->ajaxReturn( $loginMsg, "json" );
-
-
 		}
-	}
 
-	public function myVideo_list() {
-		$pageRedirectWaitTime = 1;
-		$video = M("video");
-		if ( !session("?user_id")) {
-			// 未登陆
-			$this->error('未登陆', U("Home/Index/Index/index") , $pageRedirectWaitTime);
+		if ( $platform == "browser" && ( !IS_AJAX ))  {
+			// 使用页面跳转返回的情况
+			if ( $isQuerySuccess ){
+				//  browser平台 非 ajax 查询成功
+				dump( $videosListData );
+				exit;
+
+			}else {
+				// browser平台 非 ajax 查询失败
+				$this->error( $errorMsg, U('Home/Index/Index/index') );
+				exit;
+			}
+		} else {
+			// 使用 json 返回的情况
+			$videoJsonRst;
+			if ( $isQuerySuccess ){
+				//    查询成功
+				$videoJsonRst = array(
+					'queryStatus' => 1,
+					'info' => '查询成功',
+					'data' => $videosListData,
+					// 以下用于browser 端
+					'loginStatus' => session("?username"),
+					'videoLocation' => __ROOT__."/".substr( $videosListData['video_dir'].$videosListData['video_name'], 2 ), 
+					'username' => session( "username" )
+				);
+				
+				
+			}else {
+				// 
+				$videoJsonRst = array(
+					'queryStatus' => 0,
+					'info' => $errorMsg,
+					// 以下用于browser 端
+					'loginStatus' => session("?username"),
+					'username' => session( "username" )
+				);
+				
+			}
+			$this->ajaxReturn( $videoJsonRst, 'json');
 			exit;
 		}
 
-		$condition['user_id'] = session("user_id");
-		$condition['video_status'] = 1;
-		$count = $video->where($conditions)->count();
-		$page = new \Think\Page($count, 12);  //每页数据12条
-		$show = $page->show();
-		$videos_list = $video->where($condition)->field("video_id, video_title")->order('video_create_time')->limit($page->firstRow.",".$page->listRows)->select();
-		// dump($videos_list);
-		$this->assign("videos_list", $videos_list);
-		$this->assign("page", $show);
-		$this->display();
+		// if ( IS_AJAX ) {
+		// 	// 获取video_id
+		// 	$video_id = I("post.video_id");
+		// 	$loginMsg['loginStatus'] = session("?username");
+		// 	if ( $loginMsg['loginStatus'] ){
+		// 		$conditions['user_id'] = session('user_id');
+		// 		$conditions['video_id'] = $video_id;
+		// 		$video = M("video");
+		// 		$dbVideo = $video->where($conditions)->find();
+		// 		$loginMsg['username'] = session( "username" );
+		// 		$loginMsg['videoLocation'] = __ROOT__."/".substr( $dbVideo['video_dir'].$dbVideo['video_name'], 2 );
+		// 	}
+		// 	$this->ajaxReturn( $loginMsg, "json" );
+		// }
+
+	}
+
+	public function myVideoList() {
+
+		$maxRecordPerPage = 12;
+		$isQuerySuccess = false;
+		$errorMsg;
+		$platform = I('get.platform');
+		$videosListData;
+
+		if ( !session('?user_id') ) {
+			$isQuerySuccess = false;
+			$errorMsg = "未登陆，请先登陆！";
+		}else {
+			vendor("WFST.VideoService.VideoService");
+			$condition['user_id'] = session("user_id");
+			$condition['video_status'] = 1;
+       		$videoCount = \VideoService::getVideoCount( $condition );
+       		$page = new \Think\Page( $videoCount, $maxRecordPerPage );  //每页数据12条
+			$show = $page->show();
+			$videoQueryRst = \VideoService::getVideosListWithLimit( $condition, $page->firstRow, $page->listRows );
+			if ( $videoQueryRst['queryStatus'] ){
+				// 数据库查询成功
+				$videosListData = $videoQueryRst['data'];
+				$isQuerySuccess = true;
+
+			}else {
+				// 数据库查询失败
+				$isQuerySuccess = false;
+				$errorMsg = "数据库查询过程失败！";
+			}
+		}
+
+		if ( $platform == "browser" && ( !IS_AJAX ))  {
+			// 使用页面跳转返回的情况
+			if ( $isQuerySuccess ){
+				//  browser平台 非 ajax 查询成功
+				$this->assign('videos_list', $videosListData);
+				$this->assign('page', $show);
+				$this->display();
+				exit;
+
+			}else {
+				// browser平台 非 ajax 查询失败
+				$this->error( $errorMsg, U('Home/Index/Index/index') );
+				exit;
+			}
+		} else {
+			// 使用 json 返回的情况
+			$videoJsonRst;
+			if ( $isQuerySuccess ){
+				//   查询成功
+				$videoJsonRst = array(
+					'queryStatus' => 1,
+					'info' => '查询成功',
+					'data' => $videosListData,
+				);
+			}else {
+				//  查询失败
+				$videoJsonRst = array(
+					'queryStatus' => 0,
+					'info' => $errorMsg,
+				);
+			}
+			$this->ajaxReturn( $videoJsonRst, 'json');
+			exit;
+		}
+
+
+
+
+		// $pageRedirectWaitTime = 1;
+		// $video = M("video");
+		// if ( !session("?user_id")) {
+		// 	// 未登陆
+		// 	$this->error('未登陆', U("Home/Index/Index/index") , $pageRedirectWaitTime);
+		// 	exit;
+		// }
+
+		// $condition['user_id'] = session("user_id");
+		// $condition['video_status'] = 1;
+		// $count = $video->where($conditions)->count();
+		// $page = new \Think\Page($count, 12);  //每页数据12条
+		// $show = $page->show();
+		// $videos_list = $video->where($condition)->field("video_id, video_title")->order('video_create_time')->limit($page->firstRow.",".$page->listRows)->select();
+		// // dump($videos_list);
+		// $this->assign("videos_list", $videos_list);
+		// $this->assign("page", $show);
+		// $this->display();
 	}
 
 	public function myVideo(){
@@ -177,7 +311,7 @@ class VideoController extends Controller {
 								$this->ajaxReturn( $videoDeleteMsg, "json");
 								exit;
 								}else {
-									$this->error('服务器文件视频删除失败！', U("Home/Video/Video/myVideo_list") , $pageRedirectWaitTime);
+									$this->error('服务器文件视频删除失败！', U("Home/Video/Video/myVideoList") , $pageRedirectWaitTime);
 									exit;
 								}
 							}
@@ -190,7 +324,7 @@ class VideoController extends Controller {
 								$this->ajaxReturn( $videoDeleteMsg, "json");
 								exit;
 							}else {
-								$this->error('数据库视频记录删除失败！', U("Home/Video/Video/myVideo_list") , $pageRedirectWaitTime);
+								$this->error('数据库视频记录删除失败！', U("Home/Video/Video/myVideoList") , $pageRedirectWaitTime);
 								exit;
 							}
 						}
@@ -206,7 +340,7 @@ class VideoController extends Controller {
 								$this->ajaxReturn( $videoDeleteMsg, "json");
 								exit;
 							}else {
-								$this->error('服务器中视频文件不存在时，数据库视频记录删除失败！', U("Home/Video/Video/myVideo_list") , $pageRedirectWaitTime);
+								$this->error('服务器中视频文件不存在时，数据库视频记录删除失败！', U("Home/Video/Video/myVideoList") , $pageRedirectWaitTime);
 								exit;
 							}
 						}
@@ -224,7 +358,7 @@ class VideoController extends Controller {
 						$this->ajaxReturn( $videoDeleteMsg, "json");
 					}else {
 						// dump($videoDeleteMsg['video_path']);
-						$this->success('删除成功！', U("Home/Video/Video/myVideo_list") , $pageRedirectWaitTime);
+						$this->success('删除成功！', U("Home/Video/Video/myVideoList") , $pageRedirectWaitTime);
 						exit;
 					}
 					
@@ -237,7 +371,7 @@ class VideoController extends Controller {
 						$this->ajaxReturn( $videoDeleteMsg, "json");
 						exit;
 					}else {
-						$this->error('您没有权限删除该视频！', U("Home/Video/Video/myVideo_list") , $pageRedirectWaitTime);
+						$this->error('您没有权限删除该视频！', U("Home/Video/Video/myVideoList") , $pageRedirectWaitTime);
 						exit;
 					}
 					
@@ -252,7 +386,7 @@ class VideoController extends Controller {
 				if ( IS_AJAX ) {
 					$this->ajaxReturn( $videoDeleteMsg, "json");
 				}else {
-					$this->error('该视频已删除，无需重复删除', U("Home/Video/Video/myVideo_list") , $pageRedirectWaitTime);
+					$this->error('该视频已删除，无需重复删除', U("Home/Video/Video/myVideoList") , $pageRedirectWaitTime);
 					exit;
 				}
 				

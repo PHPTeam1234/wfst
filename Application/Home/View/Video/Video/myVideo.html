@@ -162,7 +162,7 @@ $( document ).ready(function (){
          
             // 获取登陆状态和视频信息
             $videoInfo = $.ajax( {
-                url: $ajaxGetVideoInfo,
+                url: $ajaxGetVideoInfo + "/video_id/" + event.data.video_id,
                 dataType: "json",
                 data: "video_id=" + event.data.video_id,
                 async: false,

@@ -80,10 +80,10 @@
 $(document).ready(function(){
 	
 	 $ajaxLoginUrl = "{:U('Home/Login/Login/login/loginPlatform/browser','','')}";  //生成 ajax login url，以便在 .js 文件中调用
-	 $ajaxLogoutUrl = "{:U('Home/Login/Login/logout','','')}"; //生成 ajax logout url，以便在 .js 文件中调用
+	 $ajaxLogoutUrl = "{:U('Home/Login/Login/logout/logoutPlatform/browser','','')}"; //生成 ajax logout url，以便在 .js 文件中调用
 	 $ajaxRegisterUrl = "{:U('Home/Login/Login/register','','')}";  //生成 ajax register url，以便在 .js 文件中调用
 	 $verifyCodeUrl = "{:U('Home/VerifyCode/VerifyCode/verifyCode','','')}";  //生成 verifyCode url，以便在 .js 文件中调用
-	 $ajaxGetVideoInfo = "{:U('Home/Video/Video/getVideoInfo')}"; //获取视频信息
+	 $ajaxGetVideoInfo = "{:U('Home/Video/Video/getVideoInfo/platform/browser','','')}"; //获取视频信息
 	 $ajaxGetVerifyCode = "{:U('Home/VerifyCode/VerifyCode/getVerifyCode')}";   //用于 ajax 判断验证码是否正确
 	 $ajaxVideoDeleteUrl = "{:U('Home/Video/Video/videoDelete')}";   //用于 ajax 判断验证码是否正确
 

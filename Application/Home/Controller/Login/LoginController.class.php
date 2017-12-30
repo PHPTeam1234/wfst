@@ -4,7 +4,7 @@ use Think\Controller;
 class LoginController extends Controller {
 
 
-	/**				
+	/**		用户登陆
 	*@return 1.Browser 非ajax请求：,$this->assign(username等信息)$this->success(error) 页面跳转
 			 2.Browser ajax请求: 返回 json 信息：{ 'username': "", 'loginStatus':"", 'info': ""}
 			 3.移动端请求: 返回 json 信息：{ 'username': "", 'loginStatus':"", 'info': ""}
@@ -134,8 +134,23 @@ class LoginController extends Controller {
         exit;
 	}
 
+	/**		用户退出登录		
+	*@return 1.Browser 非ajax请求：, 退出成功或失败：页面跳转到主页
+			 2.Browser ajax请求: 返回 json 信息：{ 'info': "", 'logoutStatus':"0|1", 'redirect_location': ""}
+			 3.移动端请求: 返回 json 信息：{ 'info': "", 'logoutStatus':"0|1", 'redirect_location': ""}
+    *@date 2017-12-26
+	*/
 	public function logout() {
-		if( IS_AJAX ){
+		$isLogoutSuccess = false;
+		$logoutPlatform;
+		$errorMsg;
+		$logoutPlatform = I('get.logoutPlatform');
+		$logoutMsg;
+
+		if ( !session( "?user_id") ){
+			$isLogoutSuccess = false;
+			$errorMsg = "您未登陆无法进行退出登录操作";
+		}else {
 			session( 'username', null );
         	session( 'user_id', null );
         	session( null );
@@ -143,15 +158,40 @@ class LoginController extends Controller {
         	setcookie( 'PHPSESSID', '',time()-1000, '/' );
         	setcookie( 'username', '', time()-1000, '/' );
         	session_destroy();
-        	$msg = array(
-        		   'logoutStatus' => 1,
-        		   'info'         => "退出成功！",
-        		   'redirect_location' => U('Home/Index/Index/index'),
-        	);
-
-        	$this->ajaxReturn($msg, "json");
-
+        	$isLogoutSuccess = true;
 		}
+
+		if ( $logoutPlatform == "browser" ){
+			if ( !IS_AJAX ){
+				// browser 非ajax 情况使用页面跳转进行返回, 
+				if ( $isLogoutSuccess ){
+					$this->success("退出登录成功！", U("Home/Index/Index/index") );
+					exit;
+				}else {
+					$this->error( $errorMsg, U("Home/Index/Index/index") );
+					exit;
+				}
+			}
+		}
+
+
+		// 其他情况使用 this->ajaxReturn 返回
+		if ( $isLogoutSuccess ){
+			$logoutMsg = array(
+				'logoutStatus' => 1,
+				'info' => "退出登录成功！",
+				'redirect_location' => U('Home/Index/Index/index')  //browser ajax 情况调用
+			);
+			$this->ajaxReturn( $logoutMsg, 'json');
+		}else {
+			$logoutMsg = array(
+				'logoutStatus' => 0,
+				'info' => $errorMsg,
+				'redirect_location' => U('Home/Index/Index/index')  //browser ajax 情况调用
+			);
+			$this->ajaxReturn( $logoutMsg, 'json');
+		}
+
 	}
 
     // 用户注册
@@ -230,7 +270,17 @@ class LoginController extends Controller {
 
   //       $this->ajaxReturn( $loginMsg,'json' );
 
-		dump(session("user_id"));
+		// dump(session("user_id"));
+
+	$videos = M('user')->limit(1,10)->select();
+
+
+	$queryRst = array(
+		'queryStatus' => 1,
+		'data' => $videos,
+	);
+
+	dump( $queryRst );
 
 		$dizhi = "localhost/wfst/index.php/Home/Login/Login/test";
 
