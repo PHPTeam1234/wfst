@@ -311,7 +311,7 @@ class VideoController extends Controller {
 								$this->ajaxReturn( $videoDeleteMsg, "json");
 								exit;
 								}else {
-									$this->error('服务器文件视频删除失败！', U("Home/Video/Video/myVideo_list") , $pageRedirectWaitTime);
+									$this->error('服务器文件视频删除失败！', U("Home/Video/Video/myVideoList") , $pageRedirectWaitTime);
 									exit;
 								}
 							}
@@ -324,7 +324,7 @@ class VideoController extends Controller {
 								$this->ajaxReturn( $videoDeleteMsg, "json");
 								exit;
 							}else {
-								$this->error('数据库视频记录删除失败！', U("Home/Video/Video/myVideo_list") , $pageRedirectWaitTime);
+								$this->error('数据库视频记录删除失败！', U("Home/Video/Video/myVideoList") , $pageRedirectWaitTime);
 								exit;
 							}
 						}
@@ -340,7 +340,7 @@ class VideoController extends Controller {
 								$this->ajaxReturn( $videoDeleteMsg, "json");
 								exit;
 							}else {
-								$this->error('服务器中视频文件不存在时，数据库视频记录删除失败！', U("Home/Video/Video/myVideo_list") , $pageRedirectWaitTime);
+								$this->error('服务器中视频文件不存在时，数据库视频记录删除失败！', U("Home/Video/Video/myVideoList") , $pageRedirectWaitTime);
 								exit;
 							}
 						}
@@ -358,7 +358,7 @@ class VideoController extends Controller {
 						$this->ajaxReturn( $videoDeleteMsg, "json");
 					}else {
 						// dump($videoDeleteMsg['video_path']);
-						$this->success('删除成功！', U("Home/Video/Video/myVideo_list") , $pageRedirectWaitTime);
+						$this->success('删除成功！', U("Home/Video/Video/myVideoList") , $pageRedirectWaitTime);
 						exit;
 					}
 					
@@ -371,7 +371,7 @@ class VideoController extends Controller {
 						$this->ajaxReturn( $videoDeleteMsg, "json");
 						exit;
 					}else {
-						$this->error('您没有权限删除该视频！', U("Home/Video/Video/myVideo_list") , $pageRedirectWaitTime);
+						$this->error('您没有权限删除该视频！', U("Home/Video/Video/myVideoList") , $pageRedirectWaitTime);
 						exit;
 					}
 					
@@ -386,7 +386,7 @@ class VideoController extends Controller {
 				if ( IS_AJAX ) {
 					$this->ajaxReturn( $videoDeleteMsg, "json");
 				}else {
-					$this->error('该视频已删除，无需重复删除', U("Home/Video/Video/myVideo_list") , $pageRedirectWaitTime);
+					$this->error('该视频已删除，无需重复删除', U("Home/Video/Video/myVideoList") , $pageRedirectWaitTime);
 					exit;
 				}
 				
